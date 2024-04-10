@@ -11,3 +11,29 @@ C:\Users\TRAN TUAN\Desktop\Đồ án C#\GiaoDien_DangNhap\obj\Debug\GiaoDien_Dan
 C:\Users\TRAN TUAN\Desktop\Đồ án C#\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.pdb
 C:\Users\TRAN TUAN\Desktop\Đồ án C#\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmNhanVien.resources
 C:\Users\TRAN TUAN\Desktop\Đồ án C#\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmThongKe.resources
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.exe.config
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.exe
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.pdb
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\QL_ban_may_tinh.csproj.AssemblyReference.cache
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmDangNhap.resources
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmNhanVien.resources
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmQuanLy.resources
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmThongKe.resources
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.Properties.Resources.resources
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\QL_ban_may_tinh.csproj.GenerateResource.cache
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\QL_ban_may_tinh.csproj.CoreCompileInputs.cache
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.exe
+D:\C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.pdb
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.exe.config
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.exe
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.pdb
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\QL_ban_may_tinh.csproj.AssemblyReference.cache
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmDangNhap.resources
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmNhanVien.resources
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmQuanLy.resources
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.frmThongKe.resources
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.Properties.Resources.resources
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\QL_ban_may_tinh.csproj.GenerateResource.cache
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\QL_ban_may_tinh.csproj.CoreCompileInputs.cache
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.exe
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.pdb

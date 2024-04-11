@@ -60,7 +60,7 @@ namespace GiaoDien_DangNhap
         }
         private void btn_BH_search_Click(object sender, EventArgs e)
         {
-            query("SELECT*FROM SANPHAM WHERE " + "masp="+txt_maSP.Text);
+            query("SELECT*FROM SANPHAM WHERE " + "masp="+txt_BH_maNV.Text);
         }
 
         private void frmNhanVien_Load(object sender, EventArgs e)
@@ -71,8 +71,68 @@ namespace GiaoDien_DangNhap
 
         private void txt_maSP_TextChanged(object sender, EventArgs e)
         {
-            string masp=txt_maSP.Text;
+            string masp=txt_BH_maNV.Text;
             query("select*from sanpham where masp=" + masp);
+
+        }
+        public bool themHoaDon(string maHD, string maNV, string maKH, string ngayLapHD,int tienNhan,int tienTra,int thanhTien)
+        {
+            bool kq;
+            kq = true;
+            string conn;
+            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            SqlConnection mySqlConnection = new SqlConnection(conn);
+            string sSql = "";
+            sSql = "insert into hoadon ";
+            sSql += "values('" + maHD + "',";
+            sSql += "'" + maNV + "',";
+            sSql += "'" + maKH + "',";
+            sSql += "'" + ngayLapHD + "',";
+            sSql += tienNhan + ",";
+            sSql += tienTra + ",";
+            sSql+= thanhTien + ")";
+            MessageBox.Show(sSql);
+
+            try
+            {
+                mySqlConnection.Open();
+
+                SqlCommand cmd = new SqlCommand(sSql, mySqlConnection);
+                cmd.ExecuteNonQuery();
+                mySqlConnection.Close();
+            }
+            catch (Exception err)
+            {
+                kq = false;
+                MessageBox.Show("loi" + err.Message);
+            }
+
+            return kq;
+        }
+
+        private void btn_BH_add_Click(object sender, EventArgs e)
+        {
+            string maHD,maNV,maKH,ngayLapHD;
+            int tienNhan, tienTra, thanhTien;
+            maHD=txt_BH_maHD.Text;
+            maNV=txt_BH_maNV.Text;
+            maKH=txt_BH_tenNV.Text;
+            ngayLapHD=dt_BH_ngayLapHD.Value.ToString();
+            tienNhan=int.Parse(txt_BH_tienNhan.Text);
+            tienTra=int.Parse(txt_BH_tienTra.Text);
+            thanhTien=int.Parse(txt_BH_thanhTien.Text);
+
+         bool kq=   themHoaDon(maHD,maNV,maKH, ngayLapHD, tienNhan, tienTra,thanhTien);
+            if (kq == true)
+            {
+
+                MessageBox.Show("Thêm hóa đơn thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                query("Select*from hoadon");
+            }
+            else
+            {
+                MessageBox.Show("Thêm thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

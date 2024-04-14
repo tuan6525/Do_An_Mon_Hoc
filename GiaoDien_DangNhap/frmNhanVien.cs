@@ -60,7 +60,7 @@ namespace GiaoDien_DangNhap
         }
         private void btn_BH_search_Click(object sender, EventArgs e)
         {
-            query("SELECT*FROM SANPHAM WHERE " + "masp="+txt_BH_maNV.Text);
+            query("SELECT*FROM SANPHAM WHERE " + "masp="+txt_BH_maHD.Text);
         }
 
         private void frmNhanVien_Load(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace GiaoDien_DangNhap
 
         private void txt_maSP_TextChanged(object sender, EventArgs e)
         {
-            string masp=txt_BH_maNV.Text;
+            string masp=txt_BH_maHD.Text;
             query("select*from sanpham where masp=" + masp);
 
         }
@@ -115,24 +115,24 @@ namespace GiaoDien_DangNhap
             string maHD,maNV,maKH,ngayLapHD;
             int tienNhan, tienTra, thanhTien;
             maHD=txt_BH_maHD.Text;
-            maNV=txt_BH_maNV.Text;
+            maNV=txt_BH_maHD.Text;
             maKH=txt_BH_tenNV.Text;
             ngayLapHD=dt_BH_ngayLapHD.Value.ToString();
-            tienNhan=int.Parse(txt_BH_tienNhan.Text);
-            tienTra=int.Parse(txt_BH_tienTra.Text);
-            thanhTien=int.Parse(txt_BH_thanhTien.Text);
+            //tienNhan=int.Parse(txt_BH_tienNhan.Text);
+            //tienTra=int.Parse(txt_BH_tienTra.Text);
+            //thanhTien=int.Parse(txt_BH_thanhTien.Text);
 
-         bool kq=   themHoaDon(maHD,maNV,maKH, ngayLapHD, tienNhan, tienTra,thanhTien);
-            if (kq == true)
-            {
+            //bool kq=   themHoaDon(maHD,maNV,maKH, ngayLapHD, tienNhan, tienTra,thanhTien);
+            //if (kq == true)
+            //{
 
-                MessageBox.Show("Thêm hóa đơn thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                query("Select*from hoadon");
-            }
-            else
-            {
-                MessageBox.Show("Thêm thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //    MessageBox.Show("Thêm hóa đơn thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    query("Select*from hoadon");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Thêm thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
     }

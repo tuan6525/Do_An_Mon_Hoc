@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanVien));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.SAD = new System.Windows.Forms.Label();
             this.dGR_BH = new System.Windows.Forms.DataGridView();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -40,11 +41,14 @@
             this.btn_BH_add = new System.Windows.Forms.Button();
             this.btn_BH_new = new System.Windows.Forms.Button();
             this.grbox = new System.Windows.Forms.GroupBox();
+            this.ccb_BH_NV = new System.Windows.Forms.ComboBox();
+            this.cbb_BH_maKH = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dt_BH_ngayLapHD = new System.Windows.Forms.DateTimePicker();
             this.txt_BH_tenNV = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txt_BH_maNV = new System.Windows.Forms.TextBox();
+            this.txt_BH_maHD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -74,10 +78,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.SAD = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbb_BH_maKH = new System.Windows.Forms.ComboBox();
-            this.ccb_BH_NV = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGR_BH)).BeginInit();
@@ -114,6 +114,16 @@
             this.tabPage1.Size = new System.Drawing.Size(963, 684);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bán hàng";
+            // 
+            // SAD
+            // 
+            this.SAD.AutoSize = true;
+            this.SAD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.SAD.Location = new System.Drawing.Point(366, 14);
+            this.SAD.Name = "SAD";
+            this.SAD.Size = new System.Drawing.Size(213, 23);
+            this.SAD.TabIndex = 42;
+            this.SAD.Text = "HÓA ĐƠN BÁN HÀNG";
             // 
             // dGR_BH
             // 
@@ -219,7 +229,7 @@
             this.grbox.Controls.Add(this.txt_BH_tenNV);
             this.grbox.Controls.Add(this.label7);
             this.grbox.Controls.Add(this.label5);
-            this.grbox.Controls.Add(this.txt_BH_maNV);
+            this.grbox.Controls.Add(this.txt_BH_maHD);
             this.grbox.Controls.Add(this.label2);
             this.grbox.Controls.Add(this.label1);
             this.grbox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,6 +240,32 @@
             this.grbox.TabIndex = 18;
             this.grbox.TabStop = false;
             this.grbox.Text = "Thông tin sản phẩm";
+            // 
+            // ccb_BH_NV
+            // 
+            this.ccb_BH_NV.FormattingEnabled = true;
+            this.ccb_BH_NV.Location = new System.Drawing.Point(164, 130);
+            this.ccb_BH_NV.Name = "ccb_BH_NV";
+            this.ccb_BH_NV.Size = new System.Drawing.Size(261, 31);
+            this.ccb_BH_NV.TabIndex = 49;
+            // 
+            // cbb_BH_maKH
+            // 
+            this.cbb_BH_maKH.FormattingEnabled = true;
+            this.cbb_BH_maKH.Location = new System.Drawing.Point(164, 82);
+            this.cbb_BH_maKH.Name = "cbb_BH_maKH";
+            this.cbb_BH_maKH.Size = new System.Drawing.Size(261, 31);
+            this.cbb_BH_maKH.TabIndex = 48;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(-3, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(143, 20);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "Mã Khách Hàng:";
             // 
             // dt_BH_ngayLapHD
             // 
@@ -268,14 +304,14 @@
             this.label5.TabIndex = 35;
             this.label5.Text = "Mã Hóa Đơn:";
             // 
-            // txt_BH_maNV
+            // txt_BH_maHD
             // 
-            this.txt_BH_maNV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_BH_maNV.Location = new System.Drawing.Point(163, 35);
-            this.txt_BH_maNV.Name = "txt_BH_maNV";
-            this.txt_BH_maNV.Size = new System.Drawing.Size(261, 30);
-            this.txt_BH_maNV.TabIndex = 3;
-            this.txt_BH_maNV.TextChanged += new System.EventHandler(this.txt_maSP_TextChanged);
+            this.txt_BH_maHD.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_BH_maHD.Location = new System.Drawing.Point(163, 35);
+            this.txt_BH_maHD.Name = "txt_BH_maHD";
+            this.txt_BH_maHD.Size = new System.Drawing.Size(261, 30);
+            this.txt_BH_maHD.TabIndex = 3;
+            this.txt_BH_maHD.TextChanged += new System.EventHandler(this.txt_maSP_TextChanged);
             // 
             // label2
             // 
@@ -580,42 +616,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Mã khách hàng:";
             // 
-            // SAD
-            // 
-            this.SAD.AutoSize = true;
-            this.SAD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.SAD.Location = new System.Drawing.Point(366, 14);
-            this.SAD.Name = "SAD";
-            this.SAD.Size = new System.Drawing.Size(213, 23);
-            this.SAD.TabIndex = 42;
-            this.SAD.Text = "HÓA ĐƠN BÁN HÀNG";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(-3, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 20);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Mã Khách Hàng:";
-            // 
-            // cbb_BH_maKH
-            // 
-            this.cbb_BH_maKH.FormattingEnabled = true;
-            this.cbb_BH_maKH.Location = new System.Drawing.Point(164, 82);
-            this.cbb_BH_maKH.Name = "cbb_BH_maKH";
-            this.cbb_BH_maKH.Size = new System.Drawing.Size(261, 31);
-            this.cbb_BH_maKH.TabIndex = 48;
-            // 
-            // ccb_BH_NV
-            // 
-            this.ccb_BH_NV.FormattingEnabled = true;
-            this.ccb_BH_NV.Location = new System.Drawing.Point(164, 130);
-            this.ccb_BH_NV.Name = "ccb_BH_NV";
-            this.ccb_BH_NV.Size = new System.Drawing.Size(261, 31);
-            this.ccb_BH_NV.TabIndex = 49;
-            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -656,7 +656,7 @@
         private System.Windows.Forms.Button btn_BH_add;
         private System.Windows.Forms.Button btn_BH_new;
         private System.Windows.Forms.GroupBox grbox;
-        private System.Windows.Forms.TextBox txt_BH_maNV;
+        private System.Windows.Forms.TextBox txt_BH_maHD;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;

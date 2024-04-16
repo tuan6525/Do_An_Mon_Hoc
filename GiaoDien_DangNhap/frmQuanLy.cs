@@ -52,7 +52,8 @@ namespace GiaoDien_DangNhap
             string sSql_Xem_San_Pham = "SELECT * FROM SanPham";
             DataSet ds_San_Pham = Xem_Thong_Tin(sSql_Xem_San_Pham);
             data_SP.DataSource = ds_San_Pham.Tables[0];
-
+            Hien_Thi_Len_SP_CBO_Nha_Cung_Cap();
+            cbo_SP_Xuat_Xu.SelectedItem = cbo_SP_Xuat_Xu.Items[0];
         }
 
         public static SqlConnection Ket_Noi()
@@ -164,6 +165,28 @@ namespace GiaoDien_DangNhap
             }
         }
 
+        public void Hien_Thi_Len_SP_CBO_Nha_Cung_Cap()
+        {
+            SqlConnection myConnection = Ket_Noi();
+            string sSql_Hien = "SELECT MaNCC, TenNCC FROM NhaCungCap";
+            try
+            {
+                myConnection.Open();
+                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
+                DataSet ds = new DataSet();
+                dsHien.Fill(ds);
+                myConnection.Close();
+
+                cbo_SP_Nha_Cung_Cap.DataSource = ds.Tables[0];
+                cbo_SP_Nha_Cung_Cap.DisplayMember = "TenNCC";
+                cbo_SP_Nha_Cung_Cap.ValueMember = "MaNCC";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+        }
+
         public void Hien_Don_Gia()
         {
             string maSP = cbo_HD_San_Pham.SelectedValue.ToString();
@@ -188,6 +211,118 @@ namespace GiaoDien_DangNhap
         }
 
 
+
+        public bool Them_Hoa_Don(string maHD, string maSP, int soLuong, double donGia, double thanhTien, string maKH, string maNV, string ngayLap, double khuyenMai)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+            //Câu truy vấn thêm vào bảng HOADON
+            string sSql_HD;
+            sSql_HD = "INSERT INTO HoaDon VALUES (";
+            sSql_HD += "'" + maHD + "',";
+            sSql_HD += "'" + maNV + "',";
+            sSql_HD += "'" + maKH + "',";
+            sSql_HD += "'" + ngayLap + "',";
+            sSql_HD += thanhTien + ")";
+
+            //Câu truy vấn thêm vào bảng CTHOADON
+            string sSql_CTHD;
+            sSql_CTHD = "INSERT INTO CT_HOADON VALUES (";
+            sSql_CTHD += "'" + maHD + "',";
+            sSql_CTHD += "'" + maSP + "',";
+            sSql_CTHD += "" + soLuong + ",";
+            sSql_CTHD += "" + donGia + ",";
+            sSql_CTHD += "" + khuyenMai + ",";
+            sSql_CTHD += thanhTien + ")";
+
+            try
+            {
+                myConnection.Open();
+                //thực thi câu truy vấn thêm vào bảng HOADON
+                SqlCommand cmd = new SqlCommand(sSql_HD, myConnection);
+                cmd.ExecuteNonQuery();
+
+                //thực thi câu truy vấn thêm vào bảng HOADON
+                cmd = new SqlCommand(sSql_CTHD, myConnection);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+        public bool Them_Nha_Cung_Cap(string maNCC, string tenNCC, string diaChi, string SDT, string email)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+            //Câu truy vấn thêm vào bảng HOADON
+            string sSql_NCC;
+            sSql_NCC = "INSERT INTO NhaCungCap VALUES (";
+            sSql_NCC += "'" + maNCC + "',";
+            sSql_NCC += "'" + tenNCC + "',";
+            sSql_NCC += "N'" + diaChi + "',";
+            sSql_NCC += "'" + SDT + "',";
+            sSql_NCC += "'" + email + "')";
+
+            try
+            {
+                myConnection.Open();
+                //thực thi câu truy vấn thêm vào bảng NHACUNGCAP
+                SqlCommand cmd = new SqlCommand(sSql_NCC, myConnection);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+        public bool Them_San_Pham(string maSP, string tenSP, double giaNhap, double giaBan, string xuatXu, bool trangThai, double khuyenMai, string maNCC)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+            //Câu truy vấn thêm vào bảng SANPHAM
+            string sSql_SP;
+            sSql_SP = "INSERT INTO SanPham VALUES (";
+            sSql_SP += "'" + maSP + "',";
+            sSql_SP += "'" + tenSP + "',";
+            sSql_SP += giaNhap + ",";
+            sSql_SP += giaBan + ",";
+            sSql_SP += "N'" + xuatXu + "',";
+            sSql_SP += "'"+ trangThai + "',";
+            sSql_SP += khuyenMai + ",";
+            sSql_SP += "'" + maNCC + "')";
+
+            try
+            {
+                myConnection.Open();
+                //thực thi câu truy vấn thêm vào bảng NHACUNGCAP
+                SqlCommand cmd = new SqlCommand(sSql_SP, myConnection);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+
         private void btn_SP_Them_Click(object sender, EventArgs e)
         {
             SqlConnection myConnection = Ket_Noi();
@@ -196,7 +331,7 @@ namespace GiaoDien_DangNhap
                 string.IsNullOrEmpty(cbo_SP_Xuat_Xu.Text) ||
                 string.IsNullOrEmpty(txt_SP_Gia_Nhap.Text) ||
                 string.IsNullOrEmpty(txt_SP_Gia_Ban.Text) ||
-                string.IsNullOrEmpty(txt_SP_NCC.Text) ||
+                string.IsNullOrEmpty(cbo_SP_Nha_Cung_Cap.Text) ||
                 string.IsNullOrEmpty(txt_SP_Ma_San_Pham.Text) ||
                 string.IsNullOrEmpty(txt_SP_Khuyen_Mai.Text))
             {
@@ -205,37 +340,35 @@ namespace GiaoDien_DangNhap
             }
             else
             {
-                //Lấy thông tin mã sản phẩm, tên sản phẩm, xuất xứ, giá nhập, giá bán, mã nhà cung cấp, khuyến mãi, trạng thái
-                int maSP = int.Parse(txt_SP_Ma_San_Pham.Text);
-                string tenSP = txt_SP_Ten_San_Pham.Text;
-                string xuatXu = cbo_SP_Xuat_Xu.Text;
-                double giaNhap = double.Parse(txt_SP_Gia_Nhap.Text);
-                double giaBan = double.Parse(txt_SP_Gia_Ban.Text);
-                int maNCC = int.Parse(txt_SP_NCC.Text);
-                float khuyenMai = float.Parse(txt_SP_Khuyen_Mai.Text);
-                bool trangThai = false;
+                string maSP, tenSP, xuatXu, maNCC;
+                double giaNhap, giaBan, khuyenMai;
+                bool trangThai;
+
+                maSP = txt_SP_Ma_San_Pham.Text;
+                tenSP = txt_NCC_Ten_Nha_Cung_Cap.Text;
+                giaNhap = double.Parse(txt_SP_Gia_Nhap.Text);
+                giaBan = double.Parse(txt_SP_Gia_Ban.Text);
+                xuatXu = cbo_SP_Xuat_Xu.Text;
+                trangThai = false;
                 if (chk_SP_Trang_Thai.Checked)
                 {
                     trangThai = true;
                 }
+                khuyenMai = double.Parse(txt_SP_Khuyen_Mai.Text);
+                maNCC = cbo_SP_Nha_Cung_Cap.SelectedValue.ToString();
 
-                string sSql_Them = "INSERT INTO SanPham (MASP, TENSP, GIANHAP, GIABAN, XUATXU, TRANGTHAI, KHUYENMAI, MANCC)" +
-                      "VALUES('" + maSP + "','" + tenSP + "'," + giaNhap + "," + giaBan + ",'" + xuatXu + "'," + (trangThai ? "1" : "0") + "," + khuyenMai + ",'" + maNCC + "')";
-
-                string sSql_Xem = "SELECT * FROM SanPham";
-                try
+                bool kq = Them_San_Pham(maSP, tenSP, giaNhap, giaBan, xuatXu, trangThai, khuyenMai, maNCC);
+                if (kq == false)
                 {
-                    myConnection.Open();
-
-                    SqlCommand cmd = Them_Thong_Tin(sSql_Them);
-                    DataSet ds = Xem_Thong_Tin(sSql_Xem);
-
-                    myConnection.Close();
-                    //Hiện danh sách sau khi thêm sản phẩm
-                    data_SP.DataSource = ds.Tables[0];
-                }catch (Exception ex)
+                    MessageBox.Show("Thêm Sản Phẩm KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
                 {
-                    MessageBox.Show("Lỗi chi tiết: " + ex.Message);
+                    MessageBox.Show("Đã thêm Sản Phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_San_Pham = "SELECT * FROM SanPham";
+                    DataSet ds_San_Pham = Xem_Thong_Tin(sSql_Xem_San_Pham);
+                    data_SP.DataSource = ds_San_Pham.Tables[0];
+                    Hien_Thi_Len_HD_CBO_San_Pham();
                 }
             }
         }
@@ -281,51 +414,6 @@ namespace GiaoDien_DangNhap
                 }
             }
             btn_HD_Them.Enabled = true;
-        }
-
-        public bool Them_Hoa_Don(string maHD, string maSP, int soLuong, double donGia, double thanhTien, string maKH, string maNV, string ngayLap, double khuyenMai)
-        {
-            bool kq;
-            kq = true;
-            SqlConnection myConnection = Ket_Noi();
-            //Câu truy vấn thêm vào bảng HOADON
-            string sSql_HD;
-            sSql_HD = "INSERT INTO HoaDon VALUES (";
-            sSql_HD += "'" + maHD + "',";
-            sSql_HD += "'" + maNV + "',";
-            sSql_HD += "'" + maKH + "',";
-            sSql_HD += "'" + ngayLap + "',";
-            sSql_HD += thanhTien + ")";
-
-            //Câu truy vấn thêm vào bảng CTHOADON
-            string sSql_CTHD;
-            sSql_CTHD = "INSERT INTO CT_HOADON VALUES (";
-            sSql_CTHD += "'" + maHD + "',";
-            sSql_CTHD += "'" + maSP + "',";
-            sSql_CTHD += "" + soLuong + ",";
-            sSql_CTHD += "" + donGia + ",";
-            sSql_CTHD += "" + khuyenMai + ",";
-            sSql_CTHD += thanhTien + ")";
-
-            try
-            {
-                myConnection.Open();
-                //thực thi câu truy vấn thêm vào bảng HOADON
-                SqlCommand cmd = new SqlCommand(sSql_HD, myConnection);
-                cmd.ExecuteNonQuery();
-
-                //thực thi câu truy vấn thêm vào bảng HOADON
-                cmd = new SqlCommand(sSql_CTHD, myConnection);
-                cmd.ExecuteNonQuery();
-
-                myConnection.Close();
-            }
-            catch (Exception ex)
-            {
-                kq = false;
-                MessageBox.Show("Lỗi. Chi tiết: " + ex.Message);
-            }
-            return kq;
         }
 
         private void btn_HD_Them_Click(object sender, EventArgs e)
@@ -382,6 +470,43 @@ namespace GiaoDien_DangNhap
         private void data_HD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btn_NCC_Them_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_NCC_Ma_Nha_Cung_Cap.Text) ||
+                string.IsNullOrEmpty(txt_NCC_Ten_Nha_Cung_Cap.Text) ||
+                string.IsNullOrEmpty(txt_NCC_Dia_Chi.Text) ||
+                string.IsNullOrEmpty(txt_NCC_SDT.Text) ||
+                string.IsNullOrEmpty(txt_NCC_Email.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string maNCC, tenNCC, diaChi, SDT, email;
+
+                maNCC = txt_NCC_Ma_Nha_Cung_Cap.Text;
+                tenNCC = txt_NCC_Ten_Nha_Cung_Cap.Text;
+                diaChi = txt_NCC_Dia_Chi.Text;
+                SDT = txt_NCC_SDT.Text;
+                email = txt_NCC_Email.Text;
+
+                bool kq = Them_Nha_Cung_Cap(maNCC, tenNCC, diaChi, SDT, email);
+                if (kq == false)
+                {
+                    MessageBox.Show("Thêm Nhà Cung Cấp KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Đã thêm Nhà Cung Cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Nha_Cung_Cap = "SELECT * FROM NhaCungCap";
+                    DataSet ds_Nha_Cung_Cap = Xem_Thong_Tin(sSql_Xem_Nha_Cung_Cap);
+                    data_NCC.DataSource = ds_Nha_Cung_Cap.Tables[0];
+                    Hien_Thi_Len_SP_CBO_Nha_Cung_Cap();
+                }
+            }
         }
     }
 }

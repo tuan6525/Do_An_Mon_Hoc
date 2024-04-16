@@ -109,11 +109,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 380);
+            this.dataGridView1.Location = new System.Drawing.Point(1, 380);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(842, 208);
+            this.dataGridView1.Size = new System.Drawing.Size(865, 214);
             this.dataGridView1.TabIndex = 24;
             // 
             // frmThongKe
@@ -130,7 +130,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "frmThongKe";
             this.Text = "frmThongKe";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

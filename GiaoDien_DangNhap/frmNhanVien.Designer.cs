@@ -32,7 +32,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.SAD = new System.Windows.Forms.Label();
-            this.dGR_BH = new System.Windows.Forms.DataGridView();
+            this.data_banHang = new System.Windows.Forms.DataGridView();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_BH_out = new System.Windows.Forms.Button();
@@ -41,16 +41,10 @@
             this.btn_BH_add = new System.Windows.Forms.Button();
             this.btn_BH_new = new System.Windows.Forms.Button();
             this.grbox = new System.Windows.Forms.GroupBox();
-            this.ccb_BH_NV = new System.Windows.Forms.ComboBox();
-            this.cbb_BH_maKH = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dt_BH_ngayLapHD = new System.Windows.Forms.DateTimePicker();
-            this.txt_BH_tenNV = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lab_BH_maHD = new System.Windows.Forms.Label();
             this.txt_BH_maHD = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lab_BH_ngayLapHD = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label23 = new System.Windows.Forms.Label();
@@ -78,15 +72,32 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lab_BH_sanPham = new System.Windows.Forms.Label();
+            this.cbo_BH_sanPham = new System.Windows.Forms.ComboBox();
+            this.lab_BH_soLuong = new System.Windows.Forms.Label();
+            this.lab_BH_donGia = new System.Windows.Forms.Label();
+            this.nbr_BH_soLuong = new System.Windows.Forms.NumericUpDown();
+            this.txt_BH_donGia = new System.Windows.Forms.TextBox();
+            this.txt_BH_thanhTien = new System.Windows.Forms.TextBox();
+            this.lab_BH_thanhTien = new System.Windows.Forms.Label();
+            this.cbo_BH_KH = new System.Windows.Forms.ComboBox();
+            this.lab_BH_KH = new System.Windows.Forms.Label();
+            this.cbo_BH_NV = new System.Windows.Forms.ComboBox();
+            this.lab_BH_NV = new System.Windows.Forms.Label();
+            this.lab_BH_khuyenMai = new System.Windows.Forms.Label();
+            this.txt_BH_khuyenMai = new System.Windows.Forms.TextBox();
+            this.btn_BH_tinhTien = new System.Windows.Forms.Button();
+            this.btn_BH_update = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGR_BH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_banHang)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.grbox.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbr_BH_soLuong)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -104,7 +115,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Gray;
             this.tabPage1.Controls.Add(this.SAD);
-            this.tabPage1.Controls.Add(this.dGR_BH);
+            this.tabPage1.Controls.Add(this.data_banHang);
             this.tabPage1.Controls.Add(this.label24);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.grbox);
@@ -125,16 +136,18 @@
             this.SAD.TabIndex = 42;
             this.SAD.Text = "HÓA ĐƠN BÁN HÀNG";
             // 
-            // dGR_BH
+            // data_banHang
             // 
-            this.dGR_BH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGR_BH.Location = new System.Drawing.Point(6, 473);
-            this.dGR_BH.Name = "dGR_BH";
-            this.dGR_BH.ReadOnly = true;
-            this.dGR_BH.RowHeadersWidth = 51;
-            this.dGR_BH.RowTemplate.Height = 24;
-            this.dGR_BH.Size = new System.Drawing.Size(946, 206);
-            this.dGR_BH.TabIndex = 41;
+            this.data_banHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_banHang.Location = new System.Drawing.Point(6, 473);
+            this.data_banHang.Name = "data_banHang";
+            this.data_banHang.ReadOnly = true;
+            this.data_banHang.RowHeadersWidth = 51;
+            this.data_banHang.RowTemplate.Height = 24;
+            this.data_banHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.data_banHang.Size = new System.Drawing.Size(946, 206);
+            this.data_banHang.TabIndex = 41;
+            this.data_banHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_banHang_CellClick);
             // 
             // label24
             // 
@@ -149,6 +162,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btn_BH_update);
             this.groupBox3.Controls.Add(this.btn_BH_out);
             this.groupBox3.Controls.Add(this.btn_BH_search);
             this.groupBox3.Controls.Add(this.btn_BH_del);
@@ -222,16 +236,25 @@
             // grbox
             // 
             this.grbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.grbox.Controls.Add(this.ccb_BH_NV);
-            this.grbox.Controls.Add(this.cbb_BH_maKH);
-            this.grbox.Controls.Add(this.label3);
+            this.grbox.Controls.Add(this.btn_BH_tinhTien);
+            this.grbox.Controls.Add(this.txt_BH_khuyenMai);
+            this.grbox.Controls.Add(this.lab_BH_khuyenMai);
+            this.grbox.Controls.Add(this.cbo_BH_NV);
+            this.grbox.Controls.Add(this.lab_BH_NV);
+            this.grbox.Controls.Add(this.cbo_BH_KH);
+            this.grbox.Controls.Add(this.lab_BH_KH);
+            this.grbox.Controls.Add(this.txt_BH_thanhTien);
+            this.grbox.Controls.Add(this.lab_BH_thanhTien);
+            this.grbox.Controls.Add(this.txt_BH_donGia);
+            this.grbox.Controls.Add(this.nbr_BH_soLuong);
+            this.grbox.Controls.Add(this.lab_BH_donGia);
+            this.grbox.Controls.Add(this.lab_BH_soLuong);
+            this.grbox.Controls.Add(this.cbo_BH_sanPham);
+            this.grbox.Controls.Add(this.lab_BH_sanPham);
             this.grbox.Controls.Add(this.dt_BH_ngayLapHD);
-            this.grbox.Controls.Add(this.txt_BH_tenNV);
-            this.grbox.Controls.Add(this.label7);
-            this.grbox.Controls.Add(this.label5);
+            this.grbox.Controls.Add(this.lab_BH_maHD);
             this.grbox.Controls.Add(this.txt_BH_maHD);
-            this.grbox.Controls.Add(this.label2);
-            this.grbox.Controls.Add(this.label1);
+            this.grbox.Controls.Add(this.lab_BH_ngayLapHD);
             this.grbox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.grbox.Location = new System.Drawing.Point(7, 67);
@@ -241,68 +264,24 @@
             this.grbox.TabStop = false;
             this.grbox.Text = "Thông tin sản phẩm";
             // 
-            // ccb_BH_NV
-            // 
-            this.ccb_BH_NV.FormattingEnabled = true;
-            this.ccb_BH_NV.Location = new System.Drawing.Point(164, 130);
-            this.ccb_BH_NV.Name = "ccb_BH_NV";
-            this.ccb_BH_NV.Size = new System.Drawing.Size(261, 31);
-            this.ccb_BH_NV.TabIndex = 49;
-            // 
-            // cbb_BH_maKH
-            // 
-            this.cbb_BH_maKH.FormattingEnabled = true;
-            this.cbb_BH_maKH.Location = new System.Drawing.Point(164, 82);
-            this.cbb_BH_maKH.Name = "cbb_BH_maKH";
-            this.cbb_BH_maKH.Size = new System.Drawing.Size(261, 31);
-            this.cbb_BH_maKH.TabIndex = 48;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(-3, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 20);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Mã Khách Hàng:";
-            // 
             // dt_BH_ngayLapHD
             // 
             this.dt_BH_ngayLapHD.CustomFormat = "dd-MM-yyyy";
             this.dt_BH_ngayLapHD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_BH_ngayLapHD.Location = new System.Drawing.Point(165, 222);
+            this.dt_BH_ngayLapHD.Location = new System.Drawing.Point(672, 128);
             this.dt_BH_ngayLapHD.Name = "dt_BH_ngayLapHD";
             this.dt_BH_ngayLapHD.Size = new System.Drawing.Size(260, 30);
             this.dt_BH_ngayLapHD.TabIndex = 39;
             // 
-            // txt_BH_tenNV
+            // lab_BH_maHD
             // 
-            this.txt_BH_tenNV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_BH_tenNV.Location = new System.Drawing.Point(164, 176);
-            this.txt_BH_tenNV.Name = "txt_BH_tenNV";
-            this.txt_BH_tenNV.Size = new System.Drawing.Size(261, 30);
-            this.txt_BH_tenNV.TabIndex = 38;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 186);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 20);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "Tên Nhân Viên:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 39);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 20);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Mã Hóa Đơn:";
+            this.lab_BH_maHD.AutoSize = true;
+            this.lab_BH_maHD.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_BH_maHD.Location = new System.Drawing.Point(32, 39);
+            this.lab_BH_maHD.Name = "lab_BH_maHD";
+            this.lab_BH_maHD.Size = new System.Drawing.Size(115, 20);
+            this.lab_BH_maHD.TabIndex = 35;
+            this.lab_BH_maHD.Text = "Mã Hóa Đơn:";
             // 
             // txt_BH_maHD
             // 
@@ -313,25 +292,15 @@
             this.txt_BH_maHD.TabIndex = 3;
             this.txt_BH_maHD.TextChanged += new System.EventHandler(this.txt_maSP_TextChanged);
             // 
-            // label2
+            // lab_BH_ngayLapHD
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 222);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ngày Lập Hóa Đơn";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 135);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã Nhân Viên:";
+            this.lab_BH_ngayLapHD.AutoSize = true;
+            this.lab_BH_ngayLapHD.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_BH_ngayLapHD.Location = new System.Drawing.Point(474, 136);
+            this.lab_BH_ngayLapHD.Name = "lab_BH_ngayLapHD";
+            this.lab_BH_ngayLapHD.Size = new System.Drawing.Size(165, 20);
+            this.lab_BH_ngayLapHD.TabIndex = 1;
+            this.lab_BH_ngayLapHD.Text = "Ngày Lập Hóa Đơn:";
             // 
             // tabPage2
             // 
@@ -616,6 +585,148 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Mã khách hàng:";
             // 
+            // lab_BH_sanPham
+            // 
+            this.lab_BH_sanPham.AutoSize = true;
+            this.lab_BH_sanPham.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_BH_sanPham.Location = new System.Drawing.Point(32, 76);
+            this.lab_BH_sanPham.Name = "lab_BH_sanPham";
+            this.lab_BH_sanPham.Size = new System.Drawing.Size(93, 20);
+            this.lab_BH_sanPham.TabIndex = 50;
+            this.lab_BH_sanPham.Text = "Sản Phẩm:";
+            // 
+            // cbo_BH_sanPham
+            // 
+            this.cbo_BH_sanPham.FormattingEnabled = true;
+            this.cbo_BH_sanPham.Location = new System.Drawing.Point(163, 76);
+            this.cbo_BH_sanPham.Name = "cbo_BH_sanPham";
+            this.cbo_BH_sanPham.Size = new System.Drawing.Size(261, 31);
+            this.cbo_BH_sanPham.TabIndex = 51;
+            // 
+            // lab_BH_soLuong
+            // 
+            this.lab_BH_soLuong.AutoSize = true;
+            this.lab_BH_soLuong.Location = new System.Drawing.Point(36, 128);
+            this.lab_BH_soLuong.Name = "lab_BH_soLuong";
+            this.lab_BH_soLuong.Size = new System.Drawing.Size(99, 23);
+            this.lab_BH_soLuong.TabIndex = 52;
+            this.lab_BH_soLuong.Text = "Số Lượng:";
+            // 
+            // lab_BH_donGia
+            // 
+            this.lab_BH_donGia.AutoSize = true;
+            this.lab_BH_donGia.Location = new System.Drawing.Point(32, 171);
+            this.lab_BH_donGia.Name = "lab_BH_donGia";
+            this.lab_BH_donGia.Size = new System.Drawing.Size(88, 23);
+            this.lab_BH_donGia.TabIndex = 53;
+            this.lab_BH_donGia.Text = "Đơn Giá:";
+            // 
+            // nbr_BH_soLuong
+            // 
+            this.nbr_BH_soLuong.Location = new System.Drawing.Point(165, 128);
+            this.nbr_BH_soLuong.Name = "nbr_BH_soLuong";
+            this.nbr_BH_soLuong.Size = new System.Drawing.Size(120, 30);
+            this.nbr_BH_soLuong.TabIndex = 54;
+            // 
+            // txt_BH_donGia
+            // 
+            this.txt_BH_donGia.Enabled = false;
+            this.txt_BH_donGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_BH_donGia.Location = new System.Drawing.Point(165, 171);
+            this.txt_BH_donGia.Name = "txt_BH_donGia";
+            this.txt_BH_donGia.Size = new System.Drawing.Size(261, 30);
+            this.txt_BH_donGia.TabIndex = 55;
+            // 
+            // txt_BH_thanhTien
+            // 
+            this.txt_BH_thanhTien.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_BH_thanhTien.Location = new System.Drawing.Point(163, 222);
+            this.txt_BH_thanhTien.Name = "txt_BH_thanhTien";
+            this.txt_BH_thanhTien.Size = new System.Drawing.Size(261, 30);
+            this.txt_BH_thanhTien.TabIndex = 57;
+            // 
+            // lab_BH_thanhTien
+            // 
+            this.lab_BH_thanhTien.AutoSize = true;
+            this.lab_BH_thanhTien.Location = new System.Drawing.Point(30, 222);
+            this.lab_BH_thanhTien.Name = "lab_BH_thanhTien";
+            this.lab_BH_thanhTien.Size = new System.Drawing.Size(113, 23);
+            this.lab_BH_thanhTien.TabIndex = 56;
+            this.lab_BH_thanhTien.Text = "Thành Tiền:";
+            // 
+            // cbo_BH_KH
+            // 
+            this.cbo_BH_KH.FormattingEnabled = true;
+            this.cbo_BH_KH.Location = new System.Drawing.Point(672, 39);
+            this.cbo_BH_KH.Name = "cbo_BH_KH";
+            this.cbo_BH_KH.Size = new System.Drawing.Size(261, 31);
+            this.cbo_BH_KH.TabIndex = 59;
+            // 
+            // lab_BH_KH
+            // 
+            this.lab_BH_KH.AutoSize = true;
+            this.lab_BH_KH.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_BH_KH.Location = new System.Drawing.Point(541, 39);
+            this.lab_BH_KH.Name = "lab_BH_KH";
+            this.lab_BH_KH.Size = new System.Drawing.Size(112, 20);
+            this.lab_BH_KH.TabIndex = 58;
+            this.lab_BH_KH.Text = "Khách Hàng:";
+            // 
+            // cbo_BH_NV
+            // 
+            this.cbo_BH_NV.FormattingEnabled = true;
+            this.cbo_BH_NV.Location = new System.Drawing.Point(672, 80);
+            this.cbo_BH_NV.Name = "cbo_BH_NV";
+            this.cbo_BH_NV.Size = new System.Drawing.Size(261, 31);
+            this.cbo_BH_NV.TabIndex = 61;
+            // 
+            // lab_BH_NV
+            // 
+            this.lab_BH_NV.AutoSize = true;
+            this.lab_BH_NV.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_BH_NV.Location = new System.Drawing.Point(541, 85);
+            this.lab_BH_NV.Name = "lab_BH_NV";
+            this.lab_BH_NV.Size = new System.Drawing.Size(96, 20);
+            this.lab_BH_NV.TabIndex = 60;
+            this.lab_BH_NV.Text = "Nhân Viên:";
+            // 
+            // lab_BH_khuyenMai
+            // 
+            this.lab_BH_khuyenMai.AutoSize = true;
+            this.lab_BH_khuyenMai.Location = new System.Drawing.Point(515, 178);
+            this.lab_BH_khuyenMai.Name = "lab_BH_khuyenMai";
+            this.lab_BH_khuyenMai.Size = new System.Drawing.Size(119, 23);
+            this.lab_BH_khuyenMai.TabIndex = 62;
+            this.lab_BH_khuyenMai.Text = "Khuyến Mãi:";
+            // 
+            // txt_BH_khuyenMai
+            // 
+            this.txt_BH_khuyenMai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_BH_khuyenMai.Location = new System.Drawing.Point(672, 171);
+            this.txt_BH_khuyenMai.Name = "txt_BH_khuyenMai";
+            this.txt_BH_khuyenMai.Size = new System.Drawing.Size(261, 30);
+            this.txt_BH_khuyenMai.TabIndex = 63;
+            // 
+            // btn_BH_tinhTien
+            // 
+            this.btn_BH_tinhTien.Location = new System.Drawing.Point(760, 217);
+            this.btn_BH_tinhTien.Name = "btn_BH_tinhTien";
+            this.btn_BH_tinhTien.Size = new System.Drawing.Size(172, 37);
+            this.btn_BH_tinhTien.TabIndex = 64;
+            this.btn_BH_tinhTien.Text = "Tính Tiền";
+            this.btn_BH_tinhTien.UseVisualStyleBackColor = true;
+            this.btn_BH_tinhTien.Click += new System.EventHandler(this.btn_BH_tinhTien_Click);
+            // 
+            // btn_BH_update
+            // 
+            this.btn_BH_update.Location = new System.Drawing.Point(6, 47);
+            this.btn_BH_update.Name = "btn_BH_update";
+            this.btn_BH_update.Size = new System.Drawing.Size(75, 60);
+            this.btn_BH_update.TabIndex = 48;
+            this.btn_BH_update.Text = "cap nhat";
+            this.btn_BH_update.UseVisualStyleBackColor = true;
+            this.btn_BH_update.Click += new System.EventHandler(this.btn_BH_update_Click);
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -628,7 +739,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGR_BH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_banHang)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.grbox.ResumeLayout(false);
             this.grbox.PerformLayout();
@@ -639,6 +750,7 @@
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbr_BH_soLuong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -647,7 +759,7 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView dGR_BH;
+        private System.Windows.Forms.DataGridView data_banHang;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_BH_search;
@@ -657,8 +769,7 @@
         private System.Windows.Forms.Button btn_BH_new;
         private System.Windows.Forms.GroupBox grbox;
         private System.Windows.Forms.TextBox txt_BH_maHD;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lab_BH_ngayLapHD;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label23;
@@ -687,12 +798,23 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dt_BH_ngayLapHD;
-        private System.Windows.Forms.TextBox txt_BH_tenNV;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lab_BH_maHD;
         private System.Windows.Forms.Label SAD;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox ccb_BH_NV;
-        private System.Windows.Forms.ComboBox cbb_BH_maKH;
+        private System.Windows.Forms.ComboBox cbo_BH_sanPham;
+        private System.Windows.Forms.Label lab_BH_sanPham;
+        private System.Windows.Forms.Label lab_BH_soLuong;
+        private System.Windows.Forms.Label lab_BH_donGia;
+        private System.Windows.Forms.TextBox txt_BH_thanhTien;
+        private System.Windows.Forms.Label lab_BH_thanhTien;
+        private System.Windows.Forms.TextBox txt_BH_donGia;
+        private System.Windows.Forms.NumericUpDown nbr_BH_soLuong;
+        private System.Windows.Forms.ComboBox cbo_BH_NV;
+        private System.Windows.Forms.Label lab_BH_NV;
+        private System.Windows.Forms.ComboBox cbo_BH_KH;
+        private System.Windows.Forms.Label lab_BH_KH;
+        private System.Windows.Forms.TextBox txt_BH_khuyenMai;
+        private System.Windows.Forms.Label lab_BH_khuyenMai;
+        private System.Windows.Forms.Button btn_BH_tinhTien;
+        private System.Windows.Forms.Button btn_BH_update;
     }
 }

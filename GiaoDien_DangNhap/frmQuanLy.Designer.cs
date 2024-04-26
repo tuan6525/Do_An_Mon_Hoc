@@ -31,9 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLy));
             this.tabC_GiaoDienQuanLy = new System.Windows.Forms.TabControl();
             this.tab_QLNV = new System.Windows.Forms.TabPage();
-            this.btn_NV_Tim_Kiem = new System.Windows.Forms.Button();
-            this.btn_NV_Thoat = new System.Windows.Forms.Button();
+            this.txt_NV_Email = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dt_NV_Ngay_Sinh = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grb_NV_Gioi_Tinh = new System.Windows.Forms.GroupBox();
+            this.rad_NV_Nu = new System.Windows.Forms.RadioButton();
+            this.rad_NV_Nam = new System.Windows.Forms.RadioButton();
             this.data_NV = new System.Windows.Forms.DataGridView();
+            this.btn_NV_Thoat = new System.Windows.Forms.Button();
             this.btn_NV_Lam_Moi = new System.Windows.Forms.Button();
             this.btn_NV_Xoa = new System.Windows.Forms.Button();
             this.btn_NV_Sua = new System.Windows.Forms.Button();
@@ -44,21 +50,18 @@
             this.lab_NV_DSNV = new System.Windows.Forms.Label();
             this.txt_NV_Password = new System.Windows.Forms.TextBox();
             this.txt_NV_User_Name = new System.Windows.Forms.TextBox();
-            this.chk_NV_Trang_Thai = new System.Windows.Forms.CheckBox();
             this.lab_NV_Password = new System.Windows.Forms.Label();
             this.lab_NV_Username = new System.Windows.Forms.Label();
             this.txt_NV_Luong = new System.Windows.Forms.TextBox();
             this.txt_NV_SDT = new System.Windows.Forms.TextBox();
             this.lab_NV_Luong = new System.Windows.Forms.Label();
             this.lab_NV_SDT = new System.Windows.Forms.Label();
-            this.txt_NV_Gioi_Tinh = new System.Windows.Forms.TextBox();
             this.txt_NV_Ten_Nhan_Vien = new System.Windows.Forms.TextBox();
-            this.txt_NV_Ma_Nhan_Vien = new System.Windows.Forms.TextBox();
-            this.lab_NV_Gioi_Tinh = new System.Windows.Forms.Label();
-            this.lab_NV_Ma_Nhan_Vien = new System.Windows.Forms.Label();
             this.lab_NV_Ten_Nhan_Vien = new System.Windows.Forms.Label();
             this.tab_QLKH = new System.Windows.Forms.TabPage();
-            this.btn_KH_Tim_Kiem = new System.Windows.Forms.Button();
+            this.dt_KH_Ngay_Tao = new System.Windows.Forms.DateTimePicker();
+            this.txt_KH_Email = new System.Windows.Forms.TextBox();
+            this.lab_KH_Email = new System.Windows.Forms.Label();
             this.data_KH = new System.Windows.Forms.DataGridView();
             this.btn_KH_Thoat = new System.Windows.Forms.Button();
             this.btn_KH_Lam_Moi = new System.Windows.Forms.Button();
@@ -69,8 +72,6 @@
             this.txt_KH_Tim_Kiem = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.txt_KH_Ngay_Tao = new System.Windows.Forms.TextBox();
-            this.chk_KH_Trang_Thai = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txt_KH_SDT = new System.Windows.Forms.TextBox();
             this.txt_KH_Dia_Chi = new System.Windows.Forms.TextBox();
@@ -82,7 +83,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.tab_QLHD = new System.Windows.Forms.TabPage();
             this.data_HD = new System.Windows.Forms.DataGridView();
-            this.btn_HD_Tim_Kiem = new System.Windows.Forms.Button();
             this.txt_HD_Tim_Kiem = new System.Windows.Forms.TextBox();
             this.lab_HD_Tim_Kiem = new System.Windows.Forms.Label();
             this.lab_HD_DSHD = new System.Windows.Forms.Label();
@@ -93,7 +93,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_HD_Ma_Hoa_Don = new System.Windows.Forms.TextBox();
             this.lab_Ma_Hoa_Don = new System.Windows.Forms.Label();
-            this.dt_Ngay_Lap_HD = new System.Windows.Forms.DateTimePicker();
+            this.dt_HD_Ngay_Lap_HD = new System.Windows.Forms.DateTimePicker();
             this.lab_HD_Ngay_Lap_HD = new System.Windows.Forms.Label();
             this.cbo_HD_Nhan_Vien = new System.Windows.Forms.ComboBox();
             this.lab_HD_Nhan_Vien = new System.Windows.Forms.Label();
@@ -114,13 +114,12 @@
             this.grb_HD_Chuc_Nang = new System.Windows.Forms.GroupBox();
             this.btn_HD_Sua = new System.Windows.Forms.Button();
             this.btn_HD_Them = new System.Windows.Forms.Button();
-            this.btn_Thong_Ke = new System.Windows.Forms.Button();
+            this.btn_HD_Thong_Ke = new System.Windows.Forms.Button();
             this.btn_HD_Xoa = new System.Windows.Forms.Button();
             this.btn_HD_Tinh_Tien = new System.Windows.Forms.Button();
             this.tab_QLNCC = new System.Windows.Forms.TabPage();
             this.txt_NCC_Email = new System.Windows.Forms.TextBox();
             this.lab_NCC_Email = new System.Windows.Forms.Label();
-            this.btn_NCC_Tim_Kiem = new System.Windows.Forms.Button();
             this.btn_NCC_Thoat = new System.Windows.Forms.Button();
             this.data_NCC = new System.Windows.Forms.DataGridView();
             this.btn_NCC_Lam_Moi = new System.Windows.Forms.Button();
@@ -136,11 +135,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.txt_NCC_Ten_Nha_Cung_Cap = new System.Windows.Forms.TextBox();
-            this.txt_NCC_Ma_Nha_Cung_Cap = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.tab_QLSP = new System.Windows.Forms.TabPage();
-            this.btn_SP_Tim_Kiem = new System.Windows.Forms.Button();
             this.cbo_SP_Nha_Cung_Cap = new System.Windows.Forms.ComboBox();
             this.data_SP = new System.Windows.Forms.DataGridView();
             this.chk_SP_Trang_Thai = new System.Windows.Forms.CheckBox();
@@ -158,8 +154,6 @@
             this.lab_SP_Gia_Ban = new System.Windows.Forms.Label();
             this.lab_SP_Gia_Nhap = new System.Windows.Forms.Label();
             this.txt_SP_Ten_San_Pham = new System.Windows.Forms.TextBox();
-            this.txt_SP_Ma_San_Pham = new System.Windows.Forms.TextBox();
-            this.lab_Ma_San_Pham = new System.Windows.Forms.Label();
             this.lab_Ten_San_Pham = new System.Windows.Forms.Label();
             this.btn_SP_Thoat = new System.Windows.Forms.Button();
             this.btn_SP_Lam_Moi = new System.Windows.Forms.Button();
@@ -168,6 +162,7 @@
             this.btn_SP_Them = new System.Windows.Forms.Button();
             this.tabC_GiaoDienQuanLy.SuspendLayout();
             this.tab_QLNV.SuspendLayout();
+            this.grb_NV_Gioi_Tinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_NV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_NV)).BeginInit();
             this.tab_QLKH.SuspendLayout();
@@ -203,9 +198,13 @@
             // tab_QLNV
             // 
             this.tab_QLNV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tab_QLNV.Controls.Add(this.btn_NV_Tim_Kiem);
-            this.tab_QLNV.Controls.Add(this.btn_NV_Thoat);
+            this.tab_QLNV.Controls.Add(this.txt_NV_Email);
+            this.tab_QLNV.Controls.Add(this.label3);
+            this.tab_QLNV.Controls.Add(this.dt_NV_Ngay_Sinh);
+            this.tab_QLNV.Controls.Add(this.label2);
+            this.tab_QLNV.Controls.Add(this.grb_NV_Gioi_Tinh);
             this.tab_QLNV.Controls.Add(this.data_NV);
+            this.tab_QLNV.Controls.Add(this.btn_NV_Thoat);
             this.tab_QLNV.Controls.Add(this.btn_NV_Lam_Moi);
             this.tab_QLNV.Controls.Add(this.btn_NV_Xoa);
             this.tab_QLNV.Controls.Add(this.btn_NV_Sua);
@@ -216,18 +215,13 @@
             this.tab_QLNV.Controls.Add(this.lab_NV_DSNV);
             this.tab_QLNV.Controls.Add(this.txt_NV_Password);
             this.tab_QLNV.Controls.Add(this.txt_NV_User_Name);
-            this.tab_QLNV.Controls.Add(this.chk_NV_Trang_Thai);
             this.tab_QLNV.Controls.Add(this.lab_NV_Password);
             this.tab_QLNV.Controls.Add(this.lab_NV_Username);
             this.tab_QLNV.Controls.Add(this.txt_NV_Luong);
             this.tab_QLNV.Controls.Add(this.txt_NV_SDT);
             this.tab_QLNV.Controls.Add(this.lab_NV_Luong);
             this.tab_QLNV.Controls.Add(this.lab_NV_SDT);
-            this.tab_QLNV.Controls.Add(this.txt_NV_Gioi_Tinh);
             this.tab_QLNV.Controls.Add(this.txt_NV_Ten_Nhan_Vien);
-            this.tab_QLNV.Controls.Add(this.txt_NV_Ma_Nhan_Vien);
-            this.tab_QLNV.Controls.Add(this.lab_NV_Gioi_Tinh);
-            this.tab_QLNV.Controls.Add(this.lab_NV_Ma_Nhan_Vien);
             this.tab_QLNV.Controls.Add(this.lab_NV_Ten_Nhan_Vien);
             this.tab_QLNV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab_QLNV.Location = new System.Drawing.Point(4, 28);
@@ -237,15 +231,95 @@
             this.tab_QLNV.TabIndex = 0;
             this.tab_QLNV.Text = "QL Nhân Viên";
             // 
-            // btn_NV_Tim_Kiem
+            // txt_NV_Email
             // 
-            this.btn_NV_Tim_Kiem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NV_Tim_Kiem.BackgroundImage")));
-            this.btn_NV_Tim_Kiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_NV_Tim_Kiem.Location = new System.Drawing.Point(1000, 225);
-            this.btn_NV_Tim_Kiem.Name = "btn_NV_Tim_Kiem";
-            this.btn_NV_Tim_Kiem.Size = new System.Drawing.Size(46, 41);
-            this.btn_NV_Tim_Kiem.TabIndex = 27;
-            this.btn_NV_Tim_Kiem.UseVisualStyleBackColor = true;
+            this.txt_NV_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_Email.Location = new System.Drawing.Point(812, 195);
+            this.txt_NV_Email.Name = "txt_NV_Email";
+            this.txt_NV_Email.Size = new System.Drawing.Size(213, 27);
+            this.txt_NV_Email.TabIndex = 20;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(744, 199);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 19);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Email";
+            // 
+            // dt_NV_Ngay_Sinh
+            // 
+            this.dt_NV_Ngay_Sinh.CustomFormat = "dd/MM/yyyy";
+            this.dt_NV_Ngay_Sinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dt_NV_Ngay_Sinh.Location = new System.Drawing.Point(471, 104);
+            this.dt_NV_Ngay_Sinh.Name = "dt_NV_Ngay_Sinh";
+            this.dt_NV_Ngay_Sinh.Size = new System.Drawing.Size(200, 27);
+            this.dt_NV_Ngay_Sinh.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(382, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 19);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Ngày Sinh";
+            // 
+            // grb_NV_Gioi_Tinh
+            // 
+            this.grb_NV_Gioi_Tinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.grb_NV_Gioi_Tinh.Controls.Add(this.rad_NV_Nu);
+            this.grb_NV_Gioi_Tinh.Controls.Add(this.rad_NV_Nam);
+            this.grb_NV_Gioi_Tinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.grb_NV_Gioi_Tinh.Location = new System.Drawing.Point(47, 164);
+            this.grb_NV_Gioi_Tinh.Name = "grb_NV_Gioi_Tinh";
+            this.grb_NV_Gioi_Tinh.Size = new System.Drawing.Size(321, 56);
+            this.grb_NV_Gioi_Tinh.TabIndex = 13;
+            this.grb_NV_Gioi_Tinh.TabStop = false;
+            this.grb_NV_Gioi_Tinh.Text = "Giới Tính";
+            // 
+            // rad_NV_Nu
+            // 
+            this.rad_NV_Nu.AutoSize = true;
+            this.rad_NV_Nu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rad_NV_Nu.Location = new System.Drawing.Point(229, 17);
+            this.rad_NV_Nu.Name = "rad_NV_Nu";
+            this.rad_NV_Nu.Size = new System.Drawing.Size(52, 23);
+            this.rad_NV_Nu.TabIndex = 13;
+            this.rad_NV_Nu.TabStop = true;
+            this.rad_NV_Nu.Text = "Nữ";
+            this.rad_NV_Nu.UseVisualStyleBackColor = true;
+            // 
+            // rad_NV_Nam
+            // 
+            this.rad_NV_Nam.AutoSize = true;
+            this.rad_NV_Nam.Checked = true;
+            this.rad_NV_Nam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rad_NV_Nam.Location = new System.Drawing.Point(126, 17);
+            this.rad_NV_Nam.Name = "rad_NV_Nam";
+            this.rad_NV_Nam.Size = new System.Drawing.Size(64, 23);
+            this.rad_NV_Nam.TabIndex = 13;
+            this.rad_NV_Nam.TabStop = true;
+            this.rad_NV_Nam.Text = "Nam";
+            this.rad_NV_Nam.UseVisualStyleBackColor = true;
+            // 
+            // data_NV
+            // 
+            this.data_NV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.data_NV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_NV.Location = new System.Drawing.Point(3, 272);
+            this.data_NV.Name = "data_NV";
+            this.data_NV.ReadOnly = true;
+            this.data_NV.RowHeadersWidth = 51;
+            this.data_NV.RowTemplate.Height = 24;
+            this.data_NV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.data_NV.Size = new System.Drawing.Size(1050, 224);
+            this.data_NV.TabIndex = 28;
             // 
             // btn_NV_Thoat
             // 
@@ -256,19 +330,6 @@
             this.btn_NV_Thoat.Size = new System.Drawing.Size(56, 51);
             this.btn_NV_Thoat.TabIndex = 25;
             this.btn_NV_Thoat.UseVisualStyleBackColor = true;
-            // 
-            // data_NV
-            // 
-            this.data_NV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.data_NV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_NV.Location = new System.Drawing.Point(6, 272);
-            this.data_NV.Name = "data_NV";
-            this.data_NV.ReadOnly = true;
-            this.data_NV.RowHeadersWidth = 51;
-            this.data_NV.RowTemplate.Height = 24;
-            this.data_NV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_NV.Size = new System.Drawing.Size(1047, 224);
-            this.data_NV.TabIndex = 28;
             // 
             // btn_NV_Lam_Moi
             // 
@@ -310,6 +371,7 @@
             this.btn_NV_Them.TabIndex = 21;
             this.btn_NV_Them.Text = "\r\n";
             this.btn_NV_Them.UseVisualStyleBackColor = true;
+            this.btn_NV_Them.Click += new System.EventHandler(this.btn_NV_Them_Click);
             // 
             // pic_NV
             // 
@@ -324,17 +386,18 @@
             // txt_NV_Tim_Kiem
             // 
             this.txt_NV_Tim_Kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NV_Tim_Kiem.Location = new System.Drawing.Point(718, 237);
+            this.txt_NV_Tim_Kiem.Location = new System.Drawing.Point(754, 239);
             this.txt_NV_Tim_Kiem.Name = "txt_NV_Tim_Kiem";
             this.txt_NV_Tim_Kiem.Size = new System.Drawing.Size(271, 27);
             this.txt_NV_Tim_Kiem.TabIndex = 26;
+            this.txt_NV_Tim_Kiem.TextChanged += new System.EventHandler(this.txt_NV_Tim_Kiem_TextChanged);
             // 
             // lab_NV_Tim_Kiem
             // 
             this.lab_NV_Tim_Kiem.AutoSize = true;
             this.lab_NV_Tim_Kiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NV_Tim_Kiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lab_NV_Tim_Kiem.Location = new System.Drawing.Point(618, 239);
+            this.lab_NV_Tim_Kiem.Location = new System.Drawing.Point(654, 241);
             this.lab_NV_Tim_Kiem.Name = "lab_NV_Tim_Kiem";
             this.lab_NV_Tim_Kiem.Size = new System.Drawing.Size(90, 23);
             this.lab_NV_Tim_Kiem.TabIndex = 10;
@@ -354,10 +417,10 @@
             // txt_NV_Password
             // 
             this.txt_NV_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NV_Password.Location = new System.Drawing.Point(812, 153);
+            this.txt_NV_Password.Location = new System.Drawing.Point(812, 148);
             this.txt_NV_Password.Name = "txt_NV_Password";
             this.txt_NV_Password.Size = new System.Drawing.Size(213, 27);
-            this.txt_NV_Password.TabIndex = 18;
+            this.txt_NV_Password.TabIndex = 19;
             // 
             // txt_NV_User_Name
             // 
@@ -365,26 +428,14 @@
             this.txt_NV_User_Name.Location = new System.Drawing.Point(812, 103);
             this.txt_NV_User_Name.Name = "txt_NV_User_Name";
             this.txt_NV_User_Name.Size = new System.Drawing.Size(213, 27);
-            this.txt_NV_User_Name.TabIndex = 17;
-            // 
-            // chk_NV_Trang_Thai
-            // 
-            this.chk_NV_Trang_Thai.AutoSize = true;
-            this.chk_NV_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_NV_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chk_NV_Trang_Thai.Location = new System.Drawing.Point(455, 191);
-            this.chk_NV_Trang_Thai.Name = "chk_NV_Trang_Thai";
-            this.chk_NV_Trang_Thai.Size = new System.Drawing.Size(107, 23);
-            this.chk_NV_Trang_Thai.TabIndex = 16;
-            this.chk_NV_Trang_Thai.Text = "Trạng thái";
-            this.chk_NV_Trang_Thai.UseVisualStyleBackColor = true;
+            this.txt_NV_User_Name.TabIndex = 18;
             // 
             // lab_NV_Password
             // 
             this.lab_NV_Password.AutoSize = true;
             this.lab_NV_Password.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NV_Password.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NV_Password.Location = new System.Drawing.Point(718, 153);
+            this.lab_NV_Password.Location = new System.Drawing.Point(717, 152);
             this.lab_NV_Password.Name = "lab_NV_Password";
             this.lab_NV_Password.Size = new System.Drawing.Size(81, 19);
             this.lab_NV_Password.TabIndex = 8;
@@ -395,7 +446,7 @@
             this.lab_NV_Username.AutoSize = true;
             this.lab_NV_Username.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NV_Username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NV_Username.Location = new System.Drawing.Point(713, 106);
+            this.lab_NV_Username.Location = new System.Drawing.Point(712, 106);
             this.lab_NV_Username.Name = "lab_NV_Username";
             this.lab_NV_Username.Size = new System.Drawing.Size(86, 19);
             this.lab_NV_Username.TabIndex = 7;
@@ -404,25 +455,25 @@
             // txt_NV_Luong
             // 
             this.txt_NV_Luong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NV_Luong.Location = new System.Drawing.Point(455, 151);
+            this.txt_NV_Luong.Location = new System.Drawing.Point(465, 200);
             this.txt_NV_Luong.Name = "txt_NV_Luong";
             this.txt_NV_Luong.Size = new System.Drawing.Size(224, 27);
-            this.txt_NV_Luong.TabIndex = 15;
+            this.txt_NV_Luong.TabIndex = 17;
             // 
             // txt_NV_SDT
             // 
             this.txt_NV_SDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NV_SDT.Location = new System.Drawing.Point(455, 104);
+            this.txt_NV_SDT.Location = new System.Drawing.Point(465, 153);
             this.txt_NV_SDT.Name = "txt_NV_SDT";
             this.txt_NV_SDT.Size = new System.Drawing.Size(224, 27);
-            this.txt_NV_SDT.TabIndex = 14;
+            this.txt_NV_SDT.TabIndex = 16;
             // 
             // lab_NV_Luong
             // 
             this.lab_NV_Luong.AutoSize = true;
             this.lab_NV_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NV_Luong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NV_Luong.Location = new System.Drawing.Point(384, 154);
+            this.lab_NV_Luong.Location = new System.Drawing.Point(394, 203);
             this.lab_NV_Luong.Name = "lab_NV_Luong";
             this.lab_NV_Luong.Size = new System.Drawing.Size(57, 19);
             this.lab_NV_Luong.TabIndex = 5;
@@ -433,64 +484,26 @@
             this.lab_NV_SDT.AutoSize = true;
             this.lab_NV_SDT.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NV_SDT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NV_SDT.Location = new System.Drawing.Point(398, 107);
+            this.lab_NV_SDT.Location = new System.Drawing.Point(408, 156);
             this.lab_NV_SDT.Name = "lab_NV_SDT";
             this.lab_NV_SDT.Size = new System.Drawing.Size(40, 19);
             this.lab_NV_SDT.TabIndex = 4;
             this.lab_NV_SDT.Text = "SĐT";
             // 
-            // txt_NV_Gioi_Tinh
-            // 
-            this.txt_NV_Gioi_Tinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NV_Gioi_Tinh.Location = new System.Drawing.Point(174, 192);
-            this.txt_NV_Gioi_Tinh.Name = "txt_NV_Gioi_Tinh";
-            this.txt_NV_Gioi_Tinh.Size = new System.Drawing.Size(194, 27);
-            this.txt_NV_Gioi_Tinh.TabIndex = 13;
-            // 
             // txt_NV_Ten_Nhan_Vien
             // 
             this.txt_NV_Ten_Nhan_Vien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NV_Ten_Nhan_Vien.Location = new System.Drawing.Point(174, 151);
+            this.txt_NV_Ten_Nhan_Vien.Location = new System.Drawing.Point(173, 117);
             this.txt_NV_Ten_Nhan_Vien.Name = "txt_NV_Ten_Nhan_Vien";
             this.txt_NV_Ten_Nhan_Vien.Size = new System.Drawing.Size(194, 27);
             this.txt_NV_Ten_Nhan_Vien.TabIndex = 12;
-            // 
-            // txt_NV_Ma_Nhan_Vien
-            // 
-            this.txt_NV_Ma_Nhan_Vien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NV_Ma_Nhan_Vien.Location = new System.Drawing.Point(174, 104);
-            this.txt_NV_Ma_Nhan_Vien.Name = "txt_NV_Ma_Nhan_Vien";
-            this.txt_NV_Ma_Nhan_Vien.Size = new System.Drawing.Size(194, 27);
-            this.txt_NV_Ma_Nhan_Vien.TabIndex = 11;
-            // 
-            // lab_NV_Gioi_Tinh
-            // 
-            this.lab_NV_Gioi_Tinh.AutoSize = true;
-            this.lab_NV_Gioi_Tinh.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_NV_Gioi_Tinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NV_Gioi_Tinh.Location = new System.Drawing.Point(76, 195);
-            this.lab_NV_Gioi_Tinh.Name = "lab_NV_Gioi_Tinh";
-            this.lab_NV_Gioi_Tinh.Size = new System.Drawing.Size(82, 19);
-            this.lab_NV_Gioi_Tinh.TabIndex = 3;
-            this.lab_NV_Gioi_Tinh.Text = "Giới Tính";
-            // 
-            // lab_NV_Ma_Nhan_Vien
-            // 
-            this.lab_NV_Ma_Nhan_Vien.AutoSize = true;
-            this.lab_NV_Ma_Nhan_Vien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_NV_Ma_Nhan_Vien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NV_Ma_Nhan_Vien.Location = new System.Drawing.Point(48, 107);
-            this.lab_NV_Ma_Nhan_Vien.Name = "lab_NV_Ma_Nhan_Vien";
-            this.lab_NV_Ma_Nhan_Vien.Size = new System.Drawing.Size(112, 19);
-            this.lab_NV_Ma_Nhan_Vien.TabIndex = 1;
-            this.lab_NV_Ma_Nhan_Vien.Text = "Mã Nhân Viên";
             // 
             // lab_NV_Ten_Nhan_Vien
             // 
             this.lab_NV_Ten_Nhan_Vien.AutoSize = true;
             this.lab_NV_Ten_Nhan_Vien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NV_Ten_Nhan_Vien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NV_Ten_Nhan_Vien.Location = new System.Drawing.Point(43, 154);
+            this.lab_NV_Ten_Nhan_Vien.Location = new System.Drawing.Point(42, 120);
             this.lab_NV_Ten_Nhan_Vien.Name = "lab_NV_Ten_Nhan_Vien";
             this.lab_NV_Ten_Nhan_Vien.Size = new System.Drawing.Size(115, 19);
             this.lab_NV_Ten_Nhan_Vien.TabIndex = 2;
@@ -499,7 +512,9 @@
             // tab_QLKH
             // 
             this.tab_QLKH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tab_QLKH.Controls.Add(this.btn_KH_Tim_Kiem);
+            this.tab_QLKH.Controls.Add(this.dt_KH_Ngay_Tao);
+            this.tab_QLKH.Controls.Add(this.txt_KH_Email);
+            this.tab_QLKH.Controls.Add(this.lab_KH_Email);
             this.tab_QLKH.Controls.Add(this.data_KH);
             this.tab_QLKH.Controls.Add(this.btn_KH_Thoat);
             this.tab_QLKH.Controls.Add(this.btn_KH_Lam_Moi);
@@ -510,8 +525,6 @@
             this.tab_QLKH.Controls.Add(this.txt_KH_Tim_Kiem);
             this.tab_QLKH.Controls.Add(this.label20);
             this.tab_QLKH.Controls.Add(this.label21);
-            this.tab_QLKH.Controls.Add(this.txt_KH_Ngay_Tao);
-            this.tab_QLKH.Controls.Add(this.chk_KH_Trang_Thai);
             this.tab_QLKH.Controls.Add(this.label23);
             this.tab_QLKH.Controls.Add(this.txt_KH_SDT);
             this.tab_QLKH.Controls.Add(this.txt_KH_Dia_Chi);
@@ -529,15 +542,34 @@
             this.tab_QLKH.TabIndex = 1;
             this.tab_QLKH.Text = "QL Khách Hàng";
             // 
-            // btn_KH_Tim_Kiem
+            // dt_KH_Ngay_Tao
             // 
-            this.btn_KH_Tim_Kiem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_KH_Tim_Kiem.BackgroundImage")));
-            this.btn_KH_Tim_Kiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_KH_Tim_Kiem.Location = new System.Drawing.Point(999, 222);
-            this.btn_KH_Tim_Kiem.Name = "btn_KH_Tim_Kiem";
-            this.btn_KH_Tim_Kiem.Size = new System.Drawing.Size(46, 41);
-            this.btn_KH_Tim_Kiem.TabIndex = 47;
-            this.btn_KH_Tim_Kiem.UseVisualStyleBackColor = true;
+            this.dt_KH_Ngay_Tao.CustomFormat = "dd/MM/yyyy";
+            this.dt_KH_Ngay_Tao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dt_KH_Ngay_Tao.Location = new System.Drawing.Point(781, 131);
+            this.dt_KH_Ngay_Tao.Name = "dt_KH_Ngay_Tao";
+            this.dt_KH_Ngay_Tao.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dt_KH_Ngay_Tao.Size = new System.Drawing.Size(166, 27);
+            this.dt_KH_Ngay_Tao.TabIndex = 37;
+            // 
+            // txt_KH_Email
+            // 
+            this.txt_KH_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_KH_Email.Location = new System.Drawing.Point(781, 179);
+            this.txt_KH_Email.Name = "txt_KH_Email";
+            this.txt_KH_Email.Size = new System.Drawing.Size(252, 27);
+            this.txt_KH_Email.TabIndex = 38;
+            // 
+            // lab_KH_Email
+            // 
+            this.lab_KH_Email.AutoSize = true;
+            this.lab_KH_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_KH_Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lab_KH_Email.Location = new System.Drawing.Point(716, 182);
+            this.lab_KH_Email.Name = "lab_KH_Email";
+            this.lab_KH_Email.Size = new System.Drawing.Size(54, 19);
+            this.lab_KH_Email.TabIndex = 53;
+            this.lab_KH_Email.Text = "Email";
             // 
             // data_KH
             // 
@@ -601,6 +633,7 @@
             this.btn_KH_Them.Size = new System.Drawing.Size(66, 54);
             this.btn_KH_Them.TabIndex = 41;
             this.btn_KH_Them.UseVisualStyleBackColor = true;
+            this.btn_KH_Them.Click += new System.EventHandler(this.btn_KH_Them_Click);
             // 
             // pictureBox2
             // 
@@ -615,17 +648,18 @@
             // txt_KH_Tim_Kiem
             // 
             this.txt_KH_Tim_Kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KH_Tim_Kiem.Location = new System.Drawing.Point(725, 235);
+            this.txt_KH_Tim_Kiem.Location = new System.Drawing.Point(769, 236);
             this.txt_KH_Tim_Kiem.Name = "txt_KH_Tim_Kiem";
             this.txt_KH_Tim_Kiem.Size = new System.Drawing.Size(264, 27);
             this.txt_KH_Tim_Kiem.TabIndex = 46;
+            this.txt_KH_Tim_Kiem.TextChanged += new System.EventHandler(this.txt_KH_Tim_Kiem_TextChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label20.Location = new System.Drawing.Point(626, 236);
+            this.label20.Location = new System.Drawing.Point(670, 237);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(90, 23);
             this.label20.TabIndex = 32;
@@ -642,32 +676,12 @@
             this.label21.TabIndex = 31;
             this.label21.Text = "Danh sách khách hàng";
             // 
-            // txt_KH_Ngay_Tao
-            // 
-            this.txt_KH_Ngay_Tao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KH_Ngay_Tao.Location = new System.Drawing.Point(781, 133);
-            this.txt_KH_Ngay_Tao.Name = "txt_KH_Ngay_Tao";
-            this.txt_KH_Ngay_Tao.Size = new System.Drawing.Size(252, 27);
-            this.txt_KH_Ngay_Tao.TabIndex = 37;
-            // 
-            // chk_KH_Trang_Thai
-            // 
-            this.chk_KH_Trang_Thai.AutoSize = true;
-            this.chk_KH_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_KH_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chk_KH_Trang_Thai.Location = new System.Drawing.Point(759, 184);
-            this.chk_KH_Trang_Thai.Name = "chk_KH_Trang_Thai";
-            this.chk_KH_Trang_Thai.Size = new System.Drawing.Size(107, 23);
-            this.chk_KH_Trang_Thai.TabIndex = 38;
-            this.chk_KH_Trang_Thai.Text = "Trạng thái";
-            this.chk_KH_Trang_Thai.UseVisualStyleBackColor = true;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label23.Location = new System.Drawing.Point(688, 136);
+            this.label23.Location = new System.Drawing.Point(693, 136);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(77, 19);
             this.label23.TabIndex = 30;
@@ -753,7 +767,6 @@
             // 
             this.tab_QLHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tab_QLHD.Controls.Add(this.data_HD);
-            this.tab_QLHD.Controls.Add(this.btn_HD_Tim_Kiem);
             this.tab_QLHD.Controls.Add(this.txt_HD_Tim_Kiem);
             this.tab_QLHD.Controls.Add(this.lab_HD_Tim_Kiem);
             this.tab_QLHD.Controls.Add(this.lab_HD_DSHD);
@@ -777,32 +790,22 @@
             this.data_HD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_HD.Size = new System.Drawing.Size(1050, 210);
             this.data_HD.TabIndex = 62;
-            this.data_HD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_HD_CellClick);
-            // 
-            // btn_HD_Tim_Kiem
-            // 
-            this.btn_HD_Tim_Kiem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Tim_Kiem.BackgroundImage")));
-            this.btn_HD_Tim_Kiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Tim_Kiem.Location = new System.Drawing.Point(1000, 241);
-            this.btn_HD_Tim_Kiem.Name = "btn_HD_Tim_Kiem";
-            this.btn_HD_Tim_Kiem.Size = new System.Drawing.Size(46, 41);
-            this.btn_HD_Tim_Kiem.TabIndex = 61;
-            this.btn_HD_Tim_Kiem.UseVisualStyleBackColor = true;
             // 
             // txt_HD_Tim_Kiem
             // 
             this.txt_HD_Tim_Kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_HD_Tim_Kiem.Location = new System.Drawing.Point(718, 253);
+            this.txt_HD_Tim_Kiem.Location = new System.Drawing.Point(766, 256);
             this.txt_HD_Tim_Kiem.Name = "txt_HD_Tim_Kiem";
             this.txt_HD_Tim_Kiem.Size = new System.Drawing.Size(264, 27);
             this.txt_HD_Tim_Kiem.TabIndex = 60;
+            this.txt_HD_Tim_Kiem.TextChanged += new System.EventHandler(this.txt_HD_Tim_Kiem_TextChanged);
             // 
             // lab_HD_Tim_Kiem
             // 
             this.lab_HD_Tim_Kiem.AutoSize = true;
             this.lab_HD_Tim_Kiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_HD_Tim_Kiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lab_HD_Tim_Kiem.Location = new System.Drawing.Point(614, 256);
+            this.lab_HD_Tim_Kiem.Location = new System.Drawing.Point(662, 259);
             this.lab_HD_Tim_Kiem.Name = "lab_HD_Tim_Kiem";
             this.lab_HD_Tim_Kiem.Size = new System.Drawing.Size(90, 23);
             this.lab_HD_Tim_Kiem.TabIndex = 54;
@@ -828,7 +831,7 @@
             this.grb_HD_Hoa_Don.Controls.Add(this.label1);
             this.grb_HD_Hoa_Don.Controls.Add(this.txt_HD_Ma_Hoa_Don);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_Ma_Hoa_Don);
-            this.grb_HD_Hoa_Don.Controls.Add(this.dt_Ngay_Lap_HD);
+            this.grb_HD_Hoa_Don.Controls.Add(this.dt_HD_Ngay_Lap_HD);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Ngay_Lap_HD);
             this.grb_HD_Hoa_Don.Controls.Add(this.cbo_HD_Nhan_Vien);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Nhan_Vien);
@@ -908,15 +911,15 @@
             this.lab_Ma_Hoa_Don.TabIndex = 65;
             this.lab_Ma_Hoa_Don.Text = "Mã Hóa Đơn";
             // 
-            // dt_Ngay_Lap_HD
+            // dt_HD_Ngay_Lap_HD
             // 
-            this.dt_Ngay_Lap_HD.CustomFormat = "dd/MM/yyyy";
-            this.dt_Ngay_Lap_HD.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dt_Ngay_Lap_HD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Ngay_Lap_HD.Location = new System.Drawing.Point(503, 125);
-            this.dt_Ngay_Lap_HD.Name = "dt_Ngay_Lap_HD";
-            this.dt_Ngay_Lap_HD.Size = new System.Drawing.Size(159, 27);
-            this.dt_Ngay_Lap_HD.TabIndex = 53;
+            this.dt_HD_Ngay_Lap_HD.CustomFormat = "dd/MM/yyyy";
+            this.dt_HD_Ngay_Lap_HD.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_HD_Ngay_Lap_HD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dt_HD_Ngay_Lap_HD.Location = new System.Drawing.Point(503, 125);
+            this.dt_HD_Ngay_Lap_HD.Name = "dt_HD_Ngay_Lap_HD";
+            this.dt_HD_Ngay_Lap_HD.Size = new System.Drawing.Size(159, 27);
+            this.dt_HD_Ngay_Lap_HD.TabIndex = 53;
             // 
             // lab_HD_Ngay_Lap_HD
             // 
@@ -1086,7 +1089,7 @@
             // 
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Sua);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Them);
-            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_Thong_Ke);
+            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Thong_Ke);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Xoa);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Tinh_Tien);
             this.grb_HD_Chuc_Nang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1121,15 +1124,15 @@
             this.btn_HD_Them.UseVisualStyleBackColor = true;
             this.btn_HD_Them.Click += new System.EventHandler(this.btn_HD_Them_Click);
             // 
-            // btn_Thong_Ke
+            // btn_HD_Thong_Ke
             // 
-            this.btn_Thong_Ke.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Thong_Ke.BackgroundImage")));
-            this.btn_Thong_Ke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Thong_Ke.Location = new System.Drawing.Point(187, 86);
-            this.btn_Thong_Ke.Name = "btn_Thong_Ke";
-            this.btn_Thong_Ke.Size = new System.Drawing.Size(66, 55);
-            this.btn_Thong_Ke.TabIndex = 57;
-            this.btn_Thong_Ke.UseVisualStyleBackColor = true;
+            this.btn_HD_Thong_Ke.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Thong_Ke.BackgroundImage")));
+            this.btn_HD_Thong_Ke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_HD_Thong_Ke.Location = new System.Drawing.Point(187, 86);
+            this.btn_HD_Thong_Ke.Name = "btn_HD_Thong_Ke";
+            this.btn_HD_Thong_Ke.Size = new System.Drawing.Size(66, 55);
+            this.btn_HD_Thong_Ke.TabIndex = 57;
+            this.btn_HD_Thong_Ke.UseVisualStyleBackColor = true;
             // 
             // btn_HD_Xoa
             // 
@@ -1158,7 +1161,6 @@
             this.tab_QLNCC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tab_QLNCC.Controls.Add(this.txt_NCC_Email);
             this.tab_QLNCC.Controls.Add(this.lab_NCC_Email);
-            this.tab_QLNCC.Controls.Add(this.btn_NCC_Tim_Kiem);
             this.tab_QLNCC.Controls.Add(this.btn_NCC_Thoat);
             this.tab_QLNCC.Controls.Add(this.data_NCC);
             this.tab_QLNCC.Controls.Add(this.btn_NCC_Lam_Moi);
@@ -1174,8 +1176,6 @@
             this.tab_QLNCC.Controls.Add(this.label22);
             this.tab_QLNCC.Controls.Add(this.label26);
             this.tab_QLNCC.Controls.Add(this.txt_NCC_Ten_Nha_Cung_Cap);
-            this.tab_QLNCC.Controls.Add(this.txt_NCC_Ma_Nha_Cung_Cap);
-            this.tab_QLNCC.Controls.Add(this.label30);
             this.tab_QLNCC.Controls.Add(this.label31);
             this.tab_QLNCC.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tab_QLNCC.Location = new System.Drawing.Point(4, 28);
@@ -1187,9 +1187,9 @@
             // txt_NCC_Email
             // 
             this.txt_NCC_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_Email.Location = new System.Drawing.Point(827, 129);
+            this.txt_NCC_Email.Location = new System.Drawing.Point(532, 176);
             this.txt_NCC_Email.Name = "txt_NCC_Email";
-            this.txt_NCC_Email.Size = new System.Drawing.Size(219, 27);
+            this.txt_NCC_Email.Size = new System.Drawing.Size(280, 27);
             this.txt_NCC_Email.TabIndex = 45;
             // 
             // lab_NCC_Email
@@ -1197,21 +1197,11 @@
             this.lab_NCC_Email.AutoSize = true;
             this.lab_NCC_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NCC_Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NCC_Email.Location = new System.Drawing.Point(761, 133);
+            this.lab_NCC_Email.Location = new System.Drawing.Point(466, 180);
             this.lab_NCC_Email.Name = "lab_NCC_Email";
             this.lab_NCC_Email.Size = new System.Drawing.Size(54, 19);
             this.lab_NCC_Email.TabIndex = 58;
             this.lab_NCC_Email.Text = "Email";
-            // 
-            // btn_NCC_Tim_Kiem
-            // 
-            this.btn_NCC_Tim_Kiem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NCC_Tim_Kiem.BackgroundImage")));
-            this.btn_NCC_Tim_Kiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_NCC_Tim_Kiem.Location = new System.Drawing.Point(1000, 218);
-            this.btn_NCC_Tim_Kiem.Name = "btn_NCC_Tim_Kiem";
-            this.btn_NCC_Tim_Kiem.Size = new System.Drawing.Size(46, 41);
-            this.btn_NCC_Tim_Kiem.TabIndex = 52;
-            this.btn_NCC_Tim_Kiem.UseVisualStyleBackColor = true;
             // 
             // btn_NCC_Thoat
             // 
@@ -1290,17 +1280,18 @@
             // txt_NCC_Tim_Kiem
             // 
             this.txt_NCC_Tim_Kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_Tim_Kiem.Location = new System.Drawing.Point(762, 231);
+            this.txt_NCC_Tim_Kiem.Location = new System.Drawing.Point(793, 232);
             this.txt_NCC_Tim_Kiem.Name = "txt_NCC_Tim_Kiem";
             this.txt_NCC_Tim_Kiem.Size = new System.Drawing.Size(232, 27);
             this.txt_NCC_Tim_Kiem.TabIndex = 51;
+            this.txt_NCC_Tim_Kiem.TextChanged += new System.EventHandler(this.txt_NCC_Tim_Kiem_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label14.Location = new System.Drawing.Point(663, 234);
+            this.label14.Location = new System.Drawing.Point(694, 235);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(90, 23);
             this.label14.TabIndex = 54;
@@ -1320,7 +1311,7 @@
             // txt_NCC_SDT
             // 
             this.txt_NCC_SDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_SDT.Location = new System.Drawing.Point(533, 177);
+            this.txt_NCC_SDT.Location = new System.Drawing.Point(532, 129);
             this.txt_NCC_SDT.Name = "txt_NCC_SDT";
             this.txt_NCC_SDT.Size = new System.Drawing.Size(193, 27);
             this.txt_NCC_SDT.TabIndex = 44;
@@ -1328,9 +1319,9 @@
             // txt_NCC_Dia_Chi
             // 
             this.txt_NCC_Dia_Chi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_Dia_Chi.Location = new System.Drawing.Point(533, 130);
+            this.txt_NCC_Dia_Chi.Location = new System.Drawing.Point(205, 176);
             this.txt_NCC_Dia_Chi.Name = "txt_NCC_Dia_Chi";
-            this.txt_NCC_Dia_Chi.Size = new System.Drawing.Size(193, 27);
+            this.txt_NCC_Dia_Chi.Size = new System.Drawing.Size(237, 27);
             this.txt_NCC_Dia_Chi.TabIndex = 43;
             // 
             // label22
@@ -1338,7 +1329,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label22.Location = new System.Drawing.Point(473, 180);
+            this.label22.Location = new System.Drawing.Point(472, 132);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 19);
             this.label22.TabIndex = 45;
@@ -1349,7 +1340,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label26.Location = new System.Drawing.Point(451, 133);
+            this.label26.Location = new System.Drawing.Point(123, 179);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(66, 19);
             this.label26.TabIndex = 44;
@@ -1358,36 +1349,17 @@
             // txt_NCC_Ten_Nha_Cung_Cap
             // 
             this.txt_NCC_Ten_Nha_Cung_Cap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_Ten_Nha_Cung_Cap.Location = new System.Drawing.Point(214, 177);
+            this.txt_NCC_Ten_Nha_Cung_Cap.Location = new System.Drawing.Point(205, 129);
             this.txt_NCC_Ten_Nha_Cung_Cap.Name = "txt_NCC_Ten_Nha_Cung_Cap";
-            this.txt_NCC_Ten_Nha_Cung_Cap.Size = new System.Drawing.Size(209, 27);
+            this.txt_NCC_Ten_Nha_Cung_Cap.Size = new System.Drawing.Size(198, 27);
             this.txt_NCC_Ten_Nha_Cung_Cap.TabIndex = 42;
-            // 
-            // txt_NCC_Ma_Nha_Cung_Cap
-            // 
-            this.txt_NCC_Ma_Nha_Cung_Cap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_Ma_Nha_Cung_Cap.Location = new System.Drawing.Point(215, 130);
-            this.txt_NCC_Ma_Nha_Cung_Cap.Name = "txt_NCC_Ma_Nha_Cung_Cap";
-            this.txt_NCC_Ma_Nha_Cung_Cap.Size = new System.Drawing.Size(209, 27);
-            this.txt_NCC_Ma_Nha_Cung_Cap.TabIndex = 41;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label30.Location = new System.Drawing.Point(56, 134);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(142, 19);
-            this.label30.TabIndex = 39;
-            this.label30.Text = "Mã Nhà Cung Cấp";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label31.Location = new System.Drawing.Point(53, 181);
+            this.label31.Location = new System.Drawing.Point(44, 133);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(145, 19);
             this.label31.TabIndex = 38;
@@ -1396,7 +1368,6 @@
             // tab_QLSP
             // 
             this.tab_QLSP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tab_QLSP.Controls.Add(this.btn_SP_Tim_Kiem);
             this.tab_QLSP.Controls.Add(this.cbo_SP_Nha_Cung_Cap);
             this.tab_QLSP.Controls.Add(this.data_SP);
             this.tab_QLSP.Controls.Add(this.chk_SP_Trang_Thai);
@@ -1414,8 +1385,6 @@
             this.tab_QLSP.Controls.Add(this.lab_SP_Gia_Ban);
             this.tab_QLSP.Controls.Add(this.lab_SP_Gia_Nhap);
             this.tab_QLSP.Controls.Add(this.txt_SP_Ten_San_Pham);
-            this.tab_QLSP.Controls.Add(this.txt_SP_Ma_San_Pham);
-            this.tab_QLSP.Controls.Add(this.lab_Ma_San_Pham);
             this.tab_QLSP.Controls.Add(this.lab_Ten_San_Pham);
             this.tab_QLSP.Controls.Add(this.btn_SP_Thoat);
             this.tab_QLSP.Controls.Add(this.btn_SP_Lam_Moi);
@@ -1429,16 +1398,6 @@
             this.tab_QLSP.Size = new System.Drawing.Size(1056, 499);
             this.tab_QLSP.TabIndex = 5;
             this.tab_QLSP.Text = "QL Sản Phẩm";
-            // 
-            // btn_SP_Tim_Kiem
-            // 
-            this.btn_SP_Tim_Kiem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_SP_Tim_Kiem.BackgroundImage")));
-            this.btn_SP_Tim_Kiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_SP_Tim_Kiem.Location = new System.Drawing.Point(1000, 229);
-            this.btn_SP_Tim_Kiem.Name = "btn_SP_Tim_Kiem";
-            this.btn_SP_Tim_Kiem.Size = new System.Drawing.Size(46, 41);
-            this.btn_SP_Tim_Kiem.TabIndex = 68;
-            this.btn_SP_Tim_Kiem.UseVisualStyleBackColor = true;
             // 
             // cbo_SP_Nha_Cung_Cap
             // 
@@ -1463,9 +1422,11 @@
             // chk_SP_Trang_Thai
             // 
             this.chk_SP_Trang_Thai.AutoSize = true;
+            this.chk_SP_Trang_Thai.Checked = true;
+            this.chk_SP_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_SP_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_SP_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chk_SP_Trang_Thai.Location = new System.Drawing.Point(855, 147);
+            this.chk_SP_Trang_Thai.Location = new System.Drawing.Point(855, 153);
             this.chk_SP_Trang_Thai.Name = "chk_SP_Trang_Thai";
             this.chk_SP_Trang_Thai.Size = new System.Drawing.Size(111, 23);
             this.chk_SP_Trang_Thai.TabIndex = 61;
@@ -1525,7 +1486,7 @@
             "Anh",
             "Thái Lan",
             "Ấn Độ"});
-            this.cbo_SP_Xuat_Xu.Location = new System.Drawing.Point(144, 188);
+            this.cbo_SP_Xuat_Xu.Location = new System.Drawing.Point(143, 172);
             this.cbo_SP_Xuat_Xu.Name = "cbo_SP_Xuat_Xu";
             this.cbo_SP_Xuat_Xu.Size = new System.Drawing.Size(187, 27);
             this.cbo_SP_Xuat_Xu.TabIndex = 56;
@@ -1535,7 +1496,7 @@
             this.lab_Xuat_Xu.AutoSize = true;
             this.lab_Xuat_Xu.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_Xuat_Xu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_Xuat_Xu.Location = new System.Drawing.Point(65, 192);
+            this.lab_Xuat_Xu.Location = new System.Drawing.Point(64, 176);
             this.lab_Xuat_Xu.Name = "lab_Xuat_Xu";
             this.lab_Xuat_Xu.Size = new System.Drawing.Size(66, 19);
             this.lab_Xuat_Xu.TabIndex = 80;
@@ -1544,17 +1505,18 @@
             // txt_SP_Tim_Kiem
             // 
             this.txt_SP_Tim_Kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_SP_Tim_Kiem.Location = new System.Drawing.Point(760, 242);
+            this.txt_SP_Tim_Kiem.Location = new System.Drawing.Point(792, 245);
             this.txt_SP_Tim_Kiem.Name = "txt_SP_Tim_Kiem";
             this.txt_SP_Tim_Kiem.Size = new System.Drawing.Size(232, 27);
             this.txt_SP_Tim_Kiem.TabIndex = 67;
+            this.txt_SP_Tim_Kiem.TextChanged += new System.EventHandler(this.txt_SP_Tim_Kiem_TextChanged);
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label37.Location = new System.Drawing.Point(658, 244);
+            this.label37.Location = new System.Drawing.Point(690, 247);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(90, 23);
             this.label37.TabIndex = 78;
@@ -1612,36 +1574,17 @@
             // txt_SP_Ten_San_Pham
             // 
             this.txt_SP_Ten_San_Pham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_SP_Ten_San_Pham.Location = new System.Drawing.Point(144, 146);
+            this.txt_SP_Ten_San_Pham.Location = new System.Drawing.Point(143, 117);
             this.txt_SP_Ten_San_Pham.Name = "txt_SP_Ten_San_Pham";
             this.txt_SP_Ten_San_Pham.Size = new System.Drawing.Size(187, 27);
             this.txt_SP_Ten_San_Pham.TabIndex = 55;
-            // 
-            // txt_SP_Ma_San_Pham
-            // 
-            this.txt_SP_Ma_San_Pham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_SP_Ma_San_Pham.Location = new System.Drawing.Point(144, 104);
-            this.txt_SP_Ma_San_Pham.Name = "txt_SP_Ma_San_Pham";
-            this.txt_SP_Ma_San_Pham.Size = new System.Drawing.Size(187, 27);
-            this.txt_SP_Ma_San_Pham.TabIndex = 54;
-            // 
-            // lab_Ma_San_Pham
-            // 
-            this.lab_Ma_San_Pham.AutoSize = true;
-            this.lab_Ma_San_Pham.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_Ma_San_Pham.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_Ma_San_Pham.Location = new System.Drawing.Point(22, 108);
-            this.lab_Ma_San_Pham.Name = "lab_Ma_San_Pham";
-            this.lab_Ma_San_Pham.Size = new System.Drawing.Size(109, 19);
-            this.lab_Ma_San_Pham.TabIndex = 67;
-            this.lab_Ma_San_Pham.Text = "Mã Sản Phẩm";
             // 
             // lab_Ten_San_Pham
             // 
             this.lab_Ten_San_Pham.AutoSize = true;
             this.lab_Ten_San_Pham.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_Ten_San_Pham.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_Ten_San_Pham.Location = new System.Drawing.Point(19, 150);
+            this.lab_Ten_San_Pham.Location = new System.Drawing.Point(18, 121);
             this.lab_Ten_San_Pham.Name = "lab_Ten_San_Pham";
             this.lab_Ten_San_Pham.Size = new System.Drawing.Size(112, 19);
             this.lab_Ten_San_Pham.TabIndex = 66;
@@ -1714,6 +1657,8 @@
             this.tabC_GiaoDienQuanLy.ResumeLayout(false);
             this.tab_QLNV.ResumeLayout(false);
             this.tab_QLNV.PerformLayout();
+            this.grb_NV_Gioi_Tinh.ResumeLayout(false);
+            this.grb_NV_Gioi_Tinh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_NV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_NV)).EndInit();
             this.tab_QLKH.ResumeLayout(false);
@@ -1747,18 +1692,13 @@
         private System.Windows.Forms.TabPage tab_QLHD;
         private System.Windows.Forms.TabPage tab_QLNCC;
         private System.Windows.Forms.TabPage tab_QLSP;
-        private System.Windows.Forms.Label lab_NV_Gioi_Tinh;
-        private System.Windows.Forms.Label lab_NV_Ma_Nhan_Vien;
         private System.Windows.Forms.Label lab_NV_Ten_Nhan_Vien;
         private System.Windows.Forms.Label lab_NV_Luong;
         private System.Windows.Forms.Label lab_NV_SDT;
-        private System.Windows.Forms.TextBox txt_NV_Gioi_Tinh;
         private System.Windows.Forms.TextBox txt_NV_Ten_Nhan_Vien;
-        private System.Windows.Forms.TextBox txt_NV_Ma_Nhan_Vien;
         private System.Windows.Forms.Label lab_NV_DSNV;
         private System.Windows.Forms.TextBox txt_NV_Password;
         private System.Windows.Forms.TextBox txt_NV_User_Name;
-        private System.Windows.Forms.CheckBox chk_NV_Trang_Thai;
         private System.Windows.Forms.Label lab_NV_Password;
         private System.Windows.Forms.Label lab_NV_Username;
         private System.Windows.Forms.TextBox txt_NV_Luong;
@@ -1768,8 +1708,6 @@
         private System.Windows.Forms.TextBox txt_KH_Tim_Kiem;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txt_KH_Ngay_Tao;
-        private System.Windows.Forms.CheckBox chk_KH_Trang_Thai;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txt_KH_SDT;
         private System.Windows.Forms.TextBox txt_KH_Dia_Chi;
@@ -1784,8 +1722,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txt_NCC_Ten_Nha_Cung_Cap;
-        private System.Windows.Forms.TextBox txt_NCC_Ma_Nha_Cung_Cap;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox txt_NCC_Tim_Kiem;
         private System.Windows.Forms.Label label14;
@@ -1798,8 +1734,6 @@
         private System.Windows.Forms.Label lab_SP_Gia_Ban;
         private System.Windows.Forms.Label lab_SP_Gia_Nhap;
         private System.Windows.Forms.TextBox txt_SP_Ten_San_Pham;
-        private System.Windows.Forms.TextBox txt_SP_Ma_San_Pham;
-        private System.Windows.Forms.Label lab_Ma_San_Pham;
         private System.Windows.Forms.Label lab_Ten_San_Pham;
         private System.Windows.Forms.Button btn_SP_Thoat;
         private System.Windows.Forms.Button btn_SP_Lam_Moi;
@@ -1812,7 +1746,7 @@
         private System.Windows.Forms.TextBox txt_SP_Khuyen_Mai;
         private System.Windows.Forms.Button btn_HD_Xoa;
         private System.Windows.Forms.GroupBox grb_HD_Chuc_Nang;
-        private System.Windows.Forms.Button btn_Thong_Ke;
+        private System.Windows.Forms.Button btn_HD_Thong_Ke;
         private System.Windows.Forms.GroupBox grb_HD_Hoa_Don;
         private System.Windows.Forms.Label lab_HD_San_Pham;
         private System.Windows.Forms.Label lab_HD_So_Luong;
@@ -1846,7 +1780,6 @@
         private System.Windows.Forms.CheckBox chk_SP_Trang_Thai;
         private System.Windows.Forms.DataGridView data_SP;
         private System.Windows.Forms.DataGridView data_NCC;
-        private System.Windows.Forms.DataGridView data_NV;
         private System.Windows.Forms.NumericUpDown nmr_HD_So_Luong;
         private System.Windows.Forms.Button btn_NV_Thoat;
         private System.Windows.Forms.Button btn_KH_Thoat;
@@ -1859,8 +1792,7 @@
         private System.Windows.Forms.Label lab_HD_Khach_Hang;
         private System.Windows.Forms.ComboBox cbo_HD_Nhan_Vien;
         private System.Windows.Forms.Label lab_HD_Nhan_Vien;
-        private System.Windows.Forms.Button btn_HD_Tim_Kiem;
-        private System.Windows.Forms.DateTimePicker dt_Ngay_Lap_HD;
+        private System.Windows.Forms.DateTimePicker dt_HD_Ngay_Lap_HD;
         private System.Windows.Forms.Label lab_HD_Ngay_Lap_HD;
         private System.Windows.Forms.TextBox txt_HD_Ma_Hoa_Don;
         private System.Windows.Forms.Label lab_Ma_Hoa_Don;
@@ -1872,11 +1804,18 @@
         private System.Windows.Forms.TextBox txt_HD_Khuyen_Mai;
         private System.Windows.Forms.Label lab_HD_Khuyen_Mai;
         private System.Windows.Forms.ComboBox cbo_SP_Nha_Cung_Cap;
-        private System.Windows.Forms.Button btn_NV_Tim_Kiem;
-        private System.Windows.Forms.Button btn_KH_Tim_Kiem;
-        private System.Windows.Forms.Button btn_NCC_Tim_Kiem;
-        private System.Windows.Forms.Button btn_SP_Tim_Kiem;
         private System.Windows.Forms.TextBox txt_NCC_Email;
         private System.Windows.Forms.Label lab_NCC_Email;
+        private System.Windows.Forms.DateTimePicker dt_KH_Ngay_Tao;
+        private System.Windows.Forms.TextBox txt_KH_Email;
+        private System.Windows.Forms.Label lab_KH_Email;
+        private System.Windows.Forms.DataGridView data_NV;
+        private System.Windows.Forms.RadioButton rad_NV_Nu;
+        private System.Windows.Forms.RadioButton rad_NV_Nam;
+        private System.Windows.Forms.GroupBox grb_NV_Gioi_Tinh;
+        private System.Windows.Forms.TextBox txt_NV_Email;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dt_NV_Ngay_Sinh;
+        private System.Windows.Forms.Label label2;
     }
 }

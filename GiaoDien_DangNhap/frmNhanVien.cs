@@ -18,7 +18,7 @@ namespace GiaoDien_DangNhap
             InitializeComponent();
         }
 
-        String Connect = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=true";
+        String Connect = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=true";
         SqlConnection conn;
         SqlDataAdapter adt;
         DataTable tb;
@@ -62,7 +62,7 @@ namespace GiaoDien_DangNhap
         public static DataSet Xem_Thong_Tin(string sSql_Xem)
         {
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             DataSet ds = null;
             try
@@ -108,7 +108,7 @@ namespace GiaoDien_DangNhap
             bool kq;
             kq = true;
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             string sSql = "";
             sSql = "insert into hoadon ";
@@ -141,7 +141,7 @@ namespace GiaoDien_DangNhap
         public void Hien_Thi_Len_HD_CBO_San_Pham()
         {
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             string sSql_Hien = "SELECT MaSP, TenSP FROM SanPham";
             try
@@ -164,7 +164,7 @@ namespace GiaoDien_DangNhap
         public void Hien_Thi_Len_HD_CBO_Khach_Hang()
         {
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             string sSql_Hien = "SELECT makh, Tenkh FROM khachhang";
             try
@@ -187,7 +187,7 @@ namespace GiaoDien_DangNhap
         public void Hien_Thi_Len_HD_CBO_Nhan_Vien()
         {
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             string sSql_Hien = "SELECT manv, Tennv FROM nhanvien";
             try
@@ -213,7 +213,7 @@ namespace GiaoDien_DangNhap
             double giaBan = 0;
 
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             string sSql_Gia_Ban = "SELECT GiaBan FROM SanPham WHERE MASP = @MaSP";
             try
@@ -236,7 +236,7 @@ namespace GiaoDien_DangNhap
             bool kq;
             kq = true;
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             //Câu truy vấn thêm vào bảng HOADON
             string sSql_HD;
@@ -338,7 +338,7 @@ namespace GiaoDien_DangNhap
             double khuyenMai = double.Parse(txt_BH_khuyenMai.Text);
             // Kết nối đến cơ sở dữ liệu
             string conn;
-            conn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection mySqlConnection = new SqlConnection(conn);
             string sSql_Gia_Ban = "SELECT GiaBan FROM SanPham WHERE MASP = @MaSP";
             {
@@ -392,7 +392,7 @@ namespace GiaoDien_DangNhap
             bool kq;
             kq = true;
             string sconn;
-            sconn = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=True";
+            sconn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
             SqlConnection myConnection = new SqlConnection(sconn);
             string sSql = "";
             sSql = "UPDATE NhaSanXuat";

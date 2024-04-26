@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GiaoDien_DangNhap
 {
@@ -18,7 +19,7 @@ namespace GiaoDien_DangNhap
         {
             InitializeComponent();
         }
-
+        
         private static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
 
         private void frmQuanLy_Load(object sender, EventArgs e)
@@ -27,11 +28,29 @@ namespace GiaoDien_DangNhap
             string sSql_Xem_Nhan_Vien = "SELECT * FROM NhanVien";
             DataSet ds_Nhan_Vien = Xem_Thong_Tin(sSql_Xem_Nhan_Vien);
             data_NV.DataSource = ds_Nhan_Vien.Tables[0];
+                //Sử dụng ToolTip cho các button
+                    //Tạo ToolTip
+                    ToolTip tlt_NV = new ToolTip();
+                    tlt_NV.ShowAlways = true;
+                    //Gán ToolTip vào button
+                    tlt_NV.SetToolTip(btn_NV_Them, "Thêm");
+                    tlt_NV.SetToolTip(btn_NV_Sua, "Sửa");
+                    tlt_NV.SetToolTip(btn_NV_Xoa, "Xóa");
+                    tlt_NV.SetToolTip(btn_NV_Lam_Moi, "Làm mới");
 
             //TAB KHÁCH HÀNG
             string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
             DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
             data_KH.DataSource = ds_Khach_Hang.Tables[0];
+                //Sử dụng ToolTip cho các button
+                    //Tạo ToolTip
+                    ToolTip tlt_KH = new ToolTip();
+                    tlt_KH.ShowAlways = true;
+                    //Gán ToolTip vào button
+                    tlt_KH.SetToolTip(btn_KH_Them, "Thêm");
+                    tlt_KH.SetToolTip(btn_KH_Sua, "Sửa");
+                    tlt_KH.SetToolTip(btn_KH_Xoa, "Xóa");
+                    tlt_KH.SetToolTip(btn_KH_Lam_Moi, "Làm mới");
 
             //TAB HÓA ĐƠN
             string sSql_Xem_Hoa_Don = "SELECT HOADON.MAHD, MANV, MAKH, MASP, SOLUONG, DONGIA, HOADON.TONGTIEN,KHUYENMAI,NGAYLAPHD " +
@@ -42,11 +61,29 @@ namespace GiaoDien_DangNhap
             Hien_Thi_Len_HD_CBO_Nhan_Vien();
             Hien_Thi_Len_HD_CBO_Khach_Hang();
             Hien_Don_Gia();
+                //Sử dụng ToolTip cho các button
+                    //Tạo ToolTip
+                    ToolTip tlt_HD = new ToolTip();
+                    tlt_HD.ShowAlways = true;
+                    //Gán ToolTip vào button
+                    tlt_HD.SetToolTip(btn_HD_Them, "Thêm");
+                    tlt_KH.SetToolTip(btn_HD_Sua, "Sửa");
+                    tlt_KH.SetToolTip(btn_HD_Xoa, "Xóa");
+                    tlt_KH.SetToolTip(btn_HD_Thong_Ke, "Thống kê");
 
             //TAB NHÀ CUNG CẤP
             string sSql_Xem_Nha_Cung_Cap = "SELECT * FROM NhaCungCap";
             DataSet ds_Nha_Cung_Cap = Xem_Thong_Tin(sSql_Xem_Nha_Cung_Cap);
             data_NCC.DataSource = ds_Nha_Cung_Cap.Tables[0];
+                //Sử dụng ToolTip cho các button
+                    //Tạo ToolTip
+                    ToolTip tlt_NCC = new ToolTip();
+                    tlt_NCC.ShowAlways = true;
+                    //Gán ToolTip vào button
+                    tlt_NCC.SetToolTip(btn_NCC_Them, "Thêm");
+                    tlt_NCC.SetToolTip(btn_NCC_Sua, "Sửa");
+                    tlt_NCC.SetToolTip(btn_NCC_Xoa, "Xóa");
+                    tlt_NCC.SetToolTip(btn_NCC_Lam_Moi, "Làm mới");
 
             //TAB SẢN PHẨM
             string sSql_Xem_San_Pham = "SELECT * FROM SanPham";
@@ -54,6 +91,15 @@ namespace GiaoDien_DangNhap
             data_SP.DataSource = ds_San_Pham.Tables[0];
             Hien_Thi_Len_SP_CBO_Nha_Cung_Cap();
             cbo_SP_Xuat_Xu.SelectedItem = cbo_SP_Xuat_Xu.Items[0];
+                //Sử dụng ToolTip cho các button
+                    //Tạo ToolTip
+                    ToolTip tlt_SP = new ToolTip();
+                    tlt_SP.ShowAlways = true;
+                    //Gán ToolTip vào button
+                    tlt_SP.SetToolTip(btn_SP_Them, "Thêm");
+                    tlt_SP.SetToolTip(btn_SP_Sua, "Sửa");
+                    tlt_SP.SetToolTip(btn_SP_Xoa, "Xóa");
+                    tlt_SP.SetToolTip(btn_SP_Lam_Moi, "Làm mới");
         }
 
         public static SqlConnection Ket_Noi()
@@ -211,7 +257,6 @@ namespace GiaoDien_DangNhap
         }
 
 
-
         public bool Them_Hoa_Don(string maHD, string maSP, int soLuong, double donGia, double thanhTien, string maKH, string maNV, string ngayLap, double khuyenMai)
         {
             bool kq;
@@ -243,7 +288,7 @@ namespace GiaoDien_DangNhap
                 SqlCommand cmd = new SqlCommand(sSql_HD, myConnection);
                 cmd.ExecuteNonQuery();
 
-                //thực thi câu truy vấn thêm vào bảng HOADON
+                //thực thi câu truy vấn thêm vào bảng CT_HOADON
                 cmd = new SqlCommand(sSql_CTHD, myConnection);
                 cmd.ExecuteNonQuery();
 
@@ -252,12 +297,12 @@ namespace GiaoDien_DangNhap
             catch (Exception ex)
             {
                 kq = false;
-                MessageBox.Show("Lỗi. Chi tiết: " + ex.Message);
+                MessageBox.Show("Lỗi Hóa Đơn. Chi tiết: " + ex.Message);
             }
             return kq;
         }
 
-        public bool Them_Nha_Cung_Cap(string maNCC, string tenNCC, string diaChi, string SDT, string email)
+        public bool Them_Nha_Cung_Cap(string tenNCC, string diaChi, string SDT, string email)
         {
             bool kq;
             kq = true;
@@ -265,7 +310,7 @@ namespace GiaoDien_DangNhap
             //Câu truy vấn thêm vào bảng HOADON
             string sSql_NCC;
             sSql_NCC = "INSERT INTO NhaCungCap VALUES (";
-            sSql_NCC += "'" + maNCC + "',";
+            sSql_NCC += "'0',";
             sSql_NCC += "'" + tenNCC + "',";
             sSql_NCC += "N'" + diaChi + "',";
             sSql_NCC += "'" + SDT + "',";
@@ -283,12 +328,12 @@ namespace GiaoDien_DangNhap
             catch (Exception ex)
             {
                 kq = false;
-                MessageBox.Show("Lỗi. Chi tiết: " + ex.Message);
+                MessageBox.Show("Lỗi Nhà Cung Cấp. Chi tiết: " + ex.Message);
             }
             return kq;
         }
 
-        public bool Them_San_Pham(string maSP, string tenSP, double giaNhap, double giaBan, string xuatXu, bool trangThai, double khuyenMai, string maNCC)
+        public bool Them_San_Pham(string tenSP, double giaNhap, double giaBan, string xuatXu, bool trangThai, double khuyenMai, string maNCC)
         {
             bool kq;
             kq = true;
@@ -296,7 +341,7 @@ namespace GiaoDien_DangNhap
             //Câu truy vấn thêm vào bảng SANPHAM
             string sSql_SP;
             sSql_SP = "INSERT INTO SanPham VALUES (";
-            sSql_SP += "'" + maSP + "',";
+            sSql_SP += "'0',";
             sSql_SP += "'" + tenSP + "',";
             sSql_SP += giaNhap + ",";
             sSql_SP += giaBan + ",";
@@ -317,35 +362,206 @@ namespace GiaoDien_DangNhap
             catch (Exception ex)
             {
                 kq = false;
-                MessageBox.Show("Lỗi. Chi tiết: " + ex.Message);
+                MessageBox.Show("Lỗi Sản Phẩm. Chi tiết: " + ex.Message);
             }
             return kq;
+        }
+
+        public bool Them_Khach_Hang(string maKH, string tenKH, string diaChi, string SDT,string ngayTao, string email)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+            //Câu truy vấn thêm vào bảng KHACHHANG
+            string sSql_KH;
+            sSql_KH = "INSERT INTO KhachHang VALUES (";
+            sSql_KH += "'" + maKH + "',";
+            sSql_KH += "N'" + tenKH + "',";
+            sSql_KH += "N'" + diaChi + "',";
+            sSql_KH += "'" + SDT + "',";
+            sSql_KH += "'" + ngayTao + "',";
+            sSql_KH += "'" + email + "')";
+
+            try
+            {
+                myConnection.Open();
+                //thực thi câu truy vấn thêm vào bảng KHACHHANG
+                SqlCommand cmd = new SqlCommand(sSql_KH, myConnection);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi Khách Hàng. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+        public bool Them_Nhan_Vien(string tenNV, string gioiTinh, string ngaySinh, string SDT, int luong, string username, string password, string email)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+            //Câu truy vấn thêm vào bảng TAIKHOAN
+            string sSql_TK;
+            sSql_TK = "INSERT INTO TaiKhoan VALUES (";
+            sSql_TK += "'" + username + "',";
+            sSql_TK += "'" + password + "',";
+            sSql_TK += "'NV')";
+
+            //Câu truy vấn thêm vào bảng NHANVIEN
+            string sSql_NV;
+            sSql_NV = "INSERT INTO NhanVien VALUES (";
+            sSql_NV += "'0',";
+            sSql_NV += "N'" + tenNV + "',";
+            sSql_NV += "N'" + gioiTinh + "',";
+            sSql_NV += "'" + ngaySinh + "',";
+            sSql_NV += "'" + SDT + "',";
+            sSql_NV += luong + ",";
+            sSql_NV += "'" + username + "',";
+            sSql_NV += "'" + password + "',";
+            sSql_NV += "'" + email + "')";
+
+            try
+            {
+                myConnection.Open();
+
+                //thực thi câu truy vấn thêm vào bảng TaiKhoan
+                SqlCommand cmd = new SqlCommand(sSql_TK, myConnection);
+                cmd.ExecuteNonQuery();
+                //thực thi câu truy vấn thêm vào bảng NhanVien
+                cmd = new SqlCommand(sSql_NV, myConnection);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi Nhân Viên. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+        public DataSet Tim_Kiem(string tenBang, string tenCot, string tenTK)
+        {
+            SqlConnection myConnection = Ket_Noi();
+            string sSql_Tim_Kiem = "SELECT * FROM " + tenBang + " WHERE " + tenCot + " LIKE N'%" + tenTK + "%'";
+            DataSet ds = null;
+            try
+            {
+                myConnection.Open();
+
+                SqlDataAdapter ds_Hien = new SqlDataAdapter(sSql_Tim_Kiem,myConnection);
+                ds = new DataSet();
+                ds_Hien.Fill(ds);
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tìm kiếm: " + ex.Message);
+            }
+            return ds;
+        }
+
+        public DataSet Tim_Kiem_HD(string tenTK)
+        {
+            SqlConnection myConnection = Ket_Noi();
+            string sSql_Tim_Kiem = "SELECT HOADON.MAHD, MANV, MAKH, MASP, SOLUONG, DONGIA, HOADON.TONGTIEN,KHUYENMAI,NGAYLAPHD " +
+                                              "FROM HOADON JOIN CT_HOADON ON HOADON.MAHD = CT_HOADON.MAHD " +
+                                              "WHERE HOADON.MAHD LIKE N'%"+tenTK+"%'";
+            DataSet ds = null;
+            try
+            {
+                myConnection.Open();
+
+                SqlDataAdapter ds_Hien = new SqlDataAdapter(sSql_Tim_Kiem, myConnection);
+                ds = new DataSet();
+                ds_Hien.Fill(ds);
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tìm kiếm: " + ex.Message);
+            }
+            return ds;
+        }
+
+        private void btn_NV_Them_Click(object sender, EventArgs e)
+        {
+            SqlConnection myConnection = Ket_Noi();
+            if (string.IsNullOrEmpty(txt_NV_Ten_Nhan_Vien.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NV_SDT.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NV_Luong.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NV_User_Name.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NV_Password.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NV_Email.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string tenNV, gioiTinh, ngaySinh, SDT, username, password, email;
+                int luong;
+
+                tenNV = txt_NV_Ten_Nhan_Vien.Text;
+                if (rad_NV_Nam.Checked)
+                {
+                    gioiTinh = "Nam";
+                }
+                else
+                {
+                    gioiTinh = "Nữ";
+                }
+                ngaySinh = dt_NV_Ngay_Sinh.Value.ToString("yyyy-MM-dd HH:mm:ss"); ;
+                SDT = txt_NV_SDT.Text;
+                luong = int.Parse(txt_NV_Luong.Text);
+                username = txt_NV_User_Name.Text;
+                password = txt_NV_Password.Text;
+                email = txt_NV_Email.Text;
+
+                bool kq = Them_Nhan_Vien(tenNV, gioiTinh, ngaySinh, SDT, luong, username, password, email);
+                if (kq == false)
+                {
+                    MessageBox.Show("Thêm Nhân Viên KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Đã thêm Nhân Viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Nhan_Vien = "SELECT * FROM NhanVien";
+                    DataSet ds_Nhan_Vien = Xem_Thong_Tin(sSql_Xem_Nhan_Vien);
+                    data_NV.DataSource = ds_Nhan_Vien.Tables[0];
+                    Hien_Thi_Len_HD_CBO_Nhan_Vien();
+                }
+            }
         }
 
 
         private void btn_SP_Them_Click(object sender, EventArgs e)
         {
             SqlConnection myConnection = Ket_Noi();
-            if (string.IsNullOrEmpty(txt_SP_Ma_San_Pham.Text) ||
-                string.IsNullOrEmpty(txt_SP_Ten_San_Pham.Text) ||
-                string.IsNullOrEmpty(cbo_SP_Xuat_Xu.Text) ||
-                string.IsNullOrEmpty(txt_SP_Gia_Nhap.Text) ||
-                string.IsNullOrEmpty(txt_SP_Gia_Ban.Text) ||
-                string.IsNullOrEmpty(cbo_SP_Nha_Cung_Cap.Text) ||
-                string.IsNullOrEmpty(txt_SP_Ma_San_Pham.Text) ||
-                string.IsNullOrEmpty(txt_SP_Khuyen_Mai.Text))
+            if (string.IsNullOrEmpty(txt_SP_Ten_San_Pham.Text.Trim()) ||
+                string.IsNullOrEmpty(cbo_SP_Xuat_Xu.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_SP_Gia_Nhap.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_SP_Gia_Ban.Text.Trim()) ||
+                string.IsNullOrEmpty(cbo_SP_Nha_Cung_Cap.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_SP_Khuyen_Mai.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                string maSP, tenSP, xuatXu, maNCC;
+                string tenSP, xuatXu, maNCC;
                 double giaNhap, giaBan, khuyenMai;
                 bool trangThai;
 
-                maSP = txt_SP_Ma_San_Pham.Text;
-                tenSP = txt_NCC_Ten_Nha_Cung_Cap.Text;
+                tenSP = txt_SP_Ten_San_Pham.Text;
                 giaNhap = double.Parse(txt_SP_Gia_Nhap.Text);
                 giaBan = double.Parse(txt_SP_Gia_Ban.Text);
                 xuatXu = cbo_SP_Xuat_Xu.Text;
@@ -357,7 +573,7 @@ namespace GiaoDien_DangNhap
                 khuyenMai = double.Parse(txt_SP_Khuyen_Mai.Text);
                 maNCC = cbo_SP_Nha_Cung_Cap.SelectedValue.ToString();
 
-                bool kq = Them_San_Pham(maSP, tenSP, giaNhap, giaBan, xuatXu, trangThai, khuyenMai, maNCC);
+                bool kq = Them_San_Pham(tenSP, giaNhap, giaBan, xuatXu, trangThai, khuyenMai, maNCC);
                 if (kq == false)
                 {
                     MessageBox.Show("Thêm Sản Phẩm KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -418,13 +634,13 @@ namespace GiaoDien_DangNhap
 
         private void btn_HD_Them_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_HD_Ma_Hoa_Don.Text) ||
-                string.IsNullOrEmpty(cbo_HD_San_Pham.Text) ||
-                string.IsNullOrEmpty(txt_HD_Don_Gia.Text) ||
-                string.IsNullOrEmpty(txt_HD_Thanh_Tien.Text) ||
-                string.IsNullOrEmpty(cbo_HD_Khach_Hang.Text) ||
-                string.IsNullOrEmpty(cbo_HD_Nhan_Vien.Text) ||
-                string.IsNullOrEmpty(txt_HD_Khuyen_Mai.Text))
+            if (string.IsNullOrEmpty(txt_HD_Ma_Hoa_Don.Text.Trim()) ||
+                string.IsNullOrEmpty(cbo_HD_San_Pham.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_HD_Don_Gia.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_HD_Thanh_Tien.Text.Trim()) ||
+                string.IsNullOrEmpty(cbo_HD_Khach_Hang.Text.Trim()) ||
+                string.IsNullOrEmpty(cbo_HD_Nhan_Vien.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_HD_Khuyen_Mai.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -444,7 +660,7 @@ namespace GiaoDien_DangNhap
                 maKH = cbo_HD_Khach_Hang.SelectedValue.ToString();
                 maNV = cbo_HD_Nhan_Vien.SelectedValue.ToString();
                 khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text);
-                ngayLap = dt_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                ngayLap = dt_HD_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
                 bool kq = Them_Hoa_Don(maHD, maSP, soLuong, donGia, thanhTien, maKH, maNV, ngayLap, khuyenMai);
                 if (kq == false)
@@ -467,33 +683,26 @@ namespace GiaoDien_DangNhap
             Hien_Don_Gia();
         }
 
-        private void data_HD_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btn_NCC_Them_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_NCC_Ma_Nha_Cung_Cap.Text) ||
-                string.IsNullOrEmpty(txt_NCC_Ten_Nha_Cung_Cap.Text) ||
-                string.IsNullOrEmpty(txt_NCC_Dia_Chi.Text) ||
-                string.IsNullOrEmpty(txt_NCC_SDT.Text) ||
-                string.IsNullOrEmpty(txt_NCC_Email.Text))
+            if (string.IsNullOrEmpty(txt_NCC_Ten_Nha_Cung_Cap.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NCC_Dia_Chi.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NCC_SDT.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NCC_Email.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                string maNCC, tenNCC, diaChi, SDT, email;
+                string  tenNCC, diaChi, SDT, email;
 
-                maNCC = txt_NCC_Ma_Nha_Cung_Cap.Text;
                 tenNCC = txt_NCC_Ten_Nha_Cung_Cap.Text;
                 diaChi = txt_NCC_Dia_Chi.Text;
                 SDT = txt_NCC_SDT.Text;
                 email = txt_NCC_Email.Text;
 
-                bool kq = Them_Nha_Cung_Cap(maNCC, tenNCC, diaChi, SDT, email);
+                bool kq = Them_Nha_Cung_Cap( tenNCC, diaChi, SDT, email);
                 if (kq == false)
                 {
                     MessageBox.Show("Thêm Nhà Cung Cấp KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -507,6 +716,92 @@ namespace GiaoDien_DangNhap
                     Hien_Thi_Len_SP_CBO_Nha_Cung_Cap();
                 }
             }
+        }
+
+        private void btn_KH_Them_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_KH_Ma_Khach_Hang.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_KH_Ten_Khach_Hang.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_KH_Dia_Chi.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_KH_SDT.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_KH_Email.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string maKH, tenKH, diaChi, SDT, email, ngayTao;
+
+                maKH = txt_KH_Ma_Khach_Hang.Text;
+                tenKH = txt_KH_Ten_Khach_Hang.Text;
+                diaChi = txt_KH_Dia_Chi.Text;
+                SDT = txt_KH_SDT.Text;
+                email = txt_KH_Email.Text;
+                ngayTao = dt_KH_Ngay_Tao.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+                bool kq = Them_Khach_Hang(maKH, tenKH, diaChi, SDT, ngayTao, email);
+                if (kq == false)
+                {
+                    MessageBox.Show("Thêm Khách Hàng KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Đã thêm Khách Hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
+                    DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+                    data_KH.DataSource = ds_Khach_Hang.Tables[0];
+                    Hien_Thi_Len_HD_CBO_Khach_Hang();
+                }
+            }
+        }
+
+        private void txt_NV_Tim_Kiem_TextChanged(object sender, EventArgs e)
+        {
+            string tenBang, tenCot, tenTK;
+            tenBang = "NhanVien";
+            tenCot = "TenNV";
+            tenTK = txt_NV_Tim_Kiem.Text;
+            DataSet ds = Tim_Kiem(tenBang, tenCot, tenTK);
+            data_NV.DataSource = ds.Tables[0];
+        }
+
+        private void txt_KH_Tim_Kiem_TextChanged(object sender, EventArgs e)
+        {
+            string tenBang, tenCot, tenTK;
+            tenBang = "KhachHang";
+            tenCot = "TenKH";
+            tenTK = txt_KH_Tim_Kiem.Text;
+            DataSet ds = Tim_Kiem(tenBang, tenCot, tenTK);
+            data_KH.DataSource = ds.Tables[0];
+        }
+
+        private void txt_HD_Tim_Kiem_TextChanged(object sender, EventArgs e)
+        {
+            string tenTK;
+            tenTK = txt_HD_Tim_Kiem.Text;
+            DataSet ds = Tim_Kiem_HD(tenTK);
+            data_HD.DataSource = ds.Tables[0];
+        }
+
+        private void txt_NCC_Tim_Kiem_TextChanged(object sender, EventArgs e)
+        {
+            string tenBang, tenCot, tenTK;
+            tenBang = "NhaCungcap";
+            tenCot = "TenNCC";
+            tenTK = txt_NCC_Tim_Kiem.Text;
+            DataSet ds = Tim_Kiem(tenBang, tenCot, tenTK);
+            data_NCC.DataSource = ds.Tables[0];
+        }
+
+        private void txt_SP_Tim_Kiem_TextChanged(object sender, EventArgs e)
+        {
+            string tenBang, tenCot, tenTK;
+            tenBang = "SanPham";
+            tenCot = "TenSP";
+            tenTK = txt_SP_Tim_Kiem.Text;
+            DataSet ds = Tim_Kiem(tenBang, tenCot, tenTK);
+            data_SP.DataSource = ds.Tables[0];
         }
     }
 }

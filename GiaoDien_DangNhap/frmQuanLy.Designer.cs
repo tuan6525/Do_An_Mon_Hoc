@@ -78,8 +78,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.txt_KH_Ten_Khach_Hang = new System.Windows.Forms.TextBox();
-            this.txt_KH_Ma_Khach_Hang = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.tab_QLHD = new System.Windows.Forms.TabPage();
             this.data_HD = new System.Windows.Forms.DataGridView();
@@ -330,6 +328,7 @@
             this.btn_NV_Thoat.Size = new System.Drawing.Size(56, 51);
             this.btn_NV_Thoat.TabIndex = 25;
             this.btn_NV_Thoat.UseVisualStyleBackColor = true;
+            this.btn_NV_Thoat.Click += new System.EventHandler(this.btn_NV_Thoat_Click);
             // 
             // btn_NV_Lam_Moi
             // 
@@ -531,8 +530,6 @@
             this.tab_QLKH.Controls.Add(this.label24);
             this.tab_QLKH.Controls.Add(this.label25);
             this.tab_QLKH.Controls.Add(this.txt_KH_Ten_Khach_Hang);
-            this.tab_QLKH.Controls.Add(this.txt_KH_Ma_Khach_Hang);
-            this.tab_QLKH.Controls.Add(this.label27);
             this.tab_QLKH.Controls.Add(this.label28);
             this.tab_QLKH.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab_QLKH.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -546,7 +543,7 @@
             // 
             this.dt_KH_Ngay_Tao.CustomFormat = "dd/MM/yyyy";
             this.dt_KH_Ngay_Tao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_KH_Ngay_Tao.Location = new System.Drawing.Point(781, 131);
+            this.dt_KH_Ngay_Tao.Location = new System.Drawing.Point(496, 182);
             this.dt_KH_Ngay_Tao.Name = "dt_KH_Ngay_Tao";
             this.dt_KH_Ngay_Tao.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dt_KH_Ngay_Tao.Size = new System.Drawing.Size(166, 27);
@@ -555,7 +552,7 @@
             // txt_KH_Email
             // 
             this.txt_KH_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KH_Email.Location = new System.Drawing.Point(781, 179);
+            this.txt_KH_Email.Location = new System.Drawing.Point(769, 133);
             this.txt_KH_Email.Name = "txt_KH_Email";
             this.txt_KH_Email.Size = new System.Drawing.Size(252, 27);
             this.txt_KH_Email.TabIndex = 38;
@@ -565,7 +562,7 @@
             this.lab_KH_Email.AutoSize = true;
             this.lab_KH_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_KH_Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_KH_Email.Location = new System.Drawing.Point(716, 182);
+            this.lab_KH_Email.Location = new System.Drawing.Point(704, 136);
             this.lab_KH_Email.Name = "lab_KH_Email";
             this.lab_KH_Email.Size = new System.Drawing.Size(54, 19);
             this.lab_KH_Email.TabIndex = 53;
@@ -583,6 +580,7 @@
             this.data_KH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_KH.Size = new System.Drawing.Size(1050, 226);
             this.data_KH.TabIndex = 48;
+            this.data_KH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_KH_CellClick);
             // 
             // btn_KH_Thoat
             // 
@@ -593,6 +591,7 @@
             this.btn_KH_Thoat.Size = new System.Drawing.Size(56, 51);
             this.btn_KH_Thoat.TabIndex = 45;
             this.btn_KH_Thoat.UseVisualStyleBackColor = true;
+            this.btn_KH_Thoat.Click += new System.EventHandler(this.btn_KH_Thoat_Click);
             // 
             // btn_KH_Lam_Moi
             // 
@@ -603,26 +602,31 @@
             this.btn_KH_Lam_Moi.Size = new System.Drawing.Size(66, 54);
             this.btn_KH_Lam_Moi.TabIndex = 44;
             this.btn_KH_Lam_Moi.UseVisualStyleBackColor = true;
+            this.btn_KH_Lam_Moi.Click += new System.EventHandler(this.btn_KH_Lam_Moi_Click);
             // 
             // btn_KH_Xoa
             // 
             this.btn_KH_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_KH_Xoa.BackgroundImage")));
             this.btn_KH_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_KH_Xoa.Enabled = false;
             this.btn_KH_Xoa.Location = new System.Drawing.Point(575, 34);
             this.btn_KH_Xoa.Name = "btn_KH_Xoa";
             this.btn_KH_Xoa.Size = new System.Drawing.Size(66, 54);
             this.btn_KH_Xoa.TabIndex = 43;
             this.btn_KH_Xoa.UseVisualStyleBackColor = true;
+            this.btn_KH_Xoa.Click += new System.EventHandler(this.btn_KH_Xoa_Click);
             // 
             // btn_KH_Sua
             // 
             this.btn_KH_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_KH_Sua.BackgroundImage")));
             this.btn_KH_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_KH_Sua.Enabled = false;
             this.btn_KH_Sua.Location = new System.Drawing.Point(473, 34);
             this.btn_KH_Sua.Name = "btn_KH_Sua";
             this.btn_KH_Sua.Size = new System.Drawing.Size(66, 54);
             this.btn_KH_Sua.TabIndex = 42;
             this.btn_KH_Sua.UseVisualStyleBackColor = true;
+            this.btn_KH_Sua.Click += new System.EventHandler(this.btn_KH_Sua_Click);
             // 
             // btn_KH_Them
             // 
@@ -681,7 +685,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label23.Location = new System.Drawing.Point(693, 136);
+            this.label23.Location = new System.Drawing.Point(399, 187);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(77, 19);
             this.label23.TabIndex = 30;
@@ -690,7 +694,7 @@
             // txt_KH_SDT
             // 
             this.txt_KH_SDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KH_SDT.Location = new System.Drawing.Point(457, 180);
+            this.txt_KH_SDT.Location = new System.Drawing.Point(459, 132);
             this.txt_KH_SDT.Name = "txt_KH_SDT";
             this.txt_KH_SDT.Size = new System.Drawing.Size(203, 27);
             this.txt_KH_SDT.TabIndex = 36;
@@ -698,7 +702,7 @@
             // txt_KH_Dia_Chi
             // 
             this.txt_KH_Dia_Chi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KH_Dia_Chi.Location = new System.Drawing.Point(457, 133);
+            this.txt_KH_Dia_Chi.Location = new System.Drawing.Point(177, 179);
             this.txt_KH_Dia_Chi.Name = "txt_KH_Dia_Chi";
             this.txt_KH_Dia_Chi.Size = new System.Drawing.Size(203, 27);
             this.txt_KH_Dia_Chi.TabIndex = 35;
@@ -708,7 +712,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label24.Location = new System.Drawing.Point(397, 183);
+            this.label24.Location = new System.Drawing.Point(399, 135);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(40, 19);
             this.label24.TabIndex = 29;
@@ -719,7 +723,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label25.Location = new System.Drawing.Point(379, 136);
+            this.label25.Location = new System.Drawing.Point(90, 182);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(66, 19);
             this.label25.TabIndex = 28;
@@ -728,36 +732,17 @@
             // txt_KH_Ten_Khach_Hang
             // 
             this.txt_KH_Ten_Khach_Hang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KH_Ten_Khach_Hang.Location = new System.Drawing.Point(181, 180);
+            this.txt_KH_Ten_Khach_Hang.Location = new System.Drawing.Point(177, 133);
             this.txt_KH_Ten_Khach_Hang.Name = "txt_KH_Ten_Khach_Hang";
-            this.txt_KH_Ten_Khach_Hang.Size = new System.Drawing.Size(175, 27);
+            this.txt_KH_Ten_Khach_Hang.Size = new System.Drawing.Size(203, 27);
             this.txt_KH_Ten_Khach_Hang.TabIndex = 34;
-            // 
-            // txt_KH_Ma_Khach_Hang
-            // 
-            this.txt_KH_Ma_Khach_Hang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KH_Ma_Khach_Hang.Location = new System.Drawing.Point(181, 133);
-            this.txt_KH_Ma_Khach_Hang.Name = "txt_KH_Ma_Khach_Hang";
-            this.txt_KH_Ma_Khach_Hang.Size = new System.Drawing.Size(175, 27);
-            this.txt_KH_Ma_Khach_Hang.TabIndex = 33;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label27.Location = new System.Drawing.Point(36, 136);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(126, 19);
-            this.label27.TabIndex = 26;
-            this.label27.Text = "Mã Khách Hàng";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label28.Location = new System.Drawing.Point(31, 183);
+            this.label28.Location = new System.Drawing.Point(27, 136);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(129, 19);
             this.label28.TabIndex = 27;
@@ -1212,6 +1197,7 @@
             this.btn_NCC_Thoat.Size = new System.Drawing.Size(56, 51);
             this.btn_NCC_Thoat.TabIndex = 50;
             this.btn_NCC_Thoat.UseVisualStyleBackColor = true;
+            this.btn_NCC_Thoat.Click += new System.EventHandler(this.btn_NCC_Thoat_Click);
             // 
             // data_NCC
             // 
@@ -1225,6 +1211,7 @@
             this.data_NCC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_NCC.Size = new System.Drawing.Size(1050, 231);
             this.data_NCC.TabIndex = 53;
+            this.data_NCC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_NCC_CellClick);
             // 
             // btn_NCC_Lam_Moi
             // 
@@ -1235,26 +1222,31 @@
             this.btn_NCC_Lam_Moi.Size = new System.Drawing.Size(66, 54);
             this.btn_NCC_Lam_Moi.TabIndex = 49;
             this.btn_NCC_Lam_Moi.UseVisualStyleBackColor = true;
+            this.btn_NCC_Lam_Moi.Click += new System.EventHandler(this.btn_NCC_Lam_Moi_Click);
             // 
             // btn_NCC_Xoa
             // 
             this.btn_NCC_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NCC_Xoa.BackgroundImage")));
             this.btn_NCC_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_NCC_Xoa.Enabled = false;
             this.btn_NCC_Xoa.Location = new System.Drawing.Point(650, 30);
             this.btn_NCC_Xoa.Name = "btn_NCC_Xoa";
             this.btn_NCC_Xoa.Size = new System.Drawing.Size(66, 54);
             this.btn_NCC_Xoa.TabIndex = 48;
             this.btn_NCC_Xoa.UseVisualStyleBackColor = true;
+            this.btn_NCC_Xoa.Click += new System.EventHandler(this.btn_NCC_Xoa_Click);
             // 
             // btn_NCC_Sua
             // 
             this.btn_NCC_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NCC_Sua.BackgroundImage")));
             this.btn_NCC_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_NCC_Sua.Enabled = false;
             this.btn_NCC_Sua.Location = new System.Drawing.Point(554, 30);
             this.btn_NCC_Sua.Name = "btn_NCC_Sua";
             this.btn_NCC_Sua.Size = new System.Drawing.Size(66, 54);
             this.btn_NCC_Sua.TabIndex = 47;
             this.btn_NCC_Sua.UseVisualStyleBackColor = true;
+            this.btn_NCC_Sua.Click += new System.EventHandler(this.btn_NCC_Sua_Click);
             // 
             // btn_NCC_Them
             // 
@@ -1599,6 +1591,7 @@
             this.btn_SP_Thoat.Size = new System.Drawing.Size(56, 51);
             this.btn_SP_Thoat.TabIndex = 66;
             this.btn_SP_Thoat.UseVisualStyleBackColor = true;
+            this.btn_SP_Thoat.Click += new System.EventHandler(this.btn_SP_Thoat_Click);
             // 
             // btn_SP_Lam_Moi
             // 
@@ -1714,8 +1707,6 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox txt_KH_Ten_Khach_Hang;
-        private System.Windows.Forms.TextBox txt_KH_Ma_Khach_Hang;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txt_NCC_SDT;
         private System.Windows.Forms.TextBox txt_NCC_Dia_Chi;

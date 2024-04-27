@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GiaoDien_DangNhap
 {
@@ -127,22 +128,17 @@ namespace GiaoDien_DangNhap
             return ds;
         }
 
-        public static SqlCommand Them_Thong_Tin(string sSql_Them)
+        public void Dang_Xuat()
         {
-            SqlConnection myConnection = Ket_Noi();
-            SqlCommand cmd = null;
-            try
+            DialogResult dlg = new DialogResult();
+            dlg = MessageBox.Show("Bạn muốn đăng xuất tài khoản?","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if(dlg == DialogResult.Yes)
             {
-                myConnection.Open();
-                cmd = new SqlCommand(sSql_Them, myConnection);
-                cmd.ExecuteNonQuery();
-                myConnection.Close();
+                this.Hide();
+                frmDangNhap dangNhap = new frmDangNhap();
+                dangNhap.Show();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Loi: " + ex.Message);
-            }
-            return cmd;
+            else { return; }
         }
 
         public void Hien_Thi_Len_HD_CBO_San_Pham()
@@ -256,7 +252,6 @@ namespace GiaoDien_DangNhap
             }
         }
 
-
         public bool Them_Hoa_Don(string maHD, string maSP, int soLuong, double donGia, double thanhTien, string maKH, string maNV, string ngayLap, double khuyenMai)
         {
             bool kq;
@@ -307,7 +302,7 @@ namespace GiaoDien_DangNhap
             bool kq;
             kq = true;
             SqlConnection myConnection = Ket_Noi();
-            //Câu truy vấn thêm vào bảng HOADON
+            //Câu truy vấn thêm vào bảng NHACUNGCAP
             string sSql_NCC;
             sSql_NCC = "INSERT INTO NhaCungCap VALUES (";
             sSql_NCC += "'0',";
@@ -329,6 +324,34 @@ namespace GiaoDien_DangNhap
             {
                 kq = false;
                 MessageBox.Show("Lỗi Nhà Cung Cấp. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+        public bool Sua_Nha_Cung_Cap(string tenNCC, string diaChi, string SDT, string email)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+            string maNCC = data_NCC.CurrentRow.Cells[0].Value.ToString();
+            //Câu truy vấn sửa bảng NHACUNGCAP
+            string sSql_NCC;
+            sSql_NCC = "UPDATE NhaCungCap SET TENNCC = '" + tenNCC + "', DIACHI = N'" + diaChi + "', SDT = '" + SDT + "', EMAIL = '" + email + "' WHERE MANCC = @MANCC";
+
+            try
+            {
+                myConnection.Open();
+                //thực thi câu truy vấn sửa bảng NHACUNGCAP
+                SqlCommand cmd = new SqlCommand(sSql_NCC, myConnection);
+                cmd.Parameters.AddWithValue("@MANCC", maNCC);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi Sửa Nhà Cung Cấp. Chi tiết: " + ex.Message);
             }
             return kq;
         }
@@ -367,7 +390,7 @@ namespace GiaoDien_DangNhap
             return kq;
         }
 
-        public bool Them_Khach_Hang(string maKH, string tenKH, string diaChi, string SDT,string ngayTao, string email)
+        public bool Them_Khach_Hang(string tenKH, string diaChi, string SDT,string ngayTao, string email)
         {
             bool kq;
             kq = true;
@@ -375,7 +398,7 @@ namespace GiaoDien_DangNhap
             //Câu truy vấn thêm vào bảng KHACHHANG
             string sSql_KH;
             sSql_KH = "INSERT INTO KhachHang VALUES (";
-            sSql_KH += "'" + maKH + "',";
+            sSql_KH += "'0',";
             sSql_KH += "N'" + tenKH + "',";
             sSql_KH += "N'" + diaChi + "',";
             sSql_KH += "'" + SDT + "',";
@@ -441,6 +464,30 @@ namespace GiaoDien_DangNhap
             {
                 kq = false;
                 MessageBox.Show("Lỗi Nhân Viên. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+        public bool Xoa_Dong(string ma, string sSql_Xoa, string bien)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+
+            try
+            {
+                myConnection.Open();
+                //thực thi câu truy vấn xóa dòng của NHACUNGCAP
+                SqlCommand cmd = new SqlCommand(sSql_Xoa, myConnection);
+                cmd.Parameters.AddWithValue(bien, ma);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi Sửa. Chi tiết: " + ex.Message);
             }
             return kq;
         }
@@ -720,8 +767,7 @@ namespace GiaoDien_DangNhap
 
         private void btn_KH_Them_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_KH_Ma_Khach_Hang.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_KH_Ten_Khach_Hang.Text.Trim()) ||
+            if (string.IsNullOrEmpty(txt_KH_Ten_Khach_Hang.Text.Trim()) ||
                 string.IsNullOrEmpty(txt_KH_Dia_Chi.Text.Trim()) ||
                 string.IsNullOrEmpty(txt_KH_SDT.Text.Trim()) ||
                 string.IsNullOrEmpty(txt_KH_Email.Text.Trim()))
@@ -731,16 +777,15 @@ namespace GiaoDien_DangNhap
             }
             else
             {
-                string maKH, tenKH, diaChi, SDT, email, ngayTao;
+                string tenKH, diaChi, SDT, email, ngayTao;
 
-                maKH = txt_KH_Ma_Khach_Hang.Text;
                 tenKH = txt_KH_Ten_Khach_Hang.Text;
                 diaChi = txt_KH_Dia_Chi.Text;
                 SDT = txt_KH_SDT.Text;
                 email = txt_KH_Email.Text;
                 ngayTao = dt_KH_Ngay_Tao.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
-                bool kq = Them_Khach_Hang(maKH, tenKH, diaChi, SDT, ngayTao, email);
+                bool kq = Them_Khach_Hang(tenKH, diaChi, SDT, ngayTao, email);
                 if (kq == false)
                 {
                     MessageBox.Show("Thêm Khách Hàng KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -802,6 +847,236 @@ namespace GiaoDien_DangNhap
             tenTK = txt_SP_Tim_Kiem.Text;
             DataSet ds = Tim_Kiem(tenBang, tenCot, tenTK);
             data_SP.DataSource = ds.Tables[0];
+        }
+
+        private void btn_NCC_Sua_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_NCC_Ten_Nha_Cung_Cap.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NCC_Dia_Chi.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NCC_SDT.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_NCC_Email.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string tenNCC, diaChi, SDT, email;
+
+                tenNCC = txt_NCC_Ten_Nha_Cung_Cap.Text;
+                diaChi = txt_NCC_Dia_Chi.Text;
+                SDT = txt_NCC_SDT.Text;
+                email = txt_NCC_Email.Text;
+
+                bool kq = Sua_Nha_Cung_Cap(tenNCC, diaChi, SDT, email);
+                if (kq == false)
+                {
+                    MessageBox.Show("Sửa Nhà Cung Cấp KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Sửa Nhà Cung Cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Nha_Cung_Cap = "SELECT * FROM NhaCungCap";
+                    DataSet ds_Nha_Cung_Cap = Xem_Thong_Tin(sSql_Xem_Nha_Cung_Cap);
+                    data_NCC.DataSource = ds_Nha_Cung_Cap.Tables[0];
+                    Hien_Thi_Len_SP_CBO_Nha_Cung_Cap();
+                    btn_NCC_Lam_Moi_Click(sender, e);
+                    btn_NCC_Sua.Enabled = false;
+                    btn_NCC_Them.Enabled = true;
+                }
+            }
+        }
+
+        private void data_NCC_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string tenNCC, diaChi, SDT, email;
+                tenNCC = data_NCC.CurrentRow.Cells[1].Value.ToString();
+                diaChi = data_NCC.CurrentRow.Cells[2].Value.ToString();
+                SDT = data_NCC.CurrentRow.Cells[3].Value.ToString();
+                email = data_NCC.CurrentRow.Cells[4].Value.ToString();
+
+                txt_NCC_Ten_Nha_Cung_Cap.Text = tenNCC;
+                txt_NCC_Dia_Chi.Text = diaChi;
+                txt_NCC_SDT.Text = SDT;
+                txt_NCC_Email.Text = email;
+
+                btn_NCC_Sua.Enabled = true;
+                btn_NCC_Xoa.Enabled = true;
+                btn_NCC_Them.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        private void btn_NCC_Xoa_Click(object sender, EventArgs e)
+        {
+            string bien = "@MANCC";
+            string maNCC = data_NCC.CurrentRow.Cells[0].Value.ToString();
+            //Câu truy vấn xóa dòng của NHACUNGCAP
+            string sSql_NCC;
+            sSql_NCC = "DELETE NhaCungCap WHERE MANCC = @MANCC";
+            DialogResult dlg = new DialogResult(); 
+            dlg = MessageBox.Show("Bạn có chắc muốn xóa Nhà Cung Cấp này?","Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dlg == DialogResult.Yes)
+            {
+                bool kq = Xoa_Dong(maNCC, sSql_NCC, bien);
+                if (kq == false)
+                {
+                    MessageBox.Show("Xóa Nhà Cung Cấp KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Xóa Nhà Cung Cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Nha_Cung_Cap = "SELECT * FROM NhaCungCap";
+                    DataSet ds_Nha_Cung_Cap = Xem_Thong_Tin(sSql_Xem_Nha_Cung_Cap);
+                    data_NCC.DataSource = ds_Nha_Cung_Cap.Tables[0];
+                    Hien_Thi_Len_SP_CBO_Nha_Cung_Cap();
+                    btn_NCC_Lam_Moi_Click(sender, e);
+                    btn_NCC_Xoa.Enabled = false;
+                    btn_NCC_Them.Enabled = true;
+                }
+            }
+            else { return; }
+        }
+
+        private void btn_NCC_Lam_Moi_Click(object sender, EventArgs e)
+        {
+            txt_NCC_Ten_Nha_Cung_Cap.Text = "";
+            txt_NCC_Dia_Chi.Text = "";
+            txt_NCC_SDT.Text = "";
+            txt_NCC_Email.Text = "";
+        }
+
+        
+        private void data_KH_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string tenKH, diaChi, SDT, email;
+                DateTime ngayTao;
+                tenKH = data_KH.CurrentRow.Cells[1].Value.ToString();
+                diaChi = data_KH.CurrentRow.Cells[2].Value.ToString();
+                SDT = data_KH.CurrentRow.Cells[3].Value.ToString();
+                ngayTao = (DateTime)data_KH.CurrentRow.Cells[4].Value;
+                email = data_KH.CurrentRow.Cells[5].Value.ToString();
+
+                txt_KH_Ten_Khach_Hang.Text = tenKH;
+                txt_KH_Dia_Chi.Text = diaChi;
+                txt_KH_SDT.Text = SDT;
+                dt_KH_Ngay_Tao.Value = ngayTao;
+                txt_KH_Email.Text = email;
+
+                btn_KH_Sua.Enabled = true;
+                btn_KH_Xoa.Enabled = true;
+                btn_KH_Them.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btn_KH_Sua_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_KH_Ten_Khach_Hang.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_KH_Dia_Chi.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_KH_SDT.Text.Trim()) ||
+                string.IsNullOrEmpty(txt_KH_Email.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string tenKH, diaChi, SDT, email, ngayTao;
+
+                tenKH = txt_KH_Ten_Khach_Hang.Text;
+                diaChi = txt_KH_Dia_Chi.Text;
+                SDT = txt_KH_SDT.Text;
+                email = txt_KH_Email.Text;
+                ngayTao = dt_KH_Ngay_Tao.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+                bool kq = Them_Khach_Hang(tenKH, diaChi, SDT, ngayTao, email);
+                if (kq == false)
+                {
+                    MessageBox.Show("Sửa Khách Hàng KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Sửa Khách Hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
+                    DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+                    data_KH.DataSource = ds_Khach_Hang.Tables[0];
+                    Hien_Thi_Len_HD_CBO_Khach_Hang();
+                    btn_KH_Lam_Moi_Click(sender, e);
+                    btn_KH_Sua.Enabled = false;
+                    btn_KH_Them.Enabled = true;
+                }
+            }
+        }
+
+        private void btn_KH_Xoa_Click(object sender, EventArgs e)
+        {
+            string bien = "@MAKH";
+            string maKH = data_KH.CurrentRow.Cells[0].Value.ToString();
+            //Câu truy vấn xóa dòng của KHACHHANG
+            string sSql_KH;
+            sSql_KH = "DELETE KhachHang WHERE MAKH = @MAKH";
+            DialogResult dlg = new DialogResult();
+            dlg = MessageBox.Show("Bạn có chắc muốn xóa Khách Hàng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == DialogResult.Yes)
+            {
+                bool kq = Xoa_Dong(maKH, sSql_KH, bien);
+                if (kq == false)
+                {
+                    MessageBox.Show("Xóa Khách Hàng KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Xóa Khách Hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
+                    DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+                    data_KH.DataSource = ds_Khach_Hang.Tables[0];
+                    Hien_Thi_Len_HD_CBO_Khach_Hang();
+                    btn_KH_Lam_Moi_Click(sender, e);
+                    btn_KH_Xoa.Enabled = false;
+                    btn_KH_Them.Enabled = true;
+                }
+            }
+            else { return; }
+        }
+
+        private void btn_KH_Lam_Moi_Click(object sender, EventArgs e)
+        {
+            txt_KH_Ten_Khach_Hang.Text = "";
+            txt_KH_Dia_Chi.Text = "";
+            txt_KH_SDT.Text = "";
+            dt_KH_Ngay_Tao.Value = DateTime.Now;
+            txt_KH_Email.Text = "";
+        }
+
+        private void btn_NV_Thoat_Click(object sender, EventArgs e)
+        {
+            Dang_Xuat();
+        }
+
+        private void btn_KH_Thoat_Click(object sender, EventArgs e)
+        {
+            Dang_Xuat();
+        }
+
+        private void btn_NCC_Thoat_Click(object sender, EventArgs e)
+        {
+            Dang_Xuat();
+        }
+
+        private void btn_SP_Thoat_Click(object sender, EventArgs e)
+        {
+            Dang_Xuat();
         }
     }
 }

@@ -18,60 +18,25 @@ namespace GiaoDien_DangNhap
             InitializeComponent();
         }
 
-        String Connect = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=true";
-        SqlConnection conn;
-        SqlDataAdapter adt;
-        DataTable tb;
-      
-        private SqlDataAdapter query(String Que)
+        public static string Connect = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=true";
+        public static SqlConnection Ket_Noi()
         {
-            conn = new SqlConnection(Connect);
-            try
-            {
-                conn.Open();
-                adt = new SqlDataAdapter(Que, conn);
-                tb = new DataTable();
-                adt.Fill(tb);
-                data_banHang.DataSource = tb;
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return adt;
+            SqlConnection myConnection = new SqlConnection(Connect);
+            return myConnection;
         }
-        private SqlDataAdapter que(String Que)
-        {
-            conn = new SqlConnection(Connect);
-            try
-            {
-                conn.Open();
-                adt = new SqlDataAdapter(Que, conn);
-                tb = new DataTable();
-                adt.Fill(tb);
-                dataGridView2.DataSource = tb;
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return adt;
-        }
+
         public static DataSet Xem_Thong_Tin(string sSql_Xem)
         {
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+
+            SqlConnection myConnection = Ket_Noi();
             DataSet ds = null;
             try
             {
-                mySqlConnection.Open();
-                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Xem, mySqlConnection);
+                myConnection.Open();
+                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Xem, myConnection);
                 ds = new DataSet();
                 dsHien.Fill(ds);
-                mySqlConnection.Close();
+                myConnection.Close();
             }
             catch (Exception ex)
             {
@@ -79,37 +44,27 @@ namespace GiaoDien_DangNhap
             }
             return ds;
         }
-        private void btn_BH_search_Click(object sender, EventArgs e)
-        {
-            query("SELECT*FROM SANPHAM WHERE " + "masp="+txt_BH_maHD.Text);
-        }
-
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             //TAB Bán hàng
-            string sSql_Xem_Hoa_Don = "select ct.MASP,sp.TENSP,ct.SOLUONG,ct.DONGIA,ct.TONGTIEN,ct.KHUYENMAI\r\nfrom HOADON hd ,SANPHAM sp,CT_HOADON ct\r\nwhere hd.MAHD=ct.MAHD and sp.MASP=ct.MASP";
-            DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
-            data_banHang.DataSource = ds_Hoa_Don.Tables[0];
+            //string sSql_Xem_Hoa_Don = "select*from hoadon";
+            //DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
+            //data_banHang_HD.DataSource = ds_Hoa_Don.Tables[0];
             Hien_Thi_Len_HD_CBO_San_Pham();
             Hien_Thi_Len_HD_CBO_Nhan_Vien();
             Hien_Thi_Len_HD_CBO_Khach_Hang();
             Hien_Don_Gia();
-            que("select*from khachhang");
+            //TAB KHÁCH HÀNG
+            string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
+            DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+            data_khachHang.DataSource = ds_Khach_Hang.Tables[0];
         }
 
-        private void txt_maSP_TextChanged(object sender, EventArgs e)
-        {
-            string masp=txt_BH_maHD.Text;
-            query("select*from sanpham where masp=" + masp);
-
-        }
         public bool themHoaDon(string maHD, string maNV, string maKH, string ngayLapHD,int tienNhan,int tienTra,int thanhTien)
         {
             bool kq;
             kq = true;
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+            SqlConnection myConnection = Ket_Noi();
             string sSql = "";
             sSql = "insert into hoadon ";
             sSql += "values('" + maHD + "',";
@@ -123,11 +78,11 @@ namespace GiaoDien_DangNhap
 
             try
             {
-                mySqlConnection.Open();
+                myConnection.Open();
 
-                SqlCommand cmd = new SqlCommand(sSql, mySqlConnection);
+                SqlCommand cmd = new SqlCommand(sSql, myConnection);
                 cmd.ExecuteNonQuery();
-                mySqlConnection.Close();
+                myConnection.Close();
             }
             catch (Exception err)
             {
@@ -140,17 +95,15 @@ namespace GiaoDien_DangNhap
 
         public void Hien_Thi_Len_HD_CBO_San_Pham()
         {
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+            SqlConnection myConnection = Ket_Noi();
             string sSql_Hien = "SELECT MaSP, TenSP FROM SanPham";
             try
             {
-                mySqlConnection.Open();
-                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, mySqlConnection);
+                myConnection.Open();
+                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
                 DataSet ds = new DataSet();
                 dsHien.Fill(ds);
-                mySqlConnection.Close();
+                myConnection.Close();
 
                 cbo_BH_sanPham.DataSource = ds.Tables[0];
                 cbo_BH_sanPham.DisplayMember = "TenSP";
@@ -161,19 +114,18 @@ namespace GiaoDien_DangNhap
                 MessageBox.Show("Loi: 1 " + ex.Message);
             }
         }
+ 
         public void Hien_Thi_Len_HD_CBO_Khach_Hang()
         {
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+            SqlConnection myConnection = Ket_Noi();
             string sSql_Hien = "SELECT makh, Tenkh FROM khachhang";
             try
             {
-                mySqlConnection.Open();
-                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, mySqlConnection);
+                myConnection.Open();
+                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
                 DataSet ds = new DataSet();
                 dsHien.Fill(ds);
-                mySqlConnection.Close();
+                myConnection.Close();
 
                 cbo_BH_KH.DataSource = ds.Tables[0];
                 cbo_BH_KH.DisplayMember = "TenKH";
@@ -186,17 +138,15 @@ namespace GiaoDien_DangNhap
         }
         public void Hien_Thi_Len_HD_CBO_Nhan_Vien()
         {
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+            SqlConnection myConnection = Ket_Noi();
             string sSql_Hien = "SELECT manv, Tennv FROM nhanvien";
             try
             {
-                mySqlConnection.Open();
-                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, mySqlConnection);
+                myConnection.Open();
+                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
                 DataSet ds = new DataSet();
                 dsHien.Fill(ds);
-                mySqlConnection.Close();
+                myConnection.Close();
 
                 cbo_BH_NV.DataSource = ds.Tables[0];
                 cbo_BH_NV.DisplayMember = "TenNV";
@@ -212,19 +162,19 @@ namespace GiaoDien_DangNhap
             string maSP = cbo_BH_sanPham.SelectedValue.ToString();
             double giaBan = 0;
 
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+            SqlConnection myConnection = Ket_Noi();
+
             string sSql_Gia_Ban = "SELECT GiaBan FROM SanPham WHERE MASP = @MaSP";
             try
             {
-                mySqlConnection.Open();
+                myConnection.Open();
 
-                SqlCommand cmd = new SqlCommand(sSql_Gia_Ban, mySqlConnection);
+                SqlCommand cmd = new SqlCommand(sSql_Gia_Ban, myConnection);
                 cmd.Parameters.AddWithValue("@MaSP", maSP);
 
                 giaBan = Convert.ToDouble(cmd.ExecuteScalar());
                 txt_BH_donGia.Text = giaBan.ToString();
+                myConnection.Close();
             }
             catch (Exception ex)
             {
@@ -235,9 +185,7 @@ namespace GiaoDien_DangNhap
         {
             bool kq;
             kq = true;
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+            SqlConnection myConnection = Ket_Noi();
             //Câu truy vấn thêm vào bảng HOADON
             string sSql_HD;
             sSql_HD = "INSERT INTO HoaDon VALUES (";
@@ -259,16 +207,16 @@ namespace GiaoDien_DangNhap
 
             try
             {
-                mySqlConnection.Open();
+                myConnection.Open();
                 //thực thi câu truy vấn thêm vào bảng HOADON
-                SqlCommand cmd = new SqlCommand(sSql_HD, mySqlConnection);
+                SqlCommand cmd = new SqlCommand(sSql_HD, myConnection);
                 cmd.ExecuteNonQuery();
 
                 //thực thi câu truy vấn thêm vào bảng HOADON
-                cmd = new SqlCommand(sSql_CTHD, mySqlConnection);
+                cmd = new SqlCommand(sSql_CTHD, myConnection);
                 cmd.ExecuteNonQuery();
 
-                mySqlConnection.Close();
+                myConnection.Close();
             }
             catch (Exception ex)
             {
@@ -311,14 +259,51 @@ namespace GiaoDien_DangNhap
                 if (kq == false)
                 {
                     MessageBox.Show("Thêm KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                   
                 }
                 else
                 {
                     MessageBox.Show("Đã thêm Hóa Đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    string sSql_Xem_Hoa_Don = "select ct.MASP,sp.TENSP,ct.SOLUONG,ct.DONGIA,ct.TONGTIEN,ct.KHUYENMAI\r\nfrom HOADON hd ,SANPHAM sp,CT_HOADON ct\r\nwhere hd.MAHD=ct.MAHD and sp.MASP=ct.MASP";
-                    DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
-                    data_banHang.DataSource = ds_Hoa_Don.Tables[0];
+                    foreach (DataGridViewRow row in data_banHang_CTHD.Rows)
+                    {
+                        object cotmoi = row.Cells[0].Value;
+                    }
+                    // Hiển thị sản phẩm vừa thêm vào bảng data_banhang_hd
+                    string sSql_Xem_Hoa_Don = "SELECT * FROM HOADON WHERE MaHD=@MaHD";
+                    SqlCommand cmd = new SqlCommand(sSql_Xem_Hoa_Don, Ket_Noi());
+                    cmd.Parameters.AddWithValue("@MaHD", maHD);
+                    SqlDataAdapter dsHien = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    try
+                    {
+                        dsHien.Fill(ds);
+                        data_banHang_HD.DataSource = ds.Tables[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi: " + ex.Message);
+                    }
+
+                    // Hiển thị sản phẩm vừa thêm vào bảng data_banhang_cthd
+                    string sSql_Xem_CT_Hoa_Don = "SELECT * FROM CT_HOADON WHERE MaHD=@MaHD";
+                    SqlCommand com = new SqlCommand(sSql_Xem_CT_Hoa_Don, Ket_Noi());
+                    com.Parameters.AddWithValue("@MaHD", maHD);
+                    SqlDataAdapter ds_ct = new SqlDataAdapter(com);
+                    DataSet ds_cthd = new DataSet();
+                    try
+                    {
+                        ds_ct.Fill(ds_cthd);
+                        data_banHang_CTHD.DataSource = ds_cthd.Tables[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi: " + ex.Message);
+                    }
                 }
+
+              
+
             }
 
         }
@@ -337,16 +322,15 @@ namespace GiaoDien_DangNhap
             }
             double khuyenMai = double.Parse(txt_BH_khuyenMai.Text);
             // Kết nối đến cơ sở dữ liệu
-            string conn;
-            conn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection mySqlConnection = new SqlConnection(conn);
+            SqlConnection myConnection = Ket_Noi();
+
             string sSql_Gia_Ban = "SELECT GiaBan FROM SanPham WHERE MASP = @MaSP";
             {
                 try
                 {
-                    mySqlConnection.Open();
+                    myConnection.Open();
 
-                    SqlCommand cmd = new SqlCommand(sSql_Gia_Ban, mySqlConnection);
+                    SqlCommand cmd = new SqlCommand(sSql_Gia_Ban, myConnection);
                     cmd.Parameters.AddWithValue("@MaSP", maSP);
 
                     giaBan = Convert.ToDouble(cmd.ExecuteScalar());
@@ -354,6 +338,7 @@ namespace GiaoDien_DangNhap
                     // Tính thành tiền
                     double thanhTien = (soLuong * giaBan) - (soLuong * giaBan) * khuyenMai;
                     txt_BH_thanhTien.Text = thanhTien.ToString();
+                    myConnection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -363,23 +348,29 @@ namespace GiaoDien_DangNhap
             btn_BH_add.Enabled = true;
         }
 
-        private void data_banHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void data_banHang_HD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
             try
             {
-                string soLuong, donGia, ngayLapHD,khuyenMai;
+                txt_BH_maHD.Enabled = false;
+                string soLuong, ngayLapHD,khuyenMai,mahd,dongia,thanhTien;
+                string masp;
                 //Lay du lieu dataridview
-                soLuong = data_banHang.CurrentRow.Cells[2].Value.ToString();
-                donGia = data_banHang.CurrentRow.Cells[3].Value.ToString();
-                khuyenMai = data_banHang.CurrentRow.Cells[5].Value.ToString();
+                mahd = data_banHang_CTHD.CurrentRow.Cells[0].Value.ToString();
+                soLuong = data_banHang_CTHD.CurrentRow.Cells[2].Value.ToString();
+                khuyenMai = data_banHang_CTHD.CurrentRow.Cells[4].Value.ToString();
+                dongia = data_banHang_CTHD.CurrentRow.Cells[3].Value.ToString();
+                ngayLapHD = data_banHang_HD.CurrentRow.Cells[3].Value.ToString();
+                thanhTien = data_banHang_CTHD.CurrentRow.Cells[5].Value.ToString();
+
                 //điền dữ liềuj datagridview vào textbox
-
-
+                txt_BH_maHD.Text = mahd;
                 nbr_BH_soLuong.Text = soLuong;
-                txt_BH_donGia.Text = donGia;
                 txt_BH_khuyenMai.Text = khuyenMai;
-
+                txt_BH_donGia.Text = dongia;
+                dt_BH_ngayLapHD.Text = ngayLapHD;
+                txt_BH_thanhTien.Text = thanhTien;
             }
             catch (Exception err)
             {
@@ -387,19 +378,18 @@ namespace GiaoDien_DangNhap
 
             }
         }
-        public bool CapNhatBanHang( string soLuong, string donGia, string khuyenMai)
+        public bool CapNhatBanHang( string soLuong, string thanhtien, string khuyenMai,string mahd)
         {
             bool kq;
             kq = true;
-            string sconn;
-            sconn = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=True";
-            SqlConnection myConnection = new SqlConnection(sconn);
+            SqlConnection myConnection = Ket_Noi();
             string sSql = "";
-            sSql = "UPDATE NhaSanXuat";
+            sSql = "UPDATE CT_HOADON";
             sSql += " SET ";
             sSql += "soluong='" + soLuong + "',";
-            sSql += "dongia='" + donGia + "',";
-            sSql += "khuyenMai='" + khuyenMai + "' ";
+            sSql += "khuyenMai='" + khuyenMai + "', ";
+            sSql += "ThanhTien='" + thanhtien + "'";
+            sSql += "where mahd='" + mahd + "'";
             try
             {
                 myConnection.Open();
@@ -419,23 +409,133 @@ namespace GiaoDien_DangNhap
 
         }
 
-        private void btn_BH_update_Click(object sender, EventArgs e)
+        private void btn_BH_update_Click_1(object sender, EventArgs e)
         {
-            string soLuong, donGia, ngayLapHD, khuyenMai;
+            string soLuong, thanhtien, ngayLapHD, khuyenMai,mahd;
+            mahd=txt_BH_maHD.Text;
             soLuong = nbr_BH_soLuong.Text;
-            donGia = txt_BH_donGia.Text;
+            thanhtien = txt_BH_thanhTien.Text;
             khuyenMai = txt_BH_khuyenMai.Text;
-            bool kq = CapNhatBanHang(soLuong, donGia, khuyenMai);
+            bool kq = CapNhatBanHang(soLuong, thanhtien, khuyenMai,mahd);
             if (kq == true)
             {
 
                 MessageBox.Show("Cập nhật  thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Hien_Don_Gia();
+                string sSql_Xem_CT_Hoa_Don = "select*from CT_hoadon";
+                DataSet ds_CT_Hoa_Don = Xem_Thong_Tin(sSql_Xem_CT_Hoa_Don);
+                data_banHang_CTHD.DataSource = ds_CT_Hoa_Don.Tables[0];
+
             }
             else
             {
                 MessageBox.Show("Cập nhật thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        public bool Them_Khach_Hang(string tenKH, string diaChi, string SDT, string ngayTao, string email)
+        {
+            bool kq;
+            kq = true;
+            SqlConnection myConnection = Ket_Noi();
+            //Câu truy vấn thêm vào bảng KHACHHANG
+            string sSql_KH;
+            sSql_KH = "INSERT INTO KhachHang VALUES (";
+            sSql_KH += "'0',";
+            sSql_KH += "N'" + tenKH + "',";
+            sSql_KH += "N'" + diaChi + "',";
+            sSql_KH += "'" + SDT + "',";
+            sSql_KH += "'" + ngayTao + "',";
+            sSql_KH += "'" + email + "')";
+
+            try
+            {
+                myConnection.Open();
+                //thực thi câu truy vấn thêm vào bảng KHACHHANG
+                SqlCommand cmd = new SqlCommand(sSql_KH, myConnection);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+                MessageBox.Show("Lỗi Khách Hàng. Chi tiết: " + ex.Message);
+            }
+            return kq;
+        }
+
+        private void btn_KH_themKH_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_KH_tenKH.Text.Trim()) ||
+               string.IsNullOrEmpty(txt_KH_diaChi.Text.Trim()) ||
+               string.IsNullOrEmpty(txt_KH_sdt.Text.Trim()) ||
+               string.IsNullOrEmpty(txt_KH_email.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string tenKH, diaChi, SDT, email, ngayTao;
+
+                tenKH = txt_KH_tenKH.Text;
+                diaChi = txt_KH_diaChi.Text;
+                SDT = txt_KH_sdt.Text;
+                email = txt_KH_email.Text;
+                ngayTao = dt_BH_ngayLapHD.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+                bool kq = Them_Khach_Hang(tenKH, diaChi, SDT, ngayTao, email);
+                if (kq == false)
+                {
+                    MessageBox.Show("Thêm Khách Hàng KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Đã thêm Khách Hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
+                    DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+                    data_khachHang.DataSource = ds_Khach_Hang.Tables[0];
+                    Hien_Thi_Len_HD_CBO_Khach_Hang();
+                }
+            }
+        }
+
+        private void lab_BH_NV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_BH_xem_tat_ca_hd_Click(object sender, EventArgs e)
+        {
+            string sSql_Xem_Hoa_Don = "select*from hoadon";
+            DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
+            data_banHang_HD.DataSource = ds_Hoa_Don.Tables[0];
+            string sSql_Xem_CT_Hoa_Don = "select*from CT_hoadon";
+            DataSet ds_CT_Hoa_Don = Xem_Thong_Tin(sSql_Xem_CT_Hoa_Don);
+            data_banHang_CTHD.DataSource = ds_CT_Hoa_Don.Tables[0];
+        }
+
+        private void btn_them_moi_Click(object sender, EventArgs e)
+        {
+            txt_BH_maHD.Enabled = false;
+
+        }
+        public void Dang_Xuat()
+        {
+            DialogResult dlg = new DialogResult();
+            dlg = MessageBox.Show("Bạn muốn đăng xuất tài khoản?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == DialogResult.Yes)
+            {
+                this.Hide();
+                frmDangNhap dangNhap = new frmDangNhap();
+                dangNhap.Show();
+            }
+            else { return; }
+        }
+
+        private void btn_BH_dang_xuat_Click(object sender, EventArgs e)
+        {
+            Dang_Xuat();
         }
     }
 }

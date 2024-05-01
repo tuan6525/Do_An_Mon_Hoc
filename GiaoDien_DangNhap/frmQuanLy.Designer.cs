@@ -110,8 +110,10 @@
             this.lab_HD_San_Pham = new System.Windows.Forms.Label();
             this.lab_HD_So_Luong = new System.Windows.Forms.Label();
             this.grb_HD_Chuc_Nang = new System.Windows.Forms.GroupBox();
+            this.btn_HD_Xem_DS_Hoa_Don = new System.Windows.Forms.Button();
+            this.btn_HD_Ghi = new System.Windows.Forms.Button();
             this.btn_HD_Sua = new System.Windows.Forms.Button();
-            this.btn_HD_Them = new System.Windows.Forms.Button();
+            this.btn_HD_Luu = new System.Windows.Forms.Button();
             this.btn_HD_Thong_Ke = new System.Windows.Forms.Button();
             this.btn_HD_Xoa = new System.Windows.Forms.Button();
             this.btn_HD_Tinh_Tien = new System.Windows.Forms.Button();
@@ -231,7 +233,7 @@
             // 
             // txt_NV_Email
             // 
-            this.txt_NV_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NV_Email.Location = new System.Drawing.Point(812, 195);
             this.txt_NV_Email.Name = "txt_NV_Email";
             this.txt_NV_Email.Size = new System.Drawing.Size(213, 27);
@@ -308,7 +310,7 @@
             // 
             // data_NV
             // 
-            this.data_NV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.data_NV.AllowUserToAddRows = false;
             this.data_NV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_NV.Location = new System.Drawing.Point(3, 272);
             this.data_NV.Name = "data_NV";
@@ -318,6 +320,7 @@
             this.data_NV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_NV.Size = new System.Drawing.Size(1050, 224);
             this.data_NV.TabIndex = 28;
+            this.data_NV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_NV_CellClick);
             // 
             // btn_NV_Thoat
             // 
@@ -339,26 +342,31 @@
             this.btn_NV_Lam_Moi.Size = new System.Drawing.Size(66, 54);
             this.btn_NV_Lam_Moi.TabIndex = 24;
             this.btn_NV_Lam_Moi.UseVisualStyleBackColor = true;
+            this.btn_NV_Lam_Moi.Click += new System.EventHandler(this.btn_NV_Lam_Moi_Click);
             // 
             // btn_NV_Xoa
             // 
             this.btn_NV_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NV_Xoa.BackgroundImage")));
             this.btn_NV_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_NV_Xoa.Enabled = false;
             this.btn_NV_Xoa.Location = new System.Drawing.Point(582, 27);
             this.btn_NV_Xoa.Name = "btn_NV_Xoa";
             this.btn_NV_Xoa.Size = new System.Drawing.Size(66, 54);
             this.btn_NV_Xoa.TabIndex = 23;
             this.btn_NV_Xoa.UseVisualStyleBackColor = true;
+            this.btn_NV_Xoa.Click += new System.EventHandler(this.btn_NV_Xoa_Click);
             // 
             // btn_NV_Sua
             // 
             this.btn_NV_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NV_Sua.BackgroundImage")));
             this.btn_NV_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_NV_Sua.Enabled = false;
             this.btn_NV_Sua.Location = new System.Drawing.Point(484, 27);
             this.btn_NV_Sua.Name = "btn_NV_Sua";
             this.btn_NV_Sua.Size = new System.Drawing.Size(66, 54);
             this.btn_NV_Sua.TabIndex = 22;
             this.btn_NV_Sua.UseVisualStyleBackColor = true;
+            this.btn_NV_Sua.Click += new System.EventHandler(this.btn_NV_Sua_Click);
             // 
             // btn_NV_Them
             // 
@@ -384,7 +392,7 @@
             // 
             // txt_NV_Tim_Kiem
             // 
-            this.txt_NV_Tim_Kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_Tim_Kiem.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NV_Tim_Kiem.Location = new System.Drawing.Point(754, 239);
             this.txt_NV_Tim_Kiem.Name = "txt_NV_Tim_Kiem";
             this.txt_NV_Tim_Kiem.Size = new System.Drawing.Size(271, 27);
@@ -415,7 +423,7 @@
             // 
             // txt_NV_Password
             // 
-            this.txt_NV_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_Password.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NV_Password.Location = new System.Drawing.Point(812, 148);
             this.txt_NV_Password.Name = "txt_NV_Password";
             this.txt_NV_Password.Size = new System.Drawing.Size(213, 27);
@@ -423,7 +431,7 @@
             // 
             // txt_NV_User_Name
             // 
-            this.txt_NV_User_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_User_Name.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NV_User_Name.Location = new System.Drawing.Point(812, 103);
             this.txt_NV_User_Name.Name = "txt_NV_User_Name";
             this.txt_NV_User_Name.Size = new System.Drawing.Size(213, 27);
@@ -453,7 +461,7 @@
             // 
             // txt_NV_Luong
             // 
-            this.txt_NV_Luong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NV_Luong.Location = new System.Drawing.Point(465, 200);
             this.txt_NV_Luong.Name = "txt_NV_Luong";
             this.txt_NV_Luong.Size = new System.Drawing.Size(224, 27);
@@ -461,7 +469,7 @@
             // 
             // txt_NV_SDT
             // 
-            this.txt_NV_SDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_SDT.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NV_SDT.Location = new System.Drawing.Point(465, 153);
             this.txt_NV_SDT.Name = "txt_NV_SDT";
             this.txt_NV_SDT.Size = new System.Drawing.Size(224, 27);
@@ -491,7 +499,7 @@
             // 
             // txt_NV_Ten_Nhan_Vien
             // 
-            this.txt_NV_Ten_Nhan_Vien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NV_Ten_Nhan_Vien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NV_Ten_Nhan_Vien.Location = new System.Drawing.Point(173, 117);
             this.txt_NV_Ten_Nhan_Vien.Name = "txt_NV_Ten_Nhan_Vien";
             this.txt_NV_Ten_Nhan_Vien.Size = new System.Drawing.Size(194, 27);
@@ -551,7 +559,7 @@
             // 
             // txt_KH_Email
             // 
-            this.txt_KH_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_KH_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KH_Email.Location = new System.Drawing.Point(769, 133);
             this.txt_KH_Email.Name = "txt_KH_Email";
             this.txt_KH_Email.Size = new System.Drawing.Size(252, 27);
@@ -570,6 +578,7 @@
             // 
             // data_KH
             // 
+            this.data_KH.AllowUserToAddRows = false;
             this.data_KH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_KH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_KH.Location = new System.Drawing.Point(3, 270);
@@ -651,7 +660,7 @@
             // 
             // txt_KH_Tim_Kiem
             // 
-            this.txt_KH_Tim_Kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_KH_Tim_Kiem.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KH_Tim_Kiem.Location = new System.Drawing.Point(769, 236);
             this.txt_KH_Tim_Kiem.Name = "txt_KH_Tim_Kiem";
             this.txt_KH_Tim_Kiem.Size = new System.Drawing.Size(264, 27);
@@ -693,7 +702,7 @@
             // 
             // txt_KH_SDT
             // 
-            this.txt_KH_SDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_KH_SDT.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KH_SDT.Location = new System.Drawing.Point(459, 132);
             this.txt_KH_SDT.Name = "txt_KH_SDT";
             this.txt_KH_SDT.Size = new System.Drawing.Size(203, 27);
@@ -701,7 +710,7 @@
             // 
             // txt_KH_Dia_Chi
             // 
-            this.txt_KH_Dia_Chi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_KH_Dia_Chi.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KH_Dia_Chi.Location = new System.Drawing.Point(177, 179);
             this.txt_KH_Dia_Chi.Name = "txt_KH_Dia_Chi";
             this.txt_KH_Dia_Chi.Size = new System.Drawing.Size(203, 27);
@@ -731,7 +740,7 @@
             // 
             // txt_KH_Ten_Khach_Hang
             // 
-            this.txt_KH_Ten_Khach_Hang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_KH_Ten_Khach_Hang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KH_Ten_Khach_Hang.Location = new System.Drawing.Point(177, 133);
             this.txt_KH_Ten_Khach_Hang.Name = "txt_KH_Ten_Khach_Hang";
             this.txt_KH_Ten_Khach_Hang.Size = new System.Drawing.Size(203, 27);
@@ -766,6 +775,7 @@
             // 
             // data_HD
             // 
+            this.data_HD.AllowUserToAddRows = false;
             this.data_HD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_HD.Location = new System.Drawing.Point(3, 289);
             this.data_HD.Name = "data_HD";
@@ -775,6 +785,7 @@
             this.data_HD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_HD.Size = new System.Drawing.Size(1050, 210);
             this.data_HD.TabIndex = 62;
+            this.data_HD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_HD_CellClick);
             // 
             // txt_HD_Tim_Kiem
             // 
@@ -840,7 +851,7 @@
             // 
             // txt_HD_Khuyen_Mai
             // 
-            this.txt_HD_Khuyen_Mai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_HD_Khuyen_Mai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HD_Khuyen_Mai.Location = new System.Drawing.Point(503, 175);
             this.txt_HD_Khuyen_Mai.Name = "txt_HD_Khuyen_Mai";
             this.txt_HD_Khuyen_Mai.Size = new System.Drawing.Size(104, 27);
@@ -860,7 +871,7 @@
             // txt_HD_Don_Gia
             // 
             this.txt_HD_Don_Gia.Enabled = false;
-            this.txt_HD_Don_Gia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_HD_Don_Gia.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HD_Don_Gia.Location = new System.Drawing.Point(126, 145);
             this.txt_HD_Don_Gia.Name = "txt_HD_Don_Gia";
             this.txt_HD_Don_Gia.Size = new System.Drawing.Size(198, 27);
@@ -879,7 +890,8 @@
             // 
             // txt_HD_Ma_Hoa_Don
             // 
-            this.txt_HD_Ma_Hoa_Don.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_HD_Ma_Hoa_Don.Enabled = false;
+            this.txt_HD_Ma_Hoa_Don.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HD_Ma_Hoa_Don.Location = new System.Drawing.Point(126, 26);
             this.txt_HD_Ma_Hoa_Don.Name = "txt_HD_Ma_Hoa_Don";
             this.txt_HD_Ma_Hoa_Don.Size = new System.Drawing.Size(141, 27);
@@ -919,7 +931,7 @@
             // 
             // cbo_HD_Nhan_Vien
             // 
-            this.cbo_HD_Nhan_Vien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_HD_Nhan_Vien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_HD_Nhan_Vien.FormattingEnabled = true;
             this.cbo_HD_Nhan_Vien.Location = new System.Drawing.Point(503, 79);
             this.cbo_HD_Nhan_Vien.Name = "cbo_HD_Nhan_Vien";
@@ -939,7 +951,7 @@
             // 
             // cbo_HD_Khach_Hang
             // 
-            this.cbo_HD_Khach_Hang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_HD_Khach_Hang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_HD_Khach_Hang.FormattingEnabled = true;
             this.cbo_HD_Khach_Hang.ItemHeight = 19;
             this.cbo_HD_Khach_Hang.Location = new System.Drawing.Point(503, 30);
@@ -960,7 +972,7 @@
             // 
             // cbo_HD_San_Pham
             // 
-            this.cbo_HD_San_Pham.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_HD_San_Pham.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_HD_San_Pham.FormattingEnabled = true;
             this.cbo_HD_San_Pham.Location = new System.Drawing.Point(126, 66);
             this.cbo_HD_San_Pham.Name = "cbo_HD_San_Pham";
@@ -971,7 +983,7 @@
             // txt_HD_Thanh_Tien
             // 
             this.txt_HD_Thanh_Tien.Enabled = false;
-            this.txt_HD_Thanh_Tien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_HD_Thanh_Tien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HD_Thanh_Tien.Location = new System.Drawing.Point(126, 186);
             this.txt_HD_Thanh_Tien.Name = "txt_HD_Thanh_Tien";
             this.txt_HD_Thanh_Tien.Size = new System.Drawing.Size(198, 27);
@@ -1072,8 +1084,10 @@
             // 
             // grb_HD_Chuc_Nang
             // 
+            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Xem_DS_Hoa_Don);
+            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Ghi);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Sua);
-            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Them);
+            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Luu);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Thong_Ke);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Xoa);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Tinh_Tien);
@@ -1086,34 +1100,58 @@
             this.grb_HD_Chuc_Nang.TabStop = false;
             this.grb_HD_Chuc_Nang.Text = "Chức năng";
             // 
+            // btn_HD_Xem_DS_Hoa_Don
+            // 
+            this.btn_HD_Xem_DS_Hoa_Don.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Xem_DS_Hoa_Don.BackgroundImage")));
+            this.btn_HD_Xem_DS_Hoa_Don.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_HD_Xem_DS_Hoa_Don.Location = new System.Drawing.Point(208, 86);
+            this.btn_HD_Xem_DS_Hoa_Don.Name = "btn_HD_Xem_DS_Hoa_Don";
+            this.btn_HD_Xem_DS_Hoa_Don.Size = new System.Drawing.Size(66, 55);
+            this.btn_HD_Xem_DS_Hoa_Don.TabIndex = 60;
+            this.btn_HD_Xem_DS_Hoa_Don.UseVisualStyleBackColor = true;
+            this.btn_HD_Xem_DS_Hoa_Don.Click += new System.EventHandler(this.btn_HD_Xem_DS_Hoa_Don_Click);
+            // 
+            // btn_HD_Ghi
+            // 
+            this.btn_HD_Ghi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Ghi.BackgroundImage")));
+            this.btn_HD_Ghi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_HD_Ghi.Enabled = false;
+            this.btn_HD_Ghi.Location = new System.Drawing.Point(20, 152);
+            this.btn_HD_Ghi.Name = "btn_HD_Ghi";
+            this.btn_HD_Ghi.Size = new System.Drawing.Size(66, 57);
+            this.btn_HD_Ghi.TabIndex = 61;
+            this.btn_HD_Ghi.UseVisualStyleBackColor = true;
+            this.btn_HD_Ghi.Click += new System.EventHandler(this.btn_HD_Ghi_Click);
+            // 
             // btn_HD_Sua
             // 
             this.btn_HD_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Sua.BackgroundImage")));
             this.btn_HD_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_HD_Sua.Enabled = false;
-            this.btn_HD_Sua.Location = new System.Drawing.Point(39, 150);
+            this.btn_HD_Sua.Location = new System.Drawing.Point(116, 151);
             this.btn_HD_Sua.Name = "btn_HD_Sua";
             this.btn_HD_Sua.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Sua.TabIndex = 58;
             this.btn_HD_Sua.UseVisualStyleBackColor = true;
+            this.btn_HD_Sua.Click += new System.EventHandler(this.btn_HD_Sua_Click);
             // 
-            // btn_HD_Them
+            // btn_HD_Luu
             // 
-            this.btn_HD_Them.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Them.BackgroundImage")));
-            this.btn_HD_Them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Them.Enabled = false;
-            this.btn_HD_Them.Location = new System.Drawing.Point(39, 82);
-            this.btn_HD_Them.Name = "btn_HD_Them";
-            this.btn_HD_Them.Size = new System.Drawing.Size(66, 59);
-            this.btn_HD_Them.TabIndex = 56;
-            this.btn_HD_Them.UseVisualStyleBackColor = true;
-            this.btn_HD_Them.Click += new System.EventHandler(this.btn_HD_Them_Click);
+            this.btn_HD_Luu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Luu.BackgroundImage")));
+            this.btn_HD_Luu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_HD_Luu.Enabled = false;
+            this.btn_HD_Luu.Location = new System.Drawing.Point(20, 84);
+            this.btn_HD_Luu.Name = "btn_HD_Luu";
+            this.btn_HD_Luu.Size = new System.Drawing.Size(66, 59);
+            this.btn_HD_Luu.TabIndex = 56;
+            this.btn_HD_Luu.UseVisualStyleBackColor = true;
+            this.btn_HD_Luu.Click += new System.EventHandler(this.btn_HD_Luu_Click);
             // 
             // btn_HD_Thong_Ke
             // 
             this.btn_HD_Thong_Ke.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Thong_Ke.BackgroundImage")));
             this.btn_HD_Thong_Ke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Thong_Ke.Location = new System.Drawing.Point(187, 86);
+            this.btn_HD_Thong_Ke.Location = new System.Drawing.Point(116, 86);
             this.btn_HD_Thong_Ke.Name = "btn_HD_Thong_Ke";
             this.btn_HD_Thong_Ke.Size = new System.Drawing.Size(66, 55);
             this.btn_HD_Thong_Ke.TabIndex = 57;
@@ -1123,7 +1161,8 @@
             // 
             this.btn_HD_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Xoa.BackgroundImage")));
             this.btn_HD_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Xoa.Location = new System.Drawing.Point(187, 150);
+            this.btn_HD_Xoa.Enabled = false;
+            this.btn_HD_Xoa.Location = new System.Drawing.Point(208, 151);
             this.btn_HD_Xoa.Name = "btn_HD_Xoa";
             this.btn_HD_Xoa.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Xoa.TabIndex = 59;
@@ -1171,7 +1210,7 @@
             // 
             // txt_NCC_Email
             // 
-            this.txt_NCC_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NCC_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NCC_Email.Location = new System.Drawing.Point(532, 176);
             this.txt_NCC_Email.Name = "txt_NCC_Email";
             this.txt_NCC_Email.Size = new System.Drawing.Size(280, 27);
@@ -1201,6 +1240,7 @@
             // 
             // data_NCC
             // 
+            this.data_NCC.AllowUserToAddRows = false;
             this.data_NCC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_NCC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_NCC.Location = new System.Drawing.Point(3, 265);
@@ -1302,7 +1342,7 @@
             // 
             // txt_NCC_SDT
             // 
-            this.txt_NCC_SDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NCC_SDT.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NCC_SDT.Location = new System.Drawing.Point(532, 129);
             this.txt_NCC_SDT.Name = "txt_NCC_SDT";
             this.txt_NCC_SDT.Size = new System.Drawing.Size(193, 27);
@@ -1310,7 +1350,7 @@
             // 
             // txt_NCC_Dia_Chi
             // 
-            this.txt_NCC_Dia_Chi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NCC_Dia_Chi.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NCC_Dia_Chi.Location = new System.Drawing.Point(205, 176);
             this.txt_NCC_Dia_Chi.Name = "txt_NCC_Dia_Chi";
             this.txt_NCC_Dia_Chi.Size = new System.Drawing.Size(237, 27);
@@ -1340,7 +1380,7 @@
             // 
             // txt_NCC_Ten_Nha_Cung_Cap
             // 
-            this.txt_NCC_Ten_Nha_Cung_Cap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NCC_Ten_Nha_Cung_Cap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NCC_Ten_Nha_Cung_Cap.Location = new System.Drawing.Point(205, 129);
             this.txt_NCC_Ten_Nha_Cung_Cap.Name = "txt_NCC_Ten_Nha_Cung_Cap";
             this.txt_NCC_Ten_Nha_Cung_Cap.Size = new System.Drawing.Size(198, 27);
@@ -1393,6 +1433,7 @@
             // 
             // cbo_SP_Nha_Cung_Cap
             // 
+            this.cbo_SP_Nha_Cung_Cap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_SP_Nha_Cung_Cap.FormattingEnabled = true;
             this.cbo_SP_Nha_Cung_Cap.Location = new System.Drawing.Point(500, 192);
             this.cbo_SP_Nha_Cung_Cap.Name = "cbo_SP_Nha_Cung_Cap";
@@ -1401,6 +1442,7 @@
             // 
             // data_SP
             // 
+            this.data_SP.AllowUserToAddRows = false;
             this.data_SP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_SP.Location = new System.Drawing.Point(3, 279);
             this.data_SP.Name = "data_SP";
@@ -1410,6 +1452,7 @@
             this.data_SP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_SP.Size = new System.Drawing.Size(1050, 217);
             this.data_SP.TabIndex = 69;
+            this.data_SP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_SP_CellClick);
             // 
             // chk_SP_Trang_Thai
             // 
@@ -1437,7 +1480,7 @@
             // 
             // txt_SP_Khuyen_Mai
             // 
-            this.txt_SP_Khuyen_Mai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_SP_Khuyen_Mai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_SP_Khuyen_Mai.Location = new System.Drawing.Point(855, 104);
             this.txt_SP_Khuyen_Mai.Name = "txt_SP_Khuyen_Mai";
             this.txt_SP_Khuyen_Mai.Size = new System.Drawing.Size(169, 27);
@@ -1468,6 +1511,7 @@
             // cbo_SP_Xuat_Xu
             // 
             this.cbo_SP_Xuat_Xu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_SP_Xuat_Xu.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_SP_Xuat_Xu.Items.AddRange(new object[] {
             "Việt Nam",
             "Mỹ",
@@ -1527,7 +1571,7 @@
             // 
             // txt_SP_Gia_Ban
             // 
-            this.txt_SP_Gia_Ban.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_SP_Gia_Ban.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_SP_Gia_Ban.Location = new System.Drawing.Point(500, 147);
             this.txt_SP_Gia_Ban.Name = "txt_SP_Gia_Ban";
             this.txt_SP_Gia_Ban.Size = new System.Drawing.Size(209, 27);
@@ -1535,7 +1579,7 @@
             // 
             // txt_SP_Gia_Nhap
             // 
-            this.txt_SP_Gia_Nhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_SP_Gia_Nhap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_SP_Gia_Nhap.Location = new System.Drawing.Point(500, 105);
             this.txt_SP_Gia_Nhap.Name = "txt_SP_Gia_Nhap";
             this.txt_SP_Gia_Nhap.Size = new System.Drawing.Size(209, 27);
@@ -1565,7 +1609,7 @@
             // 
             // txt_SP_Ten_San_Pham
             // 
-            this.txt_SP_Ten_San_Pham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_SP_Ten_San_Pham.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_SP_Ten_San_Pham.Location = new System.Drawing.Point(143, 117);
             this.txt_SP_Ten_San_Pham.Name = "txt_SP_Ten_San_Pham";
             this.txt_SP_Ten_San_Pham.Size = new System.Drawing.Size(187, 27);
@@ -1602,26 +1646,31 @@
             this.btn_SP_Lam_Moi.Size = new System.Drawing.Size(66, 54);
             this.btn_SP_Lam_Moi.TabIndex = 65;
             this.btn_SP_Lam_Moi.UseVisualStyleBackColor = true;
+            this.btn_SP_Lam_Moi.Click += new System.EventHandler(this.btn_SP_Lam_Moi_Click);
             // 
             // btn_SP_Xoa
             // 
             this.btn_SP_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_SP_Xoa.BackgroundImage")));
             this.btn_SP_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SP_Xoa.Enabled = false;
             this.btn_SP_Xoa.Location = new System.Drawing.Point(605, 19);
             this.btn_SP_Xoa.Name = "btn_SP_Xoa";
             this.btn_SP_Xoa.Size = new System.Drawing.Size(66, 54);
             this.btn_SP_Xoa.TabIndex = 64;
             this.btn_SP_Xoa.UseVisualStyleBackColor = true;
+            this.btn_SP_Xoa.Click += new System.EventHandler(this.btn_SP_Xoa_Click);
             // 
             // btn_SP_Sua
             // 
             this.btn_SP_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_SP_Sua.BackgroundImage")));
             this.btn_SP_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SP_Sua.Enabled = false;
             this.btn_SP_Sua.Location = new System.Drawing.Point(507, 19);
             this.btn_SP_Sua.Name = "btn_SP_Sua";
             this.btn_SP_Sua.Size = new System.Drawing.Size(66, 54);
             this.btn_SP_Sua.TabIndex = 63;
             this.btn_SP_Sua.UseVisualStyleBackColor = true;
+            this.btn_SP_Sua.Click += new System.EventHandler(this.btn_SP_Sua_Click);
             // 
             // btn_SP_Them
             // 
@@ -1750,7 +1799,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private System.Windows.Forms.ColumnHeader columnHeader27;
         private System.Windows.Forms.ColumnHeader columnHeader28;
-        private System.Windows.Forms.Button btn_HD_Them;
+        private System.Windows.Forms.Button btn_HD_Luu;
         private System.Windows.Forms.PictureBox pic_NV;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -1808,5 +1857,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dt_NV_Ngay_Sinh;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_HD_Xem_DS_Hoa_Don;
+        private System.Windows.Forms.Button btn_HD_Ghi;
     }
 }

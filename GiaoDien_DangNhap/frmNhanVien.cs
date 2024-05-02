@@ -18,7 +18,7 @@ namespace GiaoDien_DangNhap
             InitializeComponent();
         }
 
-        public static string Connect = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=true";
+        public static string Connect = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=true";
         public static SqlConnection Ket_Noi()
         {
             SqlConnection myConnection = new SqlConnection(Connect);
@@ -192,8 +192,9 @@ namespace GiaoDien_DangNhap
             sSql_HD += "'" + maHD + "',";
             sSql_HD += "'" + maNV + "',";
             sSql_HD += "'" + maKH + "',";
-            sSql_HD += "'" + ngayLap + "',";
-            sSql_HD += thanhTien + ")";
+            sSql_HD += "'" + ngayLap + "')";
+      
+        
 
             //Câu truy vấn thêm vào bảng CTHOADON
             string sSql_CTHD;
@@ -265,41 +266,14 @@ namespace GiaoDien_DangNhap
                 else
                 {
                     MessageBox.Show("Đã thêm Hóa Đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    foreach (DataGridViewRow row in data_banHang_CTHD.Rows)
-                    {
-                        object cotmoi = row.Cells[0].Value;
-                    }
-                    // Hiển thị sản phẩm vừa thêm vào bảng data_banhang_hd
-                    string sSql_Xem_Hoa_Don = "SELECT * FROM HOADON WHERE MaHD=@MaHD";
-                    SqlCommand cmd = new SqlCommand(sSql_Xem_Hoa_Don, Ket_Noi());
-                    cmd.Parameters.AddWithValue("@MaHD", maHD);
-                    SqlDataAdapter dsHien = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    try
-                    {
-                        dsHien.Fill(ds);
-                        data_banHang_HD.DataSource = ds.Tables[0];
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi: " + ex.Message);
-                    }
 
-                    // Hiển thị sản phẩm vừa thêm vào bảng data_banhang_cthd
-                    string sSql_Xem_CT_Hoa_Don = "SELECT * FROM CT_HOADON WHERE MaHD=@MaHD";
-                    SqlCommand com = new SqlCommand(sSql_Xem_CT_Hoa_Don, Ket_Noi());
-                    com.Parameters.AddWithValue("@MaHD", maHD);
-                    SqlDataAdapter ds_ct = new SqlDataAdapter(com);
-                    DataSet ds_cthd = new DataSet();
-                    try
-                    {
-                        ds_ct.Fill(ds_cthd);
-                        data_banHang_CTHD.DataSource = ds_cthd.Tables[0];
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi: " + ex.Message);
-                    }
+                   string mahd = txt_BH_maHD.Text;
+                   string masp = cbo_BH_sanPham.SelectedValue.ToString();
+                    int soluong = int.Parse(nbr_BH_soLuong.Value.ToString());
+                    double dongia = double.Parse(txt_BH_donGia.Text);
+                    double khuyenmai = double.Parse(txt_BH_khuyenMai.Text);
+                    double tongtien = double.Parse(txt_BH_thanhTien.Text);
+                    them_du_lieu_dataridview_CTHD(mahd, masp, soluong, dongia, khuyenmai, tongtien);
                 }
 
               
@@ -351,32 +325,32 @@ namespace GiaoDien_DangNhap
         private void data_banHang_HD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            try
-            {
-                txt_BH_maHD.Enabled = false;
-                string soLuong, ngayLapHD,khuyenMai,mahd,dongia,thanhTien;
-                string masp;
-                //Lay du lieu dataridview
-                mahd = data_banHang_CTHD.CurrentRow.Cells[0].Value.ToString();
-                soLuong = data_banHang_CTHD.CurrentRow.Cells[2].Value.ToString();
-                khuyenMai = data_banHang_CTHD.CurrentRow.Cells[4].Value.ToString();
-                dongia = data_banHang_CTHD.CurrentRow.Cells[3].Value.ToString();
-                ngayLapHD = data_banHang_HD.CurrentRow.Cells[3].Value.ToString();
-                thanhTien = data_banHang_CTHD.CurrentRow.Cells[5].Value.ToString();
+            //try
+            //{
+            //    txt_BH_maHD.Enabled = false;
+            //    string soLuong, ngayLapHD,khuyenMai,mahd,dongia,thanhTien;
+            //    string masp;
+            //    //Lay du lieu dataridview
+            //    mahd = data_banHang_CTHD.CurrentRow.Cells[0].Value.ToString();
+            //    soLuong = data_banHang_CTHD.CurrentRow.Cells[2].Value.ToString();
+            //    khuyenMai = data_banHang_CTHD.CurrentRow.Cells[4].Value.ToString();
+            //    dongia = data_banHang_CTHD.CurrentRow.Cells[3].Value.ToString();
+            //    ngayLapHD = data_banHang_HD.CurrentRow.Cells[3].Value.ToString();
+            //    thanhTien = data_banHang_CTHD.CurrentRow.Cells[5].Value.ToString();
 
-                //điền dữ liềuj datagridview vào textbox
-                txt_BH_maHD.Text = mahd;
-                nbr_BH_soLuong.Text = soLuong;
-                txt_BH_khuyenMai.Text = khuyenMai;
-                txt_BH_donGia.Text = dongia;
-                dt_BH_ngayLapHD.Text = ngayLapHD;
-                txt_BH_thanhTien.Text = thanhTien;
-            }
-            catch (Exception err)
-            {
+            //    //điền dữ liềuj datagridview vào textbox
+            //    txt_BH_maHD.Text = mahd;
+            //    nbr_BH_soLuong.Text = soLuong;
+            //    txt_BH_khuyenMai.Text = khuyenMai;
+            //    txt_BH_donGia.Text = dongia;
+            //    dt_BH_ngayLapHD.Text = ngayLapHD;
+            //    txt_BH_thanhTien.Text = thanhTien;
+            //}
+            //catch (Exception err)
+            //{
 
 
-            }
+            //}
         }
         public bool CapNhatBanHang( string soLuong, string thanhtien, string khuyenMai,string mahd)
         {
@@ -507,12 +481,8 @@ namespace GiaoDien_DangNhap
 
         private void btn_BH_xem_tat_ca_hd_Click(object sender, EventArgs e)
         {
-            string sSql_Xem_Hoa_Don = "select*from hoadon";
-            DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
-            data_banHang_HD.DataSource = ds_Hoa_Don.Tables[0];
-            string sSql_Xem_CT_Hoa_Don = "select*from CT_hoadon";
-            DataSet ds_CT_Hoa_Don = Xem_Thong_Tin(sSql_Xem_CT_Hoa_Don);
-            data_banHang_CTHD.DataSource = ds_CT_Hoa_Don.Tables[0];
+           TiemKiemHD tk=new TiemKiemHD();
+            tk.Show();
         }
 
         private void btn_them_moi_Click(object sender, EventArgs e)
@@ -537,5 +507,78 @@ namespace GiaoDien_DangNhap
         {
             Dang_Xuat();
         }
+
+        private void btn_them_moi_Click_1(object sender, EventArgs e)
+        {
+            // Lấy thông tin từ các control
+            string mahd = txt_BH_maHD.Text;
+            string manv = cbo_BH_NV.Text;
+            string makh = cbo_BH_KH.Text;
+            string ngaylaphd = dt_BH_ngayLapHD.Value.ToString();
+            string tongtien = txt_BH_thanhTien.Text;
+
+            // Gọi phương thức them_du_lieu_dataridview và truyền các thông tin lấy được từ các control vào
+            them_du_lieu_dataridview(mahd, manv, makh, ngaylaphd);
+        }
+
+        private void them_du_lieu_dataridview(string mahd, string manv, string makh, string ngaylaphd)
+        {
+            // Tạo một DataGridViewRow mới và gán giá trị cho các cell của row đó
+            bool tonTai = false;
+            foreach (DataGridViewRow MAHD in data_banHang_HD.Rows)
+            {
+                if (MAHD.Cells[0].Value != null && MAHD.Cells[0].Value.ToString() == mahd)
+                {
+                    tonTai = true;
+                    break;
+                }
+            }
+
+            if (tonTai)
+            {
+                // Mã hóa đơn đã tồn tại, thông báo cho người dùng và không thêm mới
+                MessageBox.Show("Mã hóa đơn đã tồn tại. Vui lòng chọn mã hóa đơn khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(data_banHang_HD);
+                mahd = txt_BH_maHD.Text;
+                manv = cbo_BH_NV.SelectedValue.ToString();
+                makh = cbo_BH_KH.SelectedValue.ToString();
+                ngaylaphd = dt_BH_ngayLapHD.Value.ToString();
+                row.Cells[0].Value = mahd;
+                row.Cells[1].Value = manv;
+                row.Cells[2].Value = makh;
+                row.Cells[3].Value = ngaylaphd;
+
+                // Thêm row vào DataGridView
+                data_banHang_HD.Rows.Add(row);
+            }
+        }
+        private void them_du_lieu_dataridview_CTHD(string mahd, string masp, int soluong, double dongia, double khuyenmai, double tongtien)
+        {
+
+
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(data_banHang_CTHD);
+            mahd = txt_BH_maHD.Text;
+            masp = cbo_BH_sanPham.SelectedValue.ToString();
+            soluong = int.Parse(nbr_BH_soLuong.Value.ToString());
+            dongia = double.Parse(txt_BH_donGia.Text);
+            khuyenmai = double.Parse(txt_BH_khuyenMai.Text);
+            tongtien = double.Parse(txt_BH_thanhTien.Text);
+            row.Cells[0].Value = mahd;
+            row.Cells[1].Value = masp;
+            row.Cells[2].Value = soluong;
+            row.Cells[3].Value = dongia;
+            row.Cells[4].Value = khuyenmai;
+            row.Cells[5].Value = tongtien;
+
+            // Thêm row vào DataGridView
+            data_banHang_CTHD.Rows.Add(row);
+
+        }
+
     }
 }

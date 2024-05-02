@@ -34,10 +34,23 @@
             this.btn_BH_dang_xuat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.data_banHang_HD = new System.Windows.Forms.DataGridView();
+            this.MAHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MANV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGAYLAPHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SAD = new System.Windows.Forms.Label();
             this.data_banHang_CTHD = new System.Windows.Forms.DataGridView();
+            this.MAHD_CTHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MASP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOLUONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DONGIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KHUYENMAI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TONGTIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.btn_BH_xem_tat_ca_hd = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -162,8 +175,14 @@
             // 
             // data_banHang_HD
             // 
-            this.data_banHang_HD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.data_banHang_HD.AllowUserToAddRows = false;
+            this.data_banHang_HD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_banHang_HD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_banHang_HD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MAHD,
+            this.MANV,
+            this.MAKH,
+            this.NGAYLAPHD});
             this.data_banHang_HD.Location = new System.Drawing.Point(7, 363);
             this.data_banHang_HD.Name = "data_banHang_HD";
             this.data_banHang_HD.ReadOnly = true;
@@ -172,6 +191,34 @@
             this.data_banHang_HD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_banHang_HD.Size = new System.Drawing.Size(861, 128);
             this.data_banHang_HD.TabIndex = 43;
+            // 
+            // MAHD
+            // 
+            this.MAHD.HeaderText = "MAHD";
+            this.MAHD.MinimumWidth = 6;
+            this.MAHD.Name = "MAHD";
+            this.MAHD.ReadOnly = true;
+            // 
+            // MANV
+            // 
+            this.MANV.HeaderText = "MANV";
+            this.MANV.MinimumWidth = 6;
+            this.MANV.Name = "MANV";
+            this.MANV.ReadOnly = true;
+            // 
+            // MAKH
+            // 
+            this.MAKH.HeaderText = "MAKH";
+            this.MAKH.MinimumWidth = 6;
+            this.MAKH.Name = "MAKH";
+            this.MAKH.ReadOnly = true;
+            // 
+            // NGAYLAPHD
+            // 
+            this.NGAYLAPHD.HeaderText = "Ngày lập hóa đơn";
+            this.NGAYLAPHD.MinimumWidth = 6;
+            this.NGAYLAPHD.Name = "NGAYLAPHD";
+            this.NGAYLAPHD.ReadOnly = true;
             // 
             // SAD
             // 
@@ -185,7 +232,16 @@
             // 
             // data_banHang_CTHD
             // 
+            this.data_banHang_CTHD.AllowUserToAddRows = false;
+            this.data_banHang_CTHD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_banHang_CTHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_banHang_CTHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MAHD_CTHD,
+            this.MASP,
+            this.SOLUONG,
+            this.DONGIA,
+            this.KHUYENMAI,
+            this.TONGTIEN});
             this.data_banHang_CTHD.Location = new System.Drawing.Point(7, 525);
             this.data_banHang_CTHD.Name = "data_banHang_CTHD";
             this.data_banHang_CTHD.ReadOnly = true;
@@ -195,6 +251,48 @@
             this.data_banHang_CTHD.Size = new System.Drawing.Size(858, 191);
             this.data_banHang_CTHD.TabIndex = 41;
             this.data_banHang_CTHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_banHang_HD_CellClick);
+            // 
+            // MAHD_CTHD
+            // 
+            this.MAHD_CTHD.HeaderText = "MAHD";
+            this.MAHD_CTHD.MinimumWidth = 6;
+            this.MAHD_CTHD.Name = "MAHD_CTHD";
+            this.MAHD_CTHD.ReadOnly = true;
+            // 
+            // MASP
+            // 
+            this.MASP.HeaderText = "MASP";
+            this.MASP.MinimumWidth = 6;
+            this.MASP.Name = "MASP";
+            this.MASP.ReadOnly = true;
+            // 
+            // SOLUONG
+            // 
+            this.SOLUONG.HeaderText = "Số Lượng";
+            this.SOLUONG.MinimumWidth = 6;
+            this.SOLUONG.Name = "SOLUONG";
+            this.SOLUONG.ReadOnly = true;
+            // 
+            // DONGIA
+            // 
+            this.DONGIA.HeaderText = "Đơn Giá";
+            this.DONGIA.MinimumWidth = 6;
+            this.DONGIA.Name = "DONGIA";
+            this.DONGIA.ReadOnly = true;
+            // 
+            // KHUYENMAI
+            // 
+            this.KHUYENMAI.HeaderText = "Khuyến Mãi";
+            this.KHUYENMAI.MinimumWidth = 6;
+            this.KHUYENMAI.Name = "KHUYENMAI";
+            this.KHUYENMAI.ReadOnly = true;
+            // 
+            // TONGTIEN
+            // 
+            this.TONGTIEN.HeaderText = "Tổng Tiền";
+            this.TONGTIEN.MinimumWidth = 6;
+            this.TONGTIEN.Name = "TONGTIEN";
+            this.TONGTIEN.ReadOnly = true;
             // 
             // label24
             // 
@@ -209,6 +307,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.btn_BH_xem_tat_ca_hd);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
@@ -228,12 +329,43 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức năng";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(-3, 335);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(183, 17);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "Tiềm kiếm chi tiết hóa đơn";
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(29, 276);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(52, 56);
+            this.button3.TabIndex = 55;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(7, 256);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(134, 17);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "Tiềm kiếm hóa đơn";
+            // 
             // btn_BH_xem_tat_ca_hd
             // 
             this.btn_BH_xem_tat_ca_hd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BH_xem_tat_ca_hd.BackgroundImage")));
             this.btn_BH_xem_tat_ca_hd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_BH_xem_tat_ca_hd.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BH_xem_tat_ca_hd.Location = new System.Drawing.Point(103, 59);
+            this.btn_BH_xem_tat_ca_hd.Location = new System.Drawing.Point(29, 197);
             this.btn_BH_xem_tat_ca_hd.Name = "btn_BH_xem_tat_ca_hd";
             this.btn_BH_xem_tat_ca_hd.Size = new System.Drawing.Size(52, 56);
             this.btn_BH_xem_tat_ca_hd.TabIndex = 53;
@@ -243,7 +375,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 329);
+            this.label4.Location = new System.Drawing.Point(6, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 23);
             this.label4.TabIndex = 52;
@@ -252,7 +384,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 223);
+            this.label3.Location = new System.Drawing.Point(110, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 23);
             this.label3.TabIndex = 51;
@@ -261,18 +393,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 118);
+            this.label2.Location = new System.Drawing.Point(24, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 23);
+            this.label2.Size = new System.Drawing.Size(57, 23);
             this.label2.TabIndex = 50;
-            this.label2.Text = "Thêm mới";
+            this.label2.Text = "Thêm";
             // 
             // btn_BH_update
             // 
             this.btn_BH_update.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BH_update.BackgroundImage")));
             this.btn_BH_update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_BH_update.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BH_update.Location = new System.Drawing.Point(28, 270);
+            this.btn_BH_update.Location = new System.Drawing.Point(29, 114);
             this.btn_BH_update.Name = "btn_BH_update";
             this.btn_BH_update.Size = new System.Drawing.Size(52, 56);
             this.btn_BH_update.TabIndex = 49;
@@ -284,11 +416,12 @@
             this.btn_them_moi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_them_moi.BackgroundImage")));
             this.btn_them_moi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_them_moi.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_them_moi.Location = new System.Drawing.Point(28, 59);
+            this.btn_them_moi.Location = new System.Drawing.Point(28, 29);
             this.btn_them_moi.Name = "btn_them_moi";
             this.btn_them_moi.Size = new System.Drawing.Size(52, 56);
             this.btn_them_moi.TabIndex = 48;
             this.btn_them_moi.UseVisualStyleBackColor = true;
+            this.btn_them_moi.Click += new System.EventHandler(this.btn_them_moi_Click_1);
             // 
             // btn_BH_out
             // 
@@ -317,7 +450,7 @@
             this.btn_BH_add.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BH_add.BackgroundImage")));
             this.btn_BH_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_BH_add.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BH_add.Location = new System.Drawing.Point(28, 154);
+            this.btn_BH_add.Location = new System.Drawing.Point(103, 29);
             this.btn_BH_add.Name = "btn_BH_add";
             this.btn_BH_add.Size = new System.Drawing.Size(52, 56);
             this.btn_BH_add.TabIndex = 45;
@@ -920,5 +1053,18 @@
         private System.Windows.Forms.Button btn_BH_update;
         private System.Windows.Forms.Button btn_them_moi;
         private System.Windows.Forms.Button btn_BH_xem_tat_ca_hd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MANV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAKH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NGAYLAPHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAHD_CTHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MASP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOLUONG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DONGIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KHUYENMAI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TONGTIEN;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label5;
     }
 }

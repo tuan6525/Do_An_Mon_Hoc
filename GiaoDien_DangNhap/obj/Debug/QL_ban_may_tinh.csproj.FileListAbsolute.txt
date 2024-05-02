@@ -50,3 +50,4 @@ C:\Users\TRAN TUAN\Desktop\Đồ án C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debu
 C:\Users\TRAN TUAN\Desktop\Đồ án C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.exe.config
 C:\Users\TRAN TUAN\Desktop\Đồ án C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.exe
 C:\Users\TRAN TUAN\Desktop\Đồ án C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\bin\Debug\GiaoDien_DangNhap.pdb
+D:\ĐỒ ÁN C#\Do An C#\Do_An_Mon_Hoc\GiaoDien_DangNhap\obj\Debug\GiaoDien_DangNhap.TiemKiemHD.resources

@@ -18,7 +18,7 @@ namespace GiaoDien_DangNhap
             InitializeComponent();
         }
 
-        public static string Connect = "Data Source=THONGDZ;Initial Catalog=qlbanmaytinh;Integrated Security=true";
+        public static string Connect = "Data Source=TranTuan\\MSSQL_SERVER;Initial Catalog=qlbanmaytinh;Integrated Security=true";
         public static SqlConnection Ket_Noi()
         {
             SqlConnection myConnection = new SqlConnection(Connect);

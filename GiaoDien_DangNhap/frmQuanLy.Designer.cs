@@ -85,6 +85,7 @@
             this.lab_HD_Tim_Kiem = new System.Windows.Forms.Label();
             this.lab_HD_DSHD = new System.Windows.Forms.Label();
             this.grb_HD_Hoa_Don = new System.Windows.Forms.GroupBox();
+            this.lab_HD_Phan_Tram = new System.Windows.Forms.Label();
             this.txt_HD_Khuyen_Mai = new System.Windows.Forms.TextBox();
             this.lab_HD_Khuyen_Mai = new System.Windows.Forms.Label();
             this.txt_HD_Don_Gia = new System.Windows.Forms.TextBox();
@@ -116,7 +117,6 @@
             this.btn_HD_Luu = new System.Windows.Forms.Button();
             this.btn_HD_Thong_Ke = new System.Windows.Forms.Button();
             this.btn_HD_Xoa = new System.Windows.Forms.Button();
-            this.btn_HD_Tinh_Tien = new System.Windows.Forms.Button();
             this.tab_QLNCC = new System.Windows.Forms.TabPage();
             this.txt_NCC_Email = new System.Windows.Forms.TextBox();
             this.lab_NCC_Email = new System.Windows.Forms.Label();
@@ -821,6 +821,7 @@
             // grb_HD_Hoa_Don
             // 
             this.grb_HD_Hoa_Don.BackColor = System.Drawing.Color.Transparent;
+            this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Phan_Tram);
             this.grb_HD_Hoa_Don.Controls.Add(this.txt_HD_Khuyen_Mai);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Khuyen_Mai);
             this.grb_HD_Hoa_Don.Controls.Add(this.txt_HD_Don_Gia);
@@ -849,6 +850,17 @@
             this.grb_HD_Hoa_Don.TabStop = false;
             this.grb_HD_Hoa_Don.Text = "Hóa Đơn";
             // 
+            // lab_HD_Phan_Tram
+            // 
+            this.lab_HD_Phan_Tram.AutoSize = true;
+            this.lab_HD_Phan_Tram.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_HD_Phan_Tram.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lab_HD_Phan_Tram.Location = new System.Drawing.Point(611, 177);
+            this.lab_HD_Phan_Tram.Name = "lab_HD_Phan_Tram";
+            this.lab_HD_Phan_Tram.Size = new System.Drawing.Size(28, 23);
+            this.lab_HD_Phan_Tram.TabIndex = 68;
+            this.lab_HD_Phan_Tram.Text = "%";
+            // 
             // txt_HD_Khuyen_Mai
             // 
             this.txt_HD_Khuyen_Mai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -856,6 +868,7 @@
             this.txt_HD_Khuyen_Mai.Name = "txt_HD_Khuyen_Mai";
             this.txt_HD_Khuyen_Mai.Size = new System.Drawing.Size(104, 27);
             this.txt_HD_Khuyen_Mai.TabIndex = 54;
+            this.txt_HD_Khuyen_Mai.TextChanged += new System.EventHandler(this.txt_HD_Khuyen_Mai_TextChanged);
             // 
             // lab_HD_Khuyen_Mai
             // 
@@ -974,6 +987,7 @@
             // 
             this.cbo_HD_San_Pham.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_HD_San_Pham.FormattingEnabled = true;
+            this.cbo_HD_San_Pham.ItemHeight = 19;
             this.cbo_HD_San_Pham.Location = new System.Drawing.Point(126, 66);
             this.cbo_HD_San_Pham.Name = "cbo_HD_San_Pham";
             this.cbo_HD_San_Pham.Size = new System.Drawing.Size(219, 27);
@@ -1090,7 +1104,6 @@
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Luu);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Thong_Ke);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Xoa);
-            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Tinh_Tien);
             this.grb_HD_Chuc_Nang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grb_HD_Chuc_Nang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.grb_HD_Chuc_Nang.Location = new System.Drawing.Point(756, 9);
@@ -1104,7 +1117,7 @@
             // 
             this.btn_HD_Xem_DS_Hoa_Don.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Xem_DS_Hoa_Don.BackgroundImage")));
             this.btn_HD_Xem_DS_Hoa_Don.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Xem_DS_Hoa_Don.Location = new System.Drawing.Point(208, 86);
+            this.btn_HD_Xem_DS_Hoa_Don.Location = new System.Drawing.Point(208, 51);
             this.btn_HD_Xem_DS_Hoa_Don.Name = "btn_HD_Xem_DS_Hoa_Don";
             this.btn_HD_Xem_DS_Hoa_Don.Size = new System.Drawing.Size(66, 55);
             this.btn_HD_Xem_DS_Hoa_Don.TabIndex = 60;
@@ -1115,8 +1128,7 @@
             // 
             this.btn_HD_Ghi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Ghi.BackgroundImage")));
             this.btn_HD_Ghi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Ghi.Enabled = false;
-            this.btn_HD_Ghi.Location = new System.Drawing.Point(20, 152);
+            this.btn_HD_Ghi.Location = new System.Drawing.Point(20, 134);
             this.btn_HD_Ghi.Name = "btn_HD_Ghi";
             this.btn_HD_Ghi.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Ghi.TabIndex = 61;
@@ -1127,8 +1139,7 @@
             // 
             this.btn_HD_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Sua.BackgroundImage")));
             this.btn_HD_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Sua.Enabled = false;
-            this.btn_HD_Sua.Location = new System.Drawing.Point(116, 151);
+            this.btn_HD_Sua.Location = new System.Drawing.Point(116, 133);
             this.btn_HD_Sua.Name = "btn_HD_Sua";
             this.btn_HD_Sua.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Sua.TabIndex = 58;
@@ -1139,8 +1150,7 @@
             // 
             this.btn_HD_Luu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Luu.BackgroundImage")));
             this.btn_HD_Luu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Luu.Enabled = false;
-            this.btn_HD_Luu.Location = new System.Drawing.Point(20, 84);
+            this.btn_HD_Luu.Location = new System.Drawing.Point(20, 49);
             this.btn_HD_Luu.Name = "btn_HD_Luu";
             this.btn_HD_Luu.Size = new System.Drawing.Size(66, 59);
             this.btn_HD_Luu.TabIndex = 56;
@@ -1151,7 +1161,7 @@
             // 
             this.btn_HD_Thong_Ke.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Thong_Ke.BackgroundImage")));
             this.btn_HD_Thong_Ke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Thong_Ke.Location = new System.Drawing.Point(116, 86);
+            this.btn_HD_Thong_Ke.Location = new System.Drawing.Point(116, 51);
             this.btn_HD_Thong_Ke.Name = "btn_HD_Thong_Ke";
             this.btn_HD_Thong_Ke.Size = new System.Drawing.Size(66, 55);
             this.btn_HD_Thong_Ke.TabIndex = 57;
@@ -1161,24 +1171,11 @@
             // 
             this.btn_HD_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Xoa.BackgroundImage")));
             this.btn_HD_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Xoa.Enabled = false;
-            this.btn_HD_Xoa.Location = new System.Drawing.Point(208, 151);
+            this.btn_HD_Xoa.Location = new System.Drawing.Point(208, 133);
             this.btn_HD_Xoa.Name = "btn_HD_Xoa";
             this.btn_HD_Xoa.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Xoa.TabIndex = 59;
             this.btn_HD_Xoa.UseVisualStyleBackColor = true;
-            // 
-            // btn_HD_Tinh_Tien
-            // 
-            this.btn_HD_Tinh_Tien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_HD_Tinh_Tien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_HD_Tinh_Tien.Location = new System.Drawing.Point(80, 29);
-            this.btn_HD_Tinh_Tien.Name = "btn_HD_Tinh_Tien";
-            this.btn_HD_Tinh_Tien.Size = new System.Drawing.Size(130, 44);
-            this.btn_HD_Tinh_Tien.TabIndex = 55;
-            this.btn_HD_Tinh_Tien.Text = "Tính tiền";
-            this.btn_HD_Tinh_Tien.UseVisualStyleBackColor = true;
-            this.btn_HD_Tinh_Tien.Click += new System.EventHandler(this.btn_HD_Tinh_Tien_Click);
             // 
             // tab_QLNCC
             // 
@@ -1691,8 +1688,6 @@
             this.ClientSize = new System.Drawing.Size(1088, 553);
             this.Controls.Add(this.tabC_GiaoDienQuanLy);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1106, 600);
-            this.MinimumSize = new System.Drawing.Size(1106, 600);
             this.Name = "frmQuanLy";
             this.Text = "Giao Diện Quản Lý";
             this.Load += new System.EventHandler(this.frmQuanLy_Load);
@@ -1824,7 +1819,6 @@
         private System.Windows.Forms.Button btn_NV_Thoat;
         private System.Windows.Forms.Button btn_KH_Thoat;
         private System.Windows.Forms.Button btn_NCC_Thoat;
-        private System.Windows.Forms.Button btn_HD_Tinh_Tien;
         private System.Windows.Forms.TextBox txt_HD_Thanh_Tien;
         private System.Windows.Forms.Label lab_HD_Thanh_Tien;
         private System.Windows.Forms.ComboBox cbo_HD_San_Pham;
@@ -1859,5 +1853,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_HD_Xem_DS_Hoa_Don;
         private System.Windows.Forms.Button btn_HD_Ghi;
+        private System.Windows.Forms.Label lab_HD_Phan_Tram;
     }
 }

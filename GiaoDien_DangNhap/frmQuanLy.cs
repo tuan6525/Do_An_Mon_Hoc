@@ -27,8 +27,9 @@ namespace GiaoDien_DangNhap
         //biến toàn cục
         DataTable table;
         private bool btn_DSHD_Click = true;
+        private bool textChange_HD_Khuyen_Mai = false;
 
-        private static string scon = "Data Source = THONGDZ; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
+        private static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
 
         private void frmQuanLy_Load(object sender, EventArgs e)
         {
@@ -64,6 +65,10 @@ namespace GiaoDien_DangNhap
 
             //TAB HÓA ĐƠN
             Lay_MAHD();
+            btn_HD_Ghi.Enabled = false;
+            btn_HD_Luu.Enabled = false;
+            btn_HD_Xoa.Enabled = false;
+            btn_HD_Sua.Enabled = false;
             Them_Ten_Cot_Vao_DataHD();
             Hien_Thi_Len_HD_CBO_San_Pham();
             Hien_Thi_Len_HD_CBO_Nhan_Vien();
@@ -318,7 +323,17 @@ namespace GiaoDien_DangNhap
             {
                 try
                 {
-                    // Thêm một hàng mới vào DataTable
+                    foreach(DataRow row in table.Rows)
+                    {
+                        if (maSP == row["MASP"].ToString())
+                        {
+                            row["SOLUONG"] = soLuong + (int)data_HD.CurrentRow.Cells[2].Value;
+                            row["THANHTIEN"] = thanhTien + (double)data_HD.CurrentRow.Cells[4].Value;
+                            row["NGAYLAPHD"] = ngayLap;
+                            row["KHUYENMAI"] = khuyenMai;
+                            return;
+                        }
+                    }
                     table.Rows.Add(maHD, maSP, soLuong, donGia, thanhTien, maKH, maNV, ngayLap, khuyenMai);
                 }
                 catch (Exception ex)
@@ -1029,49 +1044,6 @@ namespace GiaoDien_DangNhap
             }
         }
 
-        private void btn_HD_Tinh_Tien_Click(object sender, EventArgs e)
-        {
-            //Lấy giá trị của mã sản phẩm, số lượng
-            string maSP = cbo_HD_San_Pham.SelectedValue.ToString();
-            int soLuong = (int)nmr_HD_So_Luong.Value;
-            double giaBan = 0;
-
-            //Kiểm tra Khuyến mãi phải nhập trước khi click
-            if (string.IsNullOrEmpty(txt_HD_Khuyen_Mai.Text))
-            {
-                MessageBox.Show("Nhập khuyến mãi!!","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            double khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text);
-
-
-            // Câu lệnh truy vấn lấy giá bán của sản phẩm
-            string sSql_Gia_Ban = "SELECT GiaBan FROM SanPham WHERE MASP = @MaSP";
-
-            // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection myConnection = Ket_Noi())
-            {
-                try
-                {
-                    myConnection.Open();
-
-                    SqlCommand cmd = new SqlCommand(sSql_Gia_Ban, myConnection);
-                    cmd.Parameters.AddWithValue("@MaSP", maSP);
-
-                    giaBan = Convert.ToDouble(cmd.ExecuteScalar());
-
-                    // Tính thành tiền
-                    double thanhTien = (soLuong * giaBan) - (soLuong * giaBan) * khuyenMai;
-                    txt_HD_Thanh_Tien.Text = thanhTien.ToString();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi: " + ex.Message);
-                }
-            }
-            btn_HD_Ghi.Enabled = true;
-        }
-
         private void cbo_HD_San_Pham_SelectedIndexChanged(object sender, EventArgs e)
         {
             Hien_Don_Gia();
@@ -1641,19 +1613,25 @@ namespace GiaoDien_DangNhap
 
         private void btn_HD_Luu_Click(object sender, EventArgs e)
         {
+            textChange_HD_Khuyen_Mai = true;
             Luu_Vao_Database();
             table = null;
+            Them_Ten_Cot_Vao_DataHD();
+            Lam_Moi_HD();
+            btn_HD_Luu.Enabled = false;
+            textChange_HD_Khuyen_Mai = false;
         }
 
         private void btn_HD_Ghi_Click(object sender, EventArgs e)
         {
+            textChange_HD_Khuyen_Mai = true;
             if (string.IsNullOrEmpty(txt_HD_Ma_Hoa_Don.Text.Trim()) ||
-                string.IsNullOrEmpty(cbo_HD_San_Pham.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_HD_Don_Gia.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_HD_Thanh_Tien.Text.Trim()) ||
-                string.IsNullOrEmpty(cbo_HD_Khach_Hang.Text.Trim()) ||
-                string.IsNullOrEmpty(cbo_HD_Nhan_Vien.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_HD_Khuyen_Mai.Text.Trim()))
+               string.IsNullOrEmpty(cbo_HD_San_Pham.Text.Trim()) ||
+               string.IsNullOrEmpty(txt_HD_Don_Gia.Text.Trim()) ||
+               string.IsNullOrEmpty(txt_HD_Thanh_Tien.Text.Trim()) ||
+               string.IsNullOrEmpty(cbo_HD_Khach_Hang.Text.Trim()) ||
+               string.IsNullOrEmpty(cbo_HD_Nhan_Vien.Text.Trim()) ||
+               string.IsNullOrEmpty(txt_HD_Khuyen_Mai.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1672,13 +1650,15 @@ namespace GiaoDien_DangNhap
                 thanhTien = double.Parse(txt_HD_Thanh_Tien.Text);
                 maKH = cbo_HD_Khach_Hang.SelectedValue.ToString();
                 maNV = cbo_HD_Nhan_Vien.SelectedValue.ToString();
-                khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text);
+                khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text) / 100;
                 ngayLap = dt_HD_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 Them_San_Pham_Vao_DataHD(maHD, maSP, soLuong, donGia, thanhTien, maKH, maNV, ngayLap, khuyenMai);
                 btn_HD_Luu.Enabled = true;
                 btn_HD_Ghi.Enabled = false;
                 Lam_Moi_HD();
             }
+            textChange_HD_Khuyen_Mai = false;
+            
         }
 
         private void data_HD_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1714,7 +1694,7 @@ namespace GiaoDien_DangNhap
                             MessageBox.Show("Không thể ép kiểu chuỗi thành DateTime.");
                         }
 
-                        khuyenMai = data_HD.CurrentRow.Cells[8].Value.ToString();
+                        khuyenMai = ((double)data_HD.CurrentRow.Cells[8].Value * 100).ToString();
 
                         try
                         {
@@ -1747,6 +1727,7 @@ namespace GiaoDien_DangNhap
                             myConnection.Close();
 
                             btn_HD_Ghi.Enabled = false;
+                            btn_HD_Luu.Enabled = false;
                         }
                         catch (Exception ex)
                         {
@@ -1776,21 +1757,73 @@ namespace GiaoDien_DangNhap
             string maSP = cbo_HD_San_Pham.SelectedValue.ToString();
             int soLuong = (int)nmr_HD_So_Luong.Value;
             double donGia = double.Parse(txt_HD_Don_Gia.Text);
+            double thanhTien = double.Parse(txt_HD_Thanh_Tien.Text);
             string maKH = cbo_HD_Khach_Hang.SelectedValue.ToString();
             string maNV = cbo_HD_Nhan_Vien.SelectedValue.ToString();
             string ngayLap = dt_HD_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
-            double khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text);
+            double khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text) /100;
 
             data_HD.Rows[rowIndex].Cells["MAHD"].Value = maHD;
             data_HD.Rows[rowIndex].Cells["MASP"].Value = maSP;
             data_HD.Rows[rowIndex].Cells["SOLUONG"].Value = soLuong;
             data_HD.Rows[rowIndex].Cells["DONGIA"].Value = donGia;
+            data_HD.Rows[rowIndex].Cells["THANHTIEN"].Value = thanhTien;
             data_HD.Rows[rowIndex].Cells["MAKH"].Value = maKH;
             data_HD.Rows[rowIndex].Cells["MANV"].Value = maNV;
             data_HD.Rows[rowIndex].Cells["NGAYLAPHD"].Value = ngayLap;
             data_HD.Rows[rowIndex].Cells["KHUYENMAI"].Value = khuyenMai;
-
+            btn_HD_Luu.Enabled = true;
+            btn_HD_Sua.Enabled = false;
+            btn_HD_Ghi.Enabled = false;
             Lam_Moi_HD();
+        }
+
+        private void txt_HD_Khuyen_Mai_TextChanged(object sender, EventArgs e)
+        {
+            if (!textChange_HD_Khuyen_Mai)
+            {
+                //Lấy giá trị của mã sản phẩm, số lượng
+                string maSP = cbo_HD_San_Pham.SelectedValue.ToString();
+                int soLuong = (int)nmr_HD_So_Luong.Value;
+                double giaBan = 0;
+                double khuyenMai;
+
+                //Kiểm tra Khuyến mãi phải nhập trước khi click
+                if (txt_HD_Khuyen_Mai.Text == "")
+                {
+                    khuyenMai = 0;
+                }
+                else { khuyenMai = (double.Parse(txt_HD_Khuyen_Mai.Text)) / 100; }
+
+
+
+
+                // Câu lệnh truy vấn lấy giá bán của sản phẩm
+                string sSql_Gia_Ban = "SELECT GiaBan FROM SanPham WHERE MASP = @MaSP";
+
+                // Kết nối đến cơ sở dữ liệu
+                using (SqlConnection myConnection = Ket_Noi())
+                {
+                    try
+                    {
+                        myConnection.Open();
+
+                        SqlCommand cmd = new SqlCommand(sSql_Gia_Ban, myConnection);
+                        cmd.Parameters.AddWithValue("@MaSP", maSP);
+
+                        giaBan = Convert.ToDouble(cmd.ExecuteScalar());
+
+                        // Tính thành tiền
+                        double thanhTien = (soLuong * giaBan) - (soLuong * giaBan) * khuyenMai;
+                        txt_HD_Thanh_Tien.Text = thanhTien.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi: " + ex.Message);
+                    }
+                }
+                btn_HD_Ghi.Enabled = true;
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ namespace GiaoDien_DangNhap
         public frmDangNhap()
         {
             InitializeComponent();
+            this.AcceptButton = btn_Dang_Nhap;
         }
         private static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
 

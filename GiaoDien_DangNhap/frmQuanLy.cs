@@ -69,6 +69,8 @@ namespace GiaoDien_DangNhap
             btn_HD_Luu.Enabled = false;
             btn_HD_Xoa.Enabled = false;
             btn_HD_Sua.Enabled = false;
+            lab_HD_Tim_Kiem.Visible = false;
+            txt_HD_Tim_Kiem.Visible = false;
             Them_Ten_Cot_Vao_DataHD();
             Hien_Thi_Len_HD_CBO_San_Pham();
             Hien_Thi_Len_HD_CBO_Nhan_Vien();
@@ -252,6 +254,37 @@ namespace GiaoDien_DangNhap
             }
         }
 
+        public bool KT_So_Luong()
+        {
+            string MaSP = cbo_HD_San_Pham.SelectedValue.ToString();
+            int SL_CT_HOADON = (int)nmr_HD_So_Luong.Value;
+            bool kq;
+            SqlConnection myConnection = Ket_Noi();
+
+            string sSql_SL_SANPHAM = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + MaSP + "'";
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand cmd = new SqlCommand(sSql_SL_SANPHAM, myConnection);
+                int SL_SANPHAM = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (SL_CT_HOADON > SL_SANPHAM)
+                {
+                    kq = false;
+                }
+                else { kq = true; }
+
+                myConnection.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Kiểm tra sô lượng thất bại: " + ex.Message);
+                return false;
+            }
+            return kq;
+        }
+
         public void Hien_Thi_Len_SP_CBO_Nha_Cung_Cap()
         {
             SqlConnection myConnection = Ket_Noi();
@@ -271,6 +304,25 @@ namespace GiaoDien_DangNhap
             catch (Exception ex)
             {
                 MessageBox.Show("Loi: " + ex.Message);
+            }
+        }
+
+        public void Tru_So_Luong()
+        {
+            string MaHD = txt_HD_Ma_Hoa_Don.Text;
+            SqlConnection myConnection = Ket_Noi();
+            string sSql_Tru = "UPDATE SANPHAM SET SANPHAM.SOLUONG = SANPHAM.SOLUONG - (SELECT CT_HOADON.SOLUONG FROM CT_HOADON JOIN SANPHAM ON CT_HOADON.MASP = SANPHAM.MASP WHERE  MAHD = '" + MaHD + "') WHERE SANPHAM.MASP = (SELECT MASP FROM CT_HOADON WHERE MAHD = '" + MaHD + "')";
+            try
+            {
+                myConnection.Open();
+                SqlCommand cmd = new SqlCommand(sSql_Tru, myConnection);
+                cmd.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Trừ số lượng thất bại: " + ex.Message);
             }
         }
 
@@ -400,6 +452,8 @@ namespace GiaoDien_DangNhap
 
                         // Hiển thị thông báo thành công
                         MessageBox.Show("Hóa đơn đã được lưu vào cơ sở dữ liệu.");
+                        //Trừ số lượng trong bảng sản phẩm
+                        Tru_So_Luong();
                         Lay_MAHD();
                         table.Rows.Clear();
                     }
@@ -482,7 +536,7 @@ namespace GiaoDien_DangNhap
             return kq;
         }
 
-        public bool Them_San_Pham(string tenSP, double giaNhap, double giaBan, string xuatXu, bool trangThai, double khuyenMai, string maNCC)
+        public bool Them_San_Pham(string tenSP, double giaNhap, double giaBan, string xuatXu, bool trangThai, string maNCC, int soLuong)
         {
             bool kq;
             kq = true;
@@ -496,8 +550,8 @@ namespace GiaoDien_DangNhap
             sSql_SP += giaBan + ",";
             sSql_SP += "N'" + xuatXu + "',";
             sSql_SP += "'"+ trangThai + "',";
-            sSql_SP += khuyenMai + ",";
-            sSql_SP += "'" + maNCC + "')";
+            sSql_SP += "'" + maNCC + "',";
+            sSql_SP += "" + soLuong + ")";
 
             try
             {
@@ -516,7 +570,7 @@ namespace GiaoDien_DangNhap
             return kq;
         }
 
-        public bool Sua_San_Pham(string tenSP, double giaNhap, double giaBan, string xuatXu, bool trangThai, double khuyenMai, string maNCC)
+        public bool Sua_San_Pham(string tenSP, double giaNhap, double giaBan, string xuatXu, bool trangThai, string maNCC, int soLuong)
         {
             bool kq;
             kq = true;
@@ -524,7 +578,7 @@ namespace GiaoDien_DangNhap
             string maSP = data_SP.CurrentRow.Cells[0].Value.ToString();
             //Câu truy vấn sửa bảng SANPHAM
             string sSql_SP;
-            sSql_SP = "UPDATE SANPHAM SET TENSP = '" + tenSP + "',GIANHAP = '" + giaNhap + "', GIABAN = '" + giaBan + "', XUATXU = N'" + xuatXu + "', TRANGTHAI = '" + trangThai + "', KHUYENMAI = '" + khuyenMai + "',  MANCC = '" + maNCC + "' WHERE MASP = @MASP";
+            sSql_SP = "UPDATE SANPHAM SET TENSP = '" + tenSP + "',GIANHAP = '" + giaNhap + "', GIABAN = '" + giaBan + "', XUATXU = N'" + xuatXu + "', TRANGTHAI = '" + trangThai + "',  MANCC = '" + maNCC + "', SOLUONG = " + soLuong + " WHERE MASP = @MASP";
 
             try
             {
@@ -762,7 +816,7 @@ namespace GiaoDien_DangNhap
         public DataSet Tim_Kiem_HD(string tenTK)
         {
             SqlConnection myConnection = Ket_Noi();
-            string sSql_Tim_Kiem = "SELECT HOADON.MAHD, MANV, MAKH, MASP, SOLUONG, DONGIA, HOADON.TONGTIEN,KHUYENMAI,NGAYLAPHD " +
+            string sSql_Tim_Kiem = "SELECT HOADON.MAHD, MANV, MAKH, MASP, SOLUONG, DONGIA, KHUYENMAI,NGAYLAPHD " +
                                               "FROM HOADON JOIN CT_HOADON ON HOADON.MAHD = CT_HOADON.MAHD " +
                                               "WHERE HOADON.MAHD LIKE N'%"+tenTK+"%'";
             DataSet ds = null;
@@ -1004,7 +1058,7 @@ namespace GiaoDien_DangNhap
                 string.IsNullOrEmpty(txt_SP_Gia_Nhap.Text.Trim()) ||
                 string.IsNullOrEmpty(txt_SP_Gia_Ban.Text.Trim()) ||
                 string.IsNullOrEmpty(cbo_SP_Nha_Cung_Cap.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_SP_Khuyen_Mai.Text.Trim()))
+                string.IsNullOrEmpty(txt_SP_So_Luong.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1012,7 +1066,8 @@ namespace GiaoDien_DangNhap
             else
             {
                 string tenSP, xuatXu, maNCC;
-                double giaNhap, giaBan, khuyenMai;
+                double giaNhap, giaBan;
+                int soLuong;
                 bool trangThai;
 
                 tenSP = txt_SP_Ten_San_Pham.Text;
@@ -1024,10 +1079,10 @@ namespace GiaoDien_DangNhap
                 {
                     trangThai = true;
                 }
-                khuyenMai = double.Parse(txt_SP_Khuyen_Mai.Text);
                 maNCC = cbo_SP_Nha_Cung_Cap.SelectedValue.ToString();
+                soLuong = int.Parse(txt_SP_So_Luong.Text);
 
-                bool kq = Them_San_Pham(tenSP, giaNhap, giaBan, xuatXu, trangThai, khuyenMai, maNCC);
+                bool kq = Them_San_Pham(tenSP, giaNhap, giaBan, xuatXu, trangThai, maNCC, soLuong);
                 if (kq == false)
                 {
                     MessageBox.Show("Thêm Sản Phẩm KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1444,19 +1499,19 @@ namespace GiaoDien_DangNhap
             try
             {
                 SqlConnection myConnection = Ket_Noi();
-                string tenSP, xuatXu, giaNhap, giaBan, nhaCungCap, khuyenMai;
+                string tenSP, xuatXu, giaNhap, giaBan, nhaCungCap, soLuong;
                 bool trangThai;
                 tenSP = data_SP.CurrentRow.Cells[1].Value.ToString();
                 xuatXu = data_SP.CurrentRow.Cells[4].Value.ToString();
                 giaNhap = data_SP.CurrentRow.Cells[2].Value.ToString();
                 giaBan = data_SP.CurrentRow.Cells[3].Value.ToString();
-                nhaCungCap = data_SP.CurrentRow.Cells[7].Value.ToString();
-                khuyenMai = data_SP.CurrentRow.Cells[6].Value.ToString();
+                nhaCungCap = data_SP.CurrentRow.Cells[6].Value.ToString();
                 if ((bool)data_SP.CurrentRow.Cells[5].Value == true)
                 {
                     trangThai = true;
                 }
                 else { trangThai = false; }
+                soLuong = data_SP.CurrentRow.Cells[7].Value.ToString();
 
                 try
                 {
@@ -1470,9 +1525,9 @@ namespace GiaoDien_DangNhap
                     cbo_SP_Xuat_Xu.Text = xuatXu;
                     txt_SP_Gia_Nhap.Text = giaNhap;
                     txt_SP_Gia_Ban.Text = giaBan;
-                    txt_SP_Khuyen_Mai.Text = khuyenMai;
                     chk_SP_Trang_Thai.Checked = trangThai;
                     cbo_SP_Nha_Cung_Cap.Text = result.ToString();
+                    txt_SP_So_Luong.Text = soLuong;
                 }
                 catch (Exception ex)
                 {
@@ -1496,7 +1551,7 @@ namespace GiaoDien_DangNhap
                 string.IsNullOrEmpty(txt_SP_Gia_Nhap.Text.Trim()) ||
                 string.IsNullOrEmpty(txt_SP_Gia_Ban.Text.Trim()) ||
                 string.IsNullOrEmpty(cbo_SP_Nha_Cung_Cap.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_SP_Khuyen_Mai.Text.Trim()))
+                string.IsNullOrEmpty(txt_SP_So_Luong.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1505,7 +1560,8 @@ namespace GiaoDien_DangNhap
             {
                 
                 string tenSP, xuatXu, maNCC;
-                double giaNhap, giaBan, khuyenMai;
+                double giaNhap, giaBan;
+                int soLuong;
                 bool trangThai;
 
                 tenSP = txt_SP_Ten_San_Pham.Text;
@@ -1517,10 +1573,10 @@ namespace GiaoDien_DangNhap
                 {
                     trangThai = true;
                 }
-                khuyenMai = double.Parse(txt_SP_Khuyen_Mai.Text);
                 maNCC = cbo_SP_Nha_Cung_Cap.SelectedValue.ToString();
+                soLuong = int.Parse(txt_SP_So_Luong.Text);
 
-                bool kq = Sua_San_Pham(tenSP, giaNhap, giaBan, xuatXu, trangThai, khuyenMai, maNCC);
+                bool kq = Sua_San_Pham(tenSP, giaNhap, giaBan, xuatXu, trangThai, maNCC, soLuong);
                 if (kq == false)
                 {
                     MessageBox.Show("Sửa Sản Phẩm KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1586,7 +1642,7 @@ namespace GiaoDien_DangNhap
             cbo_SP_Xuat_Xu.SelectedIndex = 0;
             cbo_SP_Nha_Cung_Cap.SelectedIndex = 0;
             txt_SP_Ten_San_Pham.Text = "";
-            txt_SP_Khuyen_Mai.Text = "";
+            txt_SP_So_Luong.Text = "";
             chk_SP_Trang_Thai.Checked = true;
             btn_SP_Them.Enabled = true;
             btn_SP_Sua.Enabled = false;
@@ -1601,11 +1657,15 @@ namespace GiaoDien_DangNhap
                           "FROM HOADON JOIN CT_HOADON ON HOADON.MAHD = CT_HOADON.MAHD";
                 DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
                 data_HD.DataSource = ds_Hoa_Don.Tables[0];
+                lab_HD_Tim_Kiem.Visible = true;
+                txt_HD_Tim_Kiem.Visible = true;
                 btn_DSHD_Click = false;
             }
             else
             {
                 data_HD.DataSource = table;
+                lab_HD_Tim_Kiem.Visible = false;
+                txt_HD_Tim_Kiem.Visible = false;
                 btn_DSHD_Click = true;
             }
             
@@ -1615,49 +1675,63 @@ namespace GiaoDien_DangNhap
         {
             textChange_HD_Khuyen_Mai = true;
             Luu_Vao_Database();
+            //Cập nhật lại ds hiển thị sản phẩm
+            string sSql_Xem_San_Pham = "SELECT * FROM SanPham";
+            DataSet ds_San_Pham = Xem_Thong_Tin(sSql_Xem_San_Pham);
+            data_SP.DataSource = ds_San_Pham.Tables[0];
             table = null;
             Them_Ten_Cot_Vao_DataHD();
             Lam_Moi_HD();
             btn_HD_Luu.Enabled = false;
             textChange_HD_Khuyen_Mai = false;
+            
         }
 
         private void btn_HD_Ghi_Click(object sender, EventArgs e)
         {
-            textChange_HD_Khuyen_Mai = true;
-            if (string.IsNullOrEmpty(txt_HD_Ma_Hoa_Don.Text.Trim()) ||
-               string.IsNullOrEmpty(cbo_HD_San_Pham.Text.Trim()) ||
-               string.IsNullOrEmpty(txt_HD_Don_Gia.Text.Trim()) ||
-               string.IsNullOrEmpty(txt_HD_Thanh_Tien.Text.Trim()) ||
-               string.IsNullOrEmpty(cbo_HD_Khach_Hang.Text.Trim()) ||
-               string.IsNullOrEmpty(cbo_HD_Nhan_Vien.Text.Trim()) ||
-               string.IsNullOrEmpty(txt_HD_Khuyen_Mai.Text.Trim()))
+            bool kq = KT_So_Luong();
+            if (kq)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                textChange_HD_Khuyen_Mai = true;
+                if (string.IsNullOrEmpty(txt_HD_Ma_Hoa_Don.Text.Trim()) ||
+                   string.IsNullOrEmpty(cbo_HD_San_Pham.Text.Trim()) ||
+                   string.IsNullOrEmpty(txt_HD_Don_Gia.Text.Trim()) ||
+                   string.IsNullOrEmpty(txt_HD_Thanh_Tien.Text.Trim()) ||
+                   string.IsNullOrEmpty(cbo_HD_Khach_Hang.Text.Trim()) ||
+                   string.IsNullOrEmpty(cbo_HD_Nhan_Vien.Text.Trim()) ||
+                   string.IsNullOrEmpty(txt_HD_Khuyen_Mai.Text.Trim()))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    string maHD, maSP, maKH, maNV;
+                    double donGia, thanhTien, khuyenMai;
+                    int soLuong;
+                    string ngayLap;
+
+                    maHD = txt_HD_Ma_Hoa_Don.Text;
+                    maSP = cbo_HD_San_Pham.SelectedValue.ToString();
+                    soLuong = int.Parse(nmr_HD_So_Luong.Text);
+                    donGia = double.Parse(txt_HD_Don_Gia.Text);
+                    thanhTien = double.Parse(txt_HD_Thanh_Tien.Text);
+                    maKH = cbo_HD_Khach_Hang.SelectedValue.ToString();
+                    maNV = cbo_HD_Nhan_Vien.SelectedValue.ToString();
+                    khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text) / 100;
+                    ngayLap = dt_HD_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                    Them_San_Pham_Vao_DataHD(maHD, maSP, soLuong, donGia, thanhTien, maKH, maNV, ngayLap, khuyenMai);
+                    btn_HD_Luu.Enabled = true;
+                    btn_HD_Ghi.Enabled = false;
+                    Lam_Moi_HD();
+                }
+                textChange_HD_Khuyen_Mai = false;
             }
             else
             {
-                string maHD, maSP, maKH, maNV;
-                double donGia, thanhTien, khuyenMai;
-                int soLuong;
-                string ngayLap;
-
-                maHD = txt_HD_Ma_Hoa_Don.Text;
-                maSP = cbo_HD_San_Pham.SelectedValue.ToString();
-                soLuong = int.Parse(nmr_HD_So_Luong.Text);
-                donGia = double.Parse(txt_HD_Don_Gia.Text);
-                thanhTien = double.Parse(txt_HD_Thanh_Tien.Text);
-                maKH = cbo_HD_Khach_Hang.SelectedValue.ToString();
-                maNV = cbo_HD_Nhan_Vien.SelectedValue.ToString();
-                khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text) / 100;
-                ngayLap = dt_HD_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                Them_San_Pham_Vao_DataHD(maHD, maSP, soLuong, donGia, thanhTien, maKH, maNV, ngayLap, khuyenMai);
-                btn_HD_Luu.Enabled = true;
-                btn_HD_Ghi.Enabled = false;
-                Lam_Moi_HD();
+                MessageBox.Show("Số lượng sản phẩm không đủ để lập hóa đơn!","Lưu ý",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            textChange_HD_Khuyen_Mai = false;
             
         }
 
@@ -1751,31 +1825,45 @@ namespace GiaoDien_DangNhap
 
         private void btn_HD_Sua_Click(object sender, EventArgs e)
         {
-            int rowIndex = data_HD.CurrentRow.Index;
+            try
+            {
+                int rowIndex = data_HD.CurrentRow.Index;
 
-            string maHD = txt_HD_Ma_Hoa_Don.Text;
-            string maSP = cbo_HD_San_Pham.SelectedValue.ToString();
-            int soLuong = (int)nmr_HD_So_Luong.Value;
-            double donGia = double.Parse(txt_HD_Don_Gia.Text);
-            double thanhTien = double.Parse(txt_HD_Thanh_Tien.Text);
-            string maKH = cbo_HD_Khach_Hang.SelectedValue.ToString();
-            string maNV = cbo_HD_Nhan_Vien.SelectedValue.ToString();
-            string ngayLap = dt_HD_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
-            double khuyenMai = double.Parse(txt_HD_Khuyen_Mai.Text) /100;
+                string maHD = txt_HD_Ma_Hoa_Don.Text;
+                string maSP = cbo_HD_San_Pham.SelectedValue.ToString();
+                int soLuong = (int)nmr_HD_So_Luong.Value;
+                double donGia = double.Parse(txt_HD_Don_Gia.Text);
+                double thanhTien = double.Parse(txt_HD_Thanh_Tien.Text);
+                string maKH = cbo_HD_Khach_Hang.SelectedValue.ToString();
+                string maNV = cbo_HD_Nhan_Vien.SelectedValue.ToString();
+                string ngayLap = dt_HD_Ngay_Lap_HD.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                double khuyenMai;
+                if (txt_HD_Khuyen_Mai.Text == "")
+                {
+                    khuyenMai = 0;
+                }
+                else { khuyenMai = (double.Parse(txt_HD_Khuyen_Mai.Text)) / 100; }
 
-            data_HD.Rows[rowIndex].Cells["MAHD"].Value = maHD;
-            data_HD.Rows[rowIndex].Cells["MASP"].Value = maSP;
-            data_HD.Rows[rowIndex].Cells["SOLUONG"].Value = soLuong;
-            data_HD.Rows[rowIndex].Cells["DONGIA"].Value = donGia;
-            data_HD.Rows[rowIndex].Cells["THANHTIEN"].Value = thanhTien;
-            data_HD.Rows[rowIndex].Cells["MAKH"].Value = maKH;
-            data_HD.Rows[rowIndex].Cells["MANV"].Value = maNV;
-            data_HD.Rows[rowIndex].Cells["NGAYLAPHD"].Value = ngayLap;
-            data_HD.Rows[rowIndex].Cells["KHUYENMAI"].Value = khuyenMai;
-            btn_HD_Luu.Enabled = true;
-            btn_HD_Sua.Enabled = false;
-            btn_HD_Ghi.Enabled = false;
-            Lam_Moi_HD();
+                data_HD.Rows[rowIndex].Cells["MAHD"].Value = maHD;
+                data_HD.Rows[rowIndex].Cells["MASP"].Value = maSP;
+                data_HD.Rows[rowIndex].Cells["SOLUONG"].Value = soLuong;
+                data_HD.Rows[rowIndex].Cells["DONGIA"].Value = donGia;
+                data_HD.Rows[rowIndex].Cells["THANHTIEN"].Value = thanhTien;
+                data_HD.Rows[rowIndex].Cells["MAKH"].Value = maKH;
+                data_HD.Rows[rowIndex].Cells["MANV"].Value = maNV;
+                data_HD.Rows[rowIndex].Cells["NGAYLAPHD"].Value = ngayLap;
+                data_HD.Rows[rowIndex].Cells["KHUYENMAI"].Value = khuyenMai;
+                btn_HD_Luu.Enabled = true;
+                btn_HD_Sua.Enabled = false;
+                btn_HD_Ghi.Enabled = false;
+                Lam_Moi_HD();
+                MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sửa không thành công: " + ex.Message);
+            }
+            
         }
 
         private void txt_HD_Khuyen_Mai_TextChanged(object sender, EventArgs e)
@@ -1824,6 +1912,53 @@ namespace GiaoDien_DangNhap
                 }
                 btn_HD_Ghi.Enabled = true;
             }
+        }
+
+        private void nmr_HD_So_Luong_ValueChanged(object sender, EventArgs e)
+        {
+            
+            //Lấy giá trị của mã sản phẩm, số lượng
+            string maSP = cbo_HD_San_Pham.SelectedValue.ToString();
+            int soLuong = (int)nmr_HD_So_Luong.Value;
+            double giaBan = 0;
+            double khuyenMai;
+
+            //Kiểm tra Khuyến mãi phải nhập trước khi click
+            if (txt_HD_Khuyen_Mai.Text == "")
+            {
+                khuyenMai = 0;
+            }
+            else { khuyenMai = (double.Parse(txt_HD_Khuyen_Mai.Text)) / 100; }
+
+
+
+
+            // Câu lệnh truy vấn lấy giá bán của sản phẩm
+            string sSql_Gia_Ban = "SELECT GiaBan FROM SanPham WHERE MASP = @MaSP";
+
+            // Kết nối đến cơ sở dữ liệu
+            using (SqlConnection myConnection = Ket_Noi())
+            {
+                try
+                {
+                    myConnection.Open();
+
+                    SqlCommand cmd = new SqlCommand(sSql_Gia_Ban, myConnection);
+                    cmd.Parameters.AddWithValue("@MaSP", maSP);
+
+                    giaBan = Convert.ToDouble(cmd.ExecuteScalar());
+
+                    // Tính thành tiền
+                    double thanhTien = (soLuong * giaBan) - (soLuong * giaBan) * khuyenMai;
+                    txt_HD_Thanh_Tien.Text = thanhTien.ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            btn_HD_Ghi.Enabled = true;
+            
         }
     }
 }

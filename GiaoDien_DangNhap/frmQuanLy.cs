@@ -29,7 +29,7 @@ namespace GiaoDien_DangNhap
         private bool btn_DSHD_Click = true;
         private bool textChange_HD_Khuyen_Mai = false;
 
-        private static string scon = "Data Source = THONGDZ; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
+        private static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
 
         private void frmQuanLy_Load(object sender, EventArgs e)
         {
@@ -1959,6 +1959,18 @@ namespace GiaoDien_DangNhap
             }
             btn_HD_Ghi.Enabled = true;
             
+        }
+
+        private void txt_HD_Khuyen_Mai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else if(txt_HD_Khuyen_Mai.Text.Length >= 2 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

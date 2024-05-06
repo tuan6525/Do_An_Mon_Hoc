@@ -137,6 +137,8 @@
             this.txt_NCC_Ten_Nha_Cung_Cap = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.tab_QLSP = new System.Windows.Forms.TabPage();
+            this.txt_SP_So_Luong = new System.Windows.Forms.TextBox();
+            this.lab_SP_So_Luong = new System.Windows.Forms.Label();
             this.cbo_SP_Nha_Cung_Cap = new System.Windows.Forms.ComboBox();
             this.data_SP = new System.Windows.Forms.DataGridView();
             this.chk_SP_Trang_Thai = new System.Windows.Forms.CheckBox();
@@ -158,8 +160,6 @@
             this.btn_SP_Xoa = new System.Windows.Forms.Button();
             this.btn_SP_Sua = new System.Windows.Forms.Button();
             this.btn_SP_Them = new System.Windows.Forms.Button();
-            this.txt_SP_So_Luong = new System.Windows.Forms.TextBox();
-            this.lab_SP_So_Luong = new System.Windows.Forms.Label();
             this.tabC_GiaoDienQuanLy.SuspendLayout();
             this.tab_QLNV.SuspendLayout();
             this.grb_NV_Gioi_Tinh.SuspendLayout();
@@ -869,6 +869,7 @@
             this.txt_HD_Khuyen_Mai.Size = new System.Drawing.Size(104, 27);
             this.txt_HD_Khuyen_Mai.TabIndex = 54;
             this.txt_HD_Khuyen_Mai.TextChanged += new System.EventHandler(this.txt_HD_Khuyen_Mai_TextChanged);
+            this.txt_HD_Khuyen_Mai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_HD_Khuyen_Mai_KeyPress);
             // 
             // lab_HD_Khuyen_Mai
             // 
@@ -1429,6 +1430,25 @@
             this.tab_QLSP.TabIndex = 5;
             this.tab_QLSP.Text = "QL Sản Phẩm";
             // 
+            // txt_SP_So_Luong
+            // 
+            this.txt_SP_So_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_SP_So_Luong.Location = new System.Drawing.Point(842, 105);
+            this.txt_SP_So_Luong.Name = "txt_SP_So_Luong";
+            this.txt_SP_So_Luong.Size = new System.Drawing.Size(138, 27);
+            this.txt_SP_So_Luong.TabIndex = 60;
+            // 
+            // lab_SP_So_Luong
+            // 
+            this.lab_SP_So_Luong.AutoSize = true;
+            this.lab_SP_So_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_SP_So_Luong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lab_SP_So_Luong.Location = new System.Drawing.Point(744, 108);
+            this.lab_SP_So_Luong.Name = "lab_SP_So_Luong";
+            this.lab_SP_So_Luong.Size = new System.Drawing.Size(79, 19);
+            this.lab_SP_So_Luong.TabIndex = 92;
+            this.lab_SP_So_Luong.Text = "Số Lượng";
+            // 
             // cbo_SP_Nha_Cung_Cap
             // 
             this.cbo_SP_Nha_Cung_Cap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1661,25 +1681,6 @@
             this.btn_SP_Them.TabIndex = 63;
             this.btn_SP_Them.UseVisualStyleBackColor = true;
             this.btn_SP_Them.Click += new System.EventHandler(this.btn_SP_Them_Click);
-            // 
-            // txt_SP_So_Luong
-            // 
-            this.txt_SP_So_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_SP_So_Luong.Location = new System.Drawing.Point(842, 105);
-            this.txt_SP_So_Luong.Name = "txt_SP_So_Luong";
-            this.txt_SP_So_Luong.Size = new System.Drawing.Size(138, 27);
-            this.txt_SP_So_Luong.TabIndex = 60;
-            // 
-            // lab_SP_So_Luong
-            // 
-            this.lab_SP_So_Luong.AutoSize = true;
-            this.lab_SP_So_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_SP_So_Luong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_SP_So_Luong.Location = new System.Drawing.Point(744, 108);
-            this.lab_SP_So_Luong.Name = "lab_SP_So_Luong";
-            this.lab_SP_So_Luong.Size = new System.Drawing.Size(79, 19);
-            this.lab_SP_So_Luong.TabIndex = 92;
-            this.lab_SP_So_Luong.Text = "Số Lượng";
             // 
             // frmQuanLy
             // 

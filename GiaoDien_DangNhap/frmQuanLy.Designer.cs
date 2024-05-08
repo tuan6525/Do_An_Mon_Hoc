@@ -1168,6 +1168,7 @@
             this.btn_HD_Thong_Ke.Size = new System.Drawing.Size(66, 55);
             this.btn_HD_Thong_Ke.TabIndex = 57;
             this.btn_HD_Thong_Ke.UseVisualStyleBackColor = true;
+            this.btn_HD_Thong_Ke.Click += new System.EventHandler(this.btn_HD_Thong_Ke_Click);
             // 
             // btn_HD_Xoa
             // 

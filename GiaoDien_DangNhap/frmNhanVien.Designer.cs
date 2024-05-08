@@ -48,6 +48,7 @@
             this.btn_them_moi = new System.Windows.Forms.Button();
             this.btn_BH_add = new System.Windows.Forms.Button();
             this.grbox = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txt_BH_donGia = new System.Windows.Forms.TextBox();
             this.txt_BH_khuyenMai = new System.Windows.Forms.TextBox();
             this.lab_BH_khuyenMai = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.lab_BH_ngayLapHD = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.data_khachHang = new System.Windows.Forms.DataGridView();
-            this.label23 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -93,6 +93,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grbox_BH_HD.SuspendLayout();
@@ -104,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.data_khachHang)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -315,6 +317,7 @@
             // grbox
             // 
             this.grbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.grbox.Controls.Add(this.label5);
             this.grbox.Controls.Add(this.txt_BH_donGia);
             this.grbox.Controls.Add(this.txt_BH_khuyenMai);
             this.grbox.Controls.Add(this.lab_BH_khuyenMai);
@@ -342,6 +345,15 @@
             this.grbox.TabStop = false;
             this.grbox.Text = "Thông tin sản phẩm";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(699, 175);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 23);
+            this.label5.TabIndex = 65;
+            this.label5.Text = "( % )";
+            // 
             // txt_BH_donGia
             // 
             this.txt_BH_donGia.Enabled = false;
@@ -356,7 +368,7 @@
             this.txt_BH_khuyenMai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_BH_khuyenMai.Location = new System.Drawing.Point(574, 168);
             this.txt_BH_khuyenMai.Name = "txt_BH_khuyenMai";
-            this.txt_BH_khuyenMai.Size = new System.Drawing.Size(261, 30);
+            this.txt_BH_khuyenMai.Size = new System.Drawing.Size(119, 30);
             this.txt_BH_khuyenMai.TabIndex = 63;
             this.txt_BH_khuyenMai.TextChanged += new System.EventHandler(this.txt_BH_khuyenMai_TextChanged);
             this.txt_BH_khuyenMai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_BH_khuyenMai_KeyPress);
@@ -520,8 +532,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPage2.Controls.Add(this.data_khachHang);
-            this.tabPage2.Controls.Add(this.label23);
+            this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -535,26 +546,15 @@
             // data_khachHang
             // 
             this.data_khachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_khachHang.Location = new System.Drawing.Point(11, 420);
+            this.data_khachHang.Location = new System.Drawing.Point(19, 26);
             this.data_khachHang.Name = "data_khachHang";
             this.data_khachHang.ReadOnly = true;
             this.data_khachHang.RowHeadersWidth = 51;
             this.data_khachHang.RowTemplate.Height = 24;
             this.data_khachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_khachHang.Size = new System.Drawing.Size(936, 258);
+            this.data_khachHang.Size = new System.Drawing.Size(846, 202);
             this.data_khachHang.TabIndex = 4;
             this.data_khachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_KH_CellClick);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(11, 394);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(196, 23);
-            this.label23.TabIndex = 3;
-            this.label23.Text = "Danh sách khách hàng";
             // 
             // groupBox4
             // 
@@ -664,7 +664,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Pink;
+            this.groupBox2.BackColor = System.Drawing.Color.Gray;
             this.groupBox2.Controls.Add(this.dt_ngayTao);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.ck_trang_thai);
@@ -679,10 +679,10 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Red;
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBox2.Location = new System.Drawing.Point(6, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(517, 370);
+            this.groupBox2.Size = new System.Drawing.Size(517, 384);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin khách hàng";
@@ -699,6 +699,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label17.Location = new System.Drawing.Point(140, 292);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 20);
@@ -709,6 +710,7 @@
             // 
             this.ck_trang_thai.AutoSize = true;
             this.ck_trang_thai.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ck_trang_thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ck_trang_thai.Location = new System.Drawing.Point(229, 329);
             this.ck_trang_thai.Name = "ck_trang_thai";
             this.ck_trang_thai.Size = new System.Drawing.Size(111, 24);
@@ -760,6 +762,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label16.Location = new System.Drawing.Point(125, 240);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 20);
@@ -770,6 +773,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label15.Location = new System.Drawing.Point(150, 188);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(59, 20);
@@ -780,6 +784,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label14.Location = new System.Drawing.Point(92, 136);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(117, 20);
@@ -790,6 +795,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label13.Location = new System.Drawing.Point(71, 84);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(138, 20);
@@ -800,17 +806,28 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label12.Location = new System.Drawing.Point(74, 32);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(135, 20);
             this.label12.TabIndex = 0;
             this.label12.Text = "Mã khách hàng:";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.data_khachHang);
+            this.groupBox1.Location = new System.Drawing.Point(11, 412);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(873, 234);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh Sách Khách Hàng";
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 765);
+            this.ClientSize = new System.Drawing.Size(885, 761);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmNhanVien";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -827,12 +844,12 @@
             this.grbox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nbr_BH_soLuong)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_khachHang)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -848,7 +865,6 @@
         private System.Windows.Forms.Label lab_BH_ngayLapHD;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView data_khachHang;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
@@ -903,5 +919,7 @@
         private System.Windows.Forms.Label lb_tk;
         private System.Windows.Forms.TextBox txt_BH_tim_kiem;
         private System.Windows.Forms.TextBox txt_BH_donGia;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

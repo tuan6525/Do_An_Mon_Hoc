@@ -729,85 +729,76 @@ namespace GiaoDien_DangNhap
 
         private void data_ban_hang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (data_ban_hang.DataSource != null)
+          try
             {
-                
-                    try
-                    {
-                        SqlConnection myConnection = Ket_Noi();
-                        string maHD, sanPham, khachHang, nhanVien;
-                        string donGia, thanhTien, khuyenMai;
-                        int soLuong;
-                        DateTime ngayLap;
+                SqlConnection myConnection = Ket_Noi();
+                string maHD, sanPham, khachHang, nhanVien;
+                string donGia, thanhTien, khuyenMai;
+                int soLuong;
+                DateTime ngayLap;
 
-                        maHD = data_ban_hang.CurrentRow.Cells[0].Value.ToString();
-                        sanPham = data_ban_hang.CurrentRow.Cells[1].Value.ToString();
-                        soLuong = (int)data_ban_hang.CurrentRow.Cells[2].Value;
-                        donGia = data_ban_hang.CurrentRow.Cells[3].Value.ToString();
-                        thanhTien = data_ban_hang.CurrentRow.Cells[4].Value.ToString();
-                        khachHang = data_ban_hang.CurrentRow.Cells[5].Value.ToString();
-                        nhanVien = data_ban_hang.CurrentRow.Cells[6].Value.ToString();
+                maHD = data_ban_hang.CurrentRow.Cells[0].Value.ToString();
+                sanPham = data_ban_hang.CurrentRow.Cells[1].Value.ToString();
+                soLuong = int.Parse(data_ban_hang.CurrentRow.Cells[2].Value.ToString());
+                donGia = data_ban_hang.CurrentRow.Cells[3].Value.ToString();
+                thanhTien = data_ban_hang.CurrentRow.Cells[4].Value.ToString();
+                khachHang = data_ban_hang.CurrentRow.Cells[5].Value.ToString();
+                nhanVien = data_ban_hang.CurrentRow.Cells[6].Value.ToString();
 
-                        string dateTimeString = data_ban_hang.CurrentRow.Cells[7].Value.ToString();
-                        string format = "yyyy-MM-dd HH:mm:ss";
-                        if (DateTime.TryParseExact(dateTimeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out ngayLap))
-                        {
-                            dt_BH_ngayLapHD.Value = ngayLap;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không thể ép kiểu chuỗi thành DateTime.");
-                        }
-
-                        khuyenMai = ((double)data_ban_hang.CurrentRow.Cells[8].Value * 100).ToString();
-
-                        try
-                        {
-                            myConnection.Open();
-
-                            string query = "SELECT TenSP FROM SanPham WHERE MaSP = @MaSP";
-                            SqlCommand cmd = new SqlCommand(query, myConnection);
-                            cmd.Parameters.AddWithValue("@MaSP", sanPham);
-                            object result = cmd.ExecuteScalar();
-
-                            txt_BH_maHD.Text = maHD;
-                            cbo_BH_sanPham.Text = result.ToString();
-                            nbr_BH_soLuong.Value = soLuong;
-                            txt_BH_donGia.Text = donGia;
-                            txt_BH_thanhTien.Text = thanhTien;
-
-                            query = "SELECT TenKH FROM KhachHang WHERE MaKH = @MaKH";
-                            cmd = new SqlCommand(query, myConnection);
-                            cmd.Parameters.AddWithValue("@MaKH", khachHang);
-                            result = cmd.ExecuteScalar();
-                            cbo_BH_KH.Text = result.ToString();
-
-                            query = "SELECT TenNV FROM NhanVien WHERE MaNV = @MaNV";
-                            cmd = new SqlCommand(query, myConnection);
-                            cmd.Parameters.AddWithValue("@MaNV", nhanVien);
-                            result = cmd.ExecuteScalar();
-                            cbo_BH_NV.Text = result.ToString();
-                            txt_BH_khuyenMai.Text = khuyenMai;
-
-                            myConnection.Close();
-
-                       
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                string dateTimeString = data_ban_hang.CurrentRow.Cells[7].Value.ToString();
+                string format = "yyyy-MM-dd HH:mm:ss";
+                if (DateTime.TryParseExact(dateTimeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out ngayLap))
+                {
+                    dt_BH_ngayLapHD.Value = ngayLap;
                 }
                 else
                 {
-                    return;
+                    MessageBox.Show("Không thể ép kiểu chuỗi thành DateTime.");
                 }
-           
+
+                khuyenMai = ((double)data_ban_hang.CurrentRow.Cells[8].Value * 100).ToString();
+
+                try
+                {
+                    myConnection.Open();
+
+                    string query = "SELECT TenSP FROM SanPham WHERE MaSP = @MaSP";
+                    SqlCommand cmd = new SqlCommand(query, myConnection);
+                    cmd.Parameters.AddWithValue("@MaSP", sanPham);
+                    object result = cmd.ExecuteScalar();
+
+                    txt_BH_maHD.Text = maHD;
+                    cbo_BH_sanPham.Text = result.ToString();
+                    nbr_BH_soLuong.Value = soLuong;
+                    txt_BH_donGia.Text = donGia;
+                    txt_BH_thanhTien.Text = thanhTien;
+
+                    query = "SELECT TenKH FROM KhachHang WHERE MaKH = @MaKH";
+                    cmd = new SqlCommand(query, myConnection);
+                    cmd.Parameters.AddWithValue("@MaKH", khachHang);
+                    result = cmd.ExecuteScalar();
+                    cbo_BH_KH.Text = result.ToString();
+
+                    query = "SELECT TenNV FROM NhanVien WHERE MaNV = @MaNV";
+                    cmd = new SqlCommand(query, myConnection);
+                    cmd.Parameters.AddWithValue("@MaNV", nhanVien);
+                    result = cmd.ExecuteScalar();
+                    cbo_BH_NV.Text = result.ToString();
+                    txt_BH_khuyenMai.Text = khuyenMai;
+
+                    myConnection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("hai"+ex.Message);
+            }
+
         }
 
         private void btn_xem_ds_hoa_don_Click(object sender, EventArgs e)
@@ -956,14 +947,15 @@ namespace GiaoDien_DangNhap
         {
             try
             {
-                string tenKH, diaChi, SDT, email;
+                string makh,tenKH, diaChi, SDT, email;
                 DateTime ngayTao;
+                makh = data_khachHang.CurrentRow.Cells[0].Value.ToString();
                 tenKH = data_khachHang.CurrentRow.Cells[1].Value.ToString();
                 diaChi = data_khachHang.CurrentRow.Cells[2].Value.ToString();
                 SDT = data_khachHang.CurrentRow.Cells[3].Value.ToString();
                 ngayTao = (DateTime)data_khachHang.CurrentRow.Cells[4].Value;
                 email = data_khachHang.CurrentRow.Cells[5].Value.ToString();
-
+                txt_KH_maKH.Text= makh;
                 txt_KH_tenKH.Text = tenKH;
                 txt_KH_diaChi.Text = diaChi;
                 txt_KH_sdt.Text = SDT;
@@ -978,28 +970,16 @@ namespace GiaoDien_DangNhap
 
         private void txt_BH_khuyenMai_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
+
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                
-                string khuyenMai=txt_BH_khuyenMai.Text;
-                // Kiểm tra nếu ký tự không phải là số hoặc không phải là ký tự chữ số
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && Convert.ToInt32(khuyenMai) <100)
-                {
-                    // Nếu không phải số, không cho phép ký tự được nhập vào TextBox
-                    e.Handled = true;
-                    
-                }
-             }
-            catch (Exception ex)
+                e.Handled = true;
+            }
+            else if (txt_BH_khuyenMai.Text.Length >= 2 && e.KeyChar != (char)Keys.Back)
             {
-                MessageBox.Show(ex.Message);
+                e.Handled = true;
             }
 
-           
-
-         
-
-            
         }
     }
 }

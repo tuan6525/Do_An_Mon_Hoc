@@ -99,5 +99,16 @@ namespace GiaoDien_DangNhap
                 }
             }
         }
+
+        private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dlg;
+            dlg = MessageBox.Show("Bạn có muốn thoát chương trình?","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+
+            if (dlg == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

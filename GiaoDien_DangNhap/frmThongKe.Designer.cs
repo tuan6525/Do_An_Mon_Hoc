@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongKe));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_tim_kiem = new System.Windows.Forms.Button();
             this.dt_ngay_ket_thuc = new System.Windows.Forms.DateTimePicker();
             this.dt_ngay_bat_dau = new System.Windows.Forms.DateTimePicker();
@@ -36,17 +37,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.data_Thong_Ke = new System.Windows.Forms.DataGridView();
-            this.cbo_sanPham = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lb_sl = new System.Windows.Forms.Label();
-            this.lb_dt = new System.Windows.Forms.Label();
-            this.lb_lay_sl = new System.Windows.Forms.Label();
+            this.pn_doanh_thu = new System.Windows.Forms.Panel();
             this.lb_lay_dt = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lb_dt = new System.Windows.Forms.Label();
+            this.pn_so_da_ban = new System.Windows.Forms.Panel();
+            this.lb_lay_sl = new System.Windows.Forms.Label();
+            this.lb_sl = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lb_tong_tl_hd = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data_Thong_Ke)).BeginInit();
+            this.pn_doanh_thu.SuspendLayout();
+            this.pn_so_da_ban.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_tim_kiem
@@ -64,6 +67,7 @@
             // 
             this.dt_ngay_ket_thuc.CalendarFont = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dt_ngay_ket_thuc.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dt_ngay_ket_thuc.CustomFormat = "dd/MM/yyyy";
             this.dt_ngay_ket_thuc.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dt_ngay_ket_thuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dt_ngay_ket_thuc.Location = new System.Drawing.Point(95, 197);
@@ -74,8 +78,9 @@
             // dt_ngay_bat_dau
             // 
             this.dt_ngay_bat_dau.CalendarFont = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_ngay_bat_dau.CustomFormat = "dd/MM/yyyy";
             this.dt_ngay_bat_dau.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dt_ngay_bat_dau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_ngay_bat_dau.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dt_ngay_bat_dau.Location = new System.Drawing.Point(95, 144);
             this.dt_ngay_bat_dau.Name = "dt_ngay_bat_dau";
             this.dt_ngay_bat_dau.Size = new System.Drawing.Size(255, 30);
@@ -92,7 +97,6 @@
             this.label3.Size = new System.Drawing.Size(82, 19);
             this.label3.TabIndex = 20;
             this.label3.Text = "Đến ngày:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -120,7 +124,16 @@
             // 
             // data_Thong_Ke
             // 
+            this.data_Thong_Ke.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_Thong_Ke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.data_Thong_Ke.DefaultCellStyle = dataGridViewCellStyle1;
             this.data_Thong_Ke.Location = new System.Drawing.Point(1, 380);
             this.data_Thong_Ke.Name = "data_Thong_Ke";
             this.data_Thong_Ke.RowHeadersWidth = 51;
@@ -128,80 +141,94 @@
             this.data_Thong_Ke.Size = new System.Drawing.Size(999, 214);
             this.data_Thong_Ke.TabIndex = 24;
             // 
-            // cbo_sanPham
+            // pn_doanh_thu
             // 
-            this.cbo_sanPham.FormattingEnabled = true;
-            this.cbo_sanPham.Location = new System.Drawing.Point(120, 268);
-            this.cbo_sanPham.Name = "cbo_sanPham";
-            this.cbo_sanPham.Size = new System.Drawing.Size(230, 24);
-            this.cbo_sanPham.TabIndex = 26;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.panel1.Controls.Add(this.lb_lay_dt);
-            this.panel1.Controls.Add(this.lb_dt);
-            this.panel1.Location = new System.Drawing.Point(800, 307);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 67);
-            this.panel1.TabIndex = 27;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel2.Controls.Add(this.lb_lay_sl);
-            this.panel2.Controls.Add(this.lb_sl);
-            this.panel2.Location = new System.Drawing.Point(800, 234);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 67);
-            this.panel2.TabIndex = 28;
-            // 
-            // lb_sl
-            // 
-            this.lb_sl.AutoSize = true;
-            this.lb_sl.Location = new System.Drawing.Point(3, 0);
-            this.lb_sl.Name = "lb_sl";
-            this.lb_sl.Size = new System.Drawing.Size(108, 16);
-            this.lb_sl.TabIndex = 0;
-            this.lb_sl.Text = "Số lượng đã bán:";
-            // 
-            // lb_dt
-            // 
-            this.lb_dt.AutoSize = true;
-            this.lb_dt.Location = new System.Drawing.Point(3, 0);
-            this.lb_dt.Name = "lb_dt";
-            this.lb_dt.Size = new System.Drawing.Size(70, 16);
-            this.lb_dt.TabIndex = 0;
-            this.lb_dt.Text = "Doanh thu:";
-            // 
-            // lb_lay_sl
-            // 
-            this.lb_lay_sl.AutoSize = true;
-            this.lb_lay_sl.Location = new System.Drawing.Point(69, 34);
-            this.lb_lay_sl.Name = "lb_lay_sl";
-            this.lb_lay_sl.Size = new System.Drawing.Size(0, 16);
-            this.lb_lay_sl.TabIndex = 1;
+            this.pn_doanh_thu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pn_doanh_thu.Controls.Add(this.lb_lay_dt);
+            this.pn_doanh_thu.Controls.Add(this.lb_dt);
+            this.pn_doanh_thu.Location = new System.Drawing.Point(779, 307);
+            this.pn_doanh_thu.Name = "pn_doanh_thu";
+            this.pn_doanh_thu.Size = new System.Drawing.Size(200, 67);
+            this.pn_doanh_thu.TabIndex = 27;
             // 
             // lb_lay_dt
             // 
             this.lb_lay_dt.AutoSize = true;
-            this.lb_lay_dt.Location = new System.Drawing.Point(69, 25);
+            this.lb_lay_dt.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_lay_dt.Location = new System.Drawing.Point(45, 21);
             this.lb_lay_dt.Name = "lb_lay_dt";
-            this.lb_lay_dt.Size = new System.Drawing.Size(0, 16);
+            this.lb_lay_dt.Size = new System.Drawing.Size(0, 20);
             this.lb_lay_dt.TabIndex = 2;
             // 
-            // label4
+            // lb_dt
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Salmon;
-            this.label4.Location = new System.Drawing.Point(3, 268);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 19);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Sản phẩm:";
+            this.lb_dt.AutoSize = true;
+            this.lb_dt.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_dt.Location = new System.Drawing.Point(3, 0);
+            this.lb_dt.Name = "lb_dt";
+            this.lb_dt.Size = new System.Drawing.Size(83, 19);
+            this.lb_dt.TabIndex = 0;
+            this.lb_dt.Text = "Doanh thu:";
+            // 
+            // pn_so_da_ban
+            // 
+            this.pn_so_da_ban.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pn_so_da_ban.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pn_so_da_ban.Controls.Add(this.lb_lay_sl);
+            this.pn_so_da_ban.Controls.Add(this.lb_sl);
+            this.pn_so_da_ban.Location = new System.Drawing.Point(779, 234);
+            this.pn_so_da_ban.Name = "pn_so_da_ban";
+            this.pn_so_da_ban.Size = new System.Drawing.Size(200, 67);
+            this.pn_so_da_ban.TabIndex = 28;
+            // 
+            // lb_lay_sl
+            // 
+            this.lb_lay_sl.AutoSize = true;
+            this.lb_lay_sl.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_lay_sl.Location = new System.Drawing.Point(55, 31);
+            this.lb_lay_sl.Name = "lb_lay_sl";
+            this.lb_lay_sl.Size = new System.Drawing.Size(0, 19);
+            this.lb_lay_sl.TabIndex = 1;
+            // 
+            // lb_sl
+            // 
+            this.lb_sl.AutoSize = true;
+            this.lb_sl.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_sl.Location = new System.Drawing.Point(3, 0);
+            this.lb_sl.Name = "lb_sl";
+            this.lb_sl.Size = new System.Drawing.Size(177, 19);
+            this.lb_sl.TabIndex = 0;
+            this.lb_sl.Text = "Tổng số lượng sản phẩm:";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Controls.Add(this.lb_tong_tl_hd);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(779, 157);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 67);
+            this.panel1.TabIndex = 29;
+            // 
+            // lb_tong_tl_hd
+            // 
+            this.lb_tong_tl_hd.AutoSize = true;
+            this.lb_tong_tl_hd.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_tong_tl_hd.Location = new System.Drawing.Point(55, 31);
+            this.lb_tong_tl_hd.Name = "lb_tong_tl_hd";
+            this.lb_tong_tl_hd.Size = new System.Drawing.Size(0, 19);
+            this.lb_tong_tl_hd.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(169, 19);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Tổng số lượng hóa đơn:";
             // 
             // frmThongKe
             // 
@@ -210,10 +237,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1001, 594);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.cbo_sanPham);
+            this.Controls.Add(this.pn_so_da_ban);
+            this.Controls.Add(this.pn_doanh_thu);
             this.Controls.Add(this.data_Thong_Ke);
             this.Controls.Add(this.btn_tim_kiem);
             this.Controls.Add(this.dt_ngay_ket_thuc);
@@ -225,10 +251,12 @@
             this.Text = "frmThongKe";
             this.Load += new System.EventHandler(this.frmThongKe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data_Thong_Ke)).EndInit();
+            this.pn_doanh_thu.ResumeLayout(false);
+            this.pn_doanh_thu.PerformLayout();
+            this.pn_so_da_ban.ResumeLayout(false);
+            this.pn_so_da_ban.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,13 +271,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView data_Thong_Ke;
-        private System.Windows.Forms.ComboBox cbo_sanPham;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pn_doanh_thu;
         private System.Windows.Forms.Label lb_dt;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pn_so_da_ban;
         private System.Windows.Forms.Label lb_lay_sl;
         private System.Windows.Forms.Label lb_sl;
         private System.Windows.Forms.Label lb_lay_dt;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lb_tong_tl_hd;
+        private System.Windows.Forms.Label label5;
     }
 }

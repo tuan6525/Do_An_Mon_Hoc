@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Generic;   
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -871,7 +871,6 @@ namespace GiaoDien_DangNhap
             txt_KH_email.Text = "";
             txt_KH_diaChi.Text = "";
             txt_KH_tenKH.Select();
-            ck_trang_thai.Checked = false;
             dt_ngayTao.Value=DateTime.Now;
         }
 
@@ -980,6 +979,16 @@ namespace GiaoDien_DangNhap
                 e.Handled = true;
             }
 
+        }
+
+        private void frmNhanVien_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dlg;
+            dlg = MessageBox.Show("Bạn muốn thoát chương trình?", "Thông Báo!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

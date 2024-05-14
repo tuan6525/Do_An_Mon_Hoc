@@ -19,6 +19,7 @@ namespace GiaoDien_DangNhap
             this.AcceptButton = btn_Dang_Nhap;
         }
         private static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
+        public static string LoggedInUsername { get; private set; }
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
@@ -81,6 +82,7 @@ namespace GiaoDien_DangNhap
 
                 if (Kiem_Tra(username, password, "QL"))
                 {
+                    LoggedInUsername = username;
                     MessageBox.Show("Đăng nhập Quản Lý thành công!");
                     this.Hide();
                     frmQuanLy quanLy = new frmQuanLy();

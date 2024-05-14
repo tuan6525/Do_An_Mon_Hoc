@@ -85,6 +85,7 @@
             this.lab_HD_Tim_Kiem = new System.Windows.Forms.Label();
             this.lab_HD_DSHD = new System.Windows.Forms.Label();
             this.grb_HD_Hoa_Don = new System.Windows.Forms.GroupBox();
+            this.txt_HD_Nhan_Vien = new System.Windows.Forms.TextBox();
             this.lab_HD_Phan_Tram = new System.Windows.Forms.Label();
             this.txt_HD_Khuyen_Mai = new System.Windows.Forms.TextBox();
             this.lab_HD_Khuyen_Mai = new System.Windows.Forms.Label();
@@ -94,7 +95,6 @@
             this.lab_Ma_Hoa_Don = new System.Windows.Forms.Label();
             this.dt_HD_Ngay_Lap_HD = new System.Windows.Forms.DateTimePicker();
             this.lab_HD_Ngay_Lap_HD = new System.Windows.Forms.Label();
-            this.cbo_HD_Nhan_Vien = new System.Windows.Forms.ComboBox();
             this.lab_HD_Nhan_Vien = new System.Windows.Forms.Label();
             this.cbo_HD_Khach_Hang = new System.Windows.Forms.ComboBox();
             this.lab_HD_Khach_Hang = new System.Windows.Forms.Label();
@@ -111,6 +111,7 @@
             this.lab_HD_San_Pham = new System.Windows.Forms.Label();
             this.lab_HD_So_Luong = new System.Windows.Forms.Label();
             this.grb_HD_Chuc_Nang = new System.Windows.Forms.GroupBox();
+            this.btn_HD_In_Hoa_Don = new System.Windows.Forms.Button();
             this.btn_HD_Xem_DS_Hoa_Don = new System.Windows.Forms.Button();
             this.btn_HD_Ghi = new System.Windows.Forms.Button();
             this.btn_HD_Sua = new System.Windows.Forms.Button();
@@ -137,8 +138,8 @@
             this.txt_NCC_Ten_Nha_Cung_Cap = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.tab_QLSP = new System.Windows.Forms.TabPage();
-            this.txt_SP_So_Luong = new System.Windows.Forms.TextBox();
-            this.lab_SP_So_Luong = new System.Windows.Forms.Label();
+            this.grb_Nhap_Hang = new System.Windows.Forms.GroupBox();
+            this.btn_Nhap_Hang = new System.Windows.Forms.Button();
             this.cbo_SP_Nha_Cung_Cap = new System.Windows.Forms.ComboBox();
             this.data_SP = new System.Windows.Forms.DataGridView();
             this.chk_SP_Trang_Thai = new System.Windows.Forms.CheckBox();
@@ -160,6 +161,9 @@
             this.btn_SP_Xoa = new System.Windows.Forms.Button();
             this.btn_SP_Sua = new System.Windows.Forms.Button();
             this.btn_SP_Them = new System.Windows.Forms.Button();
+            this.chk_NCC_Trang_Thai = new System.Windows.Forms.CheckBox();
+            this.chk_KH_Trang_Thai = new System.Windows.Forms.CheckBox();
+            this.chk_NV_Trang_Thai = new System.Windows.Forms.CheckBox();
             this.tabC_GiaoDienQuanLy.SuspendLayout();
             this.tab_QLNV.SuspendLayout();
             this.grb_NV_Gioi_Tinh.SuspendLayout();
@@ -177,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.data_NCC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tab_QLSP.SuspendLayout();
+            this.grb_Nhap_Hang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_SP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -198,6 +203,7 @@
             // tab_QLNV
             // 
             this.tab_QLNV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tab_QLNV.Controls.Add(this.chk_NV_Trang_Thai);
             this.tab_QLNV.Controls.Add(this.txt_NV_Email);
             this.tab_QLNV.Controls.Add(this.label3);
             this.tab_QLNV.Controls.Add(this.dt_NV_Ngay_Sinh);
@@ -519,6 +525,7 @@
             // tab_QLKH
             // 
             this.tab_QLKH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tab_QLKH.Controls.Add(this.chk_KH_Trang_Thai);
             this.tab_QLKH.Controls.Add(this.dt_KH_Ngay_Tao);
             this.tab_QLKH.Controls.Add(this.txt_KH_Email);
             this.tab_QLKH.Controls.Add(this.lab_KH_Email);
@@ -821,6 +828,7 @@
             // grb_HD_Hoa_Don
             // 
             this.grb_HD_Hoa_Don.BackColor = System.Drawing.Color.Transparent;
+            this.grb_HD_Hoa_Don.Controls.Add(this.txt_HD_Nhan_Vien);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Phan_Tram);
             this.grb_HD_Hoa_Don.Controls.Add(this.txt_HD_Khuyen_Mai);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Khuyen_Mai);
@@ -830,7 +838,6 @@
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_Ma_Hoa_Don);
             this.grb_HD_Hoa_Don.Controls.Add(this.dt_HD_Ngay_Lap_HD);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Ngay_Lap_HD);
-            this.grb_HD_Hoa_Don.Controls.Add(this.cbo_HD_Nhan_Vien);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Nhan_Vien);
             this.grb_HD_Hoa_Don.Controls.Add(this.cbo_HD_Khach_Hang);
             this.grb_HD_Hoa_Don.Controls.Add(this.lab_HD_Khach_Hang);
@@ -849,6 +856,14 @@
             this.grb_HD_Hoa_Don.TabIndex = 16;
             this.grb_HD_Hoa_Don.TabStop = false;
             this.grb_HD_Hoa_Don.Text = "Hóa Đơn";
+            // 
+            // txt_HD_Nhan_Vien
+            // 
+            this.txt_HD_Nhan_Vien.Enabled = false;
+            this.txt_HD_Nhan_Vien.Location = new System.Drawing.Point(503, 76);
+            this.txt_HD_Nhan_Vien.Name = "txt_HD_Nhan_Vien";
+            this.txt_HD_Nhan_Vien.Size = new System.Drawing.Size(209, 30);
+            this.txt_HD_Nhan_Vien.TabIndex = 69;
             // 
             // lab_HD_Phan_Tram
             // 
@@ -925,6 +940,7 @@
             // dt_HD_Ngay_Lap_HD
             // 
             this.dt_HD_Ngay_Lap_HD.CustomFormat = "dd/MM/yyyy";
+            this.dt_HD_Ngay_Lap_HD.Enabled = false;
             this.dt_HD_Ngay_Lap_HD.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dt_HD_Ngay_Lap_HD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dt_HD_Ngay_Lap_HD.Location = new System.Drawing.Point(503, 125);
@@ -942,15 +958,6 @@
             this.lab_HD_Ngay_Lap_HD.Size = new System.Drawing.Size(107, 19);
             this.lab_HD_Ngay_Lap_HD.TabIndex = 63;
             this.lab_HD_Ngay_Lap_HD.Text = "Ngày Lập HD";
-            // 
-            // cbo_HD_Nhan_Vien
-            // 
-            this.cbo_HD_Nhan_Vien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_HD_Nhan_Vien.FormattingEnabled = true;
-            this.cbo_HD_Nhan_Vien.Location = new System.Drawing.Point(503, 79);
-            this.cbo_HD_Nhan_Vien.Name = "cbo_HD_Nhan_Vien";
-            this.cbo_HD_Nhan_Vien.Size = new System.Drawing.Size(209, 27);
-            this.cbo_HD_Nhan_Vien.TabIndex = 52;
             // 
             // lab_HD_Nhan_Vien
             // 
@@ -1100,6 +1107,7 @@
             // 
             // grb_HD_Chuc_Nang
             // 
+            this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_In_Hoa_Don);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Xem_DS_Hoa_Don);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Ghi);
             this.grb_HD_Chuc_Nang.Controls.Add(this.btn_HD_Sua);
@@ -1115,11 +1123,21 @@
             this.grb_HD_Chuc_Nang.TabStop = false;
             this.grb_HD_Chuc_Nang.Text = "Chức năng";
             // 
+            // btn_HD_In_Hoa_Don
+            // 
+            this.btn_HD_In_Hoa_Don.Location = new System.Drawing.Point(77, 175);
+            this.btn_HD_In_Hoa_Don.Name = "btn_HD_In_Hoa_Don";
+            this.btn_HD_In_Hoa_Don.Size = new System.Drawing.Size(141, 38);
+            this.btn_HD_In_Hoa_Don.TabIndex = 62;
+            this.btn_HD_In_Hoa_Don.Text = "In Hóa Đơn";
+            this.btn_HD_In_Hoa_Don.UseVisualStyleBackColor = true;
+            this.btn_HD_In_Hoa_Don.Click += new System.EventHandler(this.btn_HD_In_Hoa_Don_Click);
+            // 
             // btn_HD_Xem_DS_Hoa_Don
             // 
             this.btn_HD_Xem_DS_Hoa_Don.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Xem_DS_Hoa_Don.BackgroundImage")));
             this.btn_HD_Xem_DS_Hoa_Don.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Xem_DS_Hoa_Don.Location = new System.Drawing.Point(208, 51);
+            this.btn_HD_Xem_DS_Hoa_Don.Location = new System.Drawing.Point(205, 35);
             this.btn_HD_Xem_DS_Hoa_Don.Name = "btn_HD_Xem_DS_Hoa_Don";
             this.btn_HD_Xem_DS_Hoa_Don.Size = new System.Drawing.Size(66, 55);
             this.btn_HD_Xem_DS_Hoa_Don.TabIndex = 60;
@@ -1130,7 +1148,7 @@
             // 
             this.btn_HD_Ghi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Ghi.BackgroundImage")));
             this.btn_HD_Ghi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Ghi.Location = new System.Drawing.Point(20, 134);
+            this.btn_HD_Ghi.Location = new System.Drawing.Point(17, 104);
             this.btn_HD_Ghi.Name = "btn_HD_Ghi";
             this.btn_HD_Ghi.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Ghi.TabIndex = 61;
@@ -1141,7 +1159,7 @@
             // 
             this.btn_HD_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Sua.BackgroundImage")));
             this.btn_HD_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Sua.Location = new System.Drawing.Point(116, 133);
+            this.btn_HD_Sua.Location = new System.Drawing.Point(113, 103);
             this.btn_HD_Sua.Name = "btn_HD_Sua";
             this.btn_HD_Sua.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Sua.TabIndex = 58;
@@ -1152,7 +1170,7 @@
             // 
             this.btn_HD_Luu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Luu.BackgroundImage")));
             this.btn_HD_Luu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Luu.Location = new System.Drawing.Point(20, 49);
+            this.btn_HD_Luu.Location = new System.Drawing.Point(17, 33);
             this.btn_HD_Luu.Name = "btn_HD_Luu";
             this.btn_HD_Luu.Size = new System.Drawing.Size(66, 59);
             this.btn_HD_Luu.TabIndex = 56;
@@ -1163,7 +1181,7 @@
             // 
             this.btn_HD_Thong_Ke.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Thong_Ke.BackgroundImage")));
             this.btn_HD_Thong_Ke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Thong_Ke.Location = new System.Drawing.Point(116, 51);
+            this.btn_HD_Thong_Ke.Location = new System.Drawing.Point(113, 35);
             this.btn_HD_Thong_Ke.Name = "btn_HD_Thong_Ke";
             this.btn_HD_Thong_Ke.Size = new System.Drawing.Size(66, 55);
             this.btn_HD_Thong_Ke.TabIndex = 57;
@@ -1174,15 +1192,17 @@
             // 
             this.btn_HD_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HD_Xoa.BackgroundImage")));
             this.btn_HD_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HD_Xoa.Location = new System.Drawing.Point(208, 133);
+            this.btn_HD_Xoa.Location = new System.Drawing.Point(205, 103);
             this.btn_HD_Xoa.Name = "btn_HD_Xoa";
             this.btn_HD_Xoa.Size = new System.Drawing.Size(66, 57);
             this.btn_HD_Xoa.TabIndex = 59;
             this.btn_HD_Xoa.UseVisualStyleBackColor = true;
+            this.btn_HD_Xoa.Click += new System.EventHandler(this.btn_HD_Xoa_Click);
             // 
             // tab_QLNCC
             // 
             this.tab_QLNCC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tab_QLNCC.Controls.Add(this.chk_NCC_Trang_Thai);
             this.tab_QLNCC.Controls.Add(this.txt_NCC_Email);
             this.tab_QLNCC.Controls.Add(this.lab_NCC_Email);
             this.tab_QLNCC.Controls.Add(this.btn_NCC_Thoat);
@@ -1211,7 +1231,7 @@
             // txt_NCC_Email
             // 
             this.txt_NCC_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_Email.Location = new System.Drawing.Point(532, 176);
+            this.txt_NCC_Email.Location = new System.Drawing.Point(591, 176);
             this.txt_NCC_Email.Name = "txt_NCC_Email";
             this.txt_NCC_Email.Size = new System.Drawing.Size(280, 27);
             this.txt_NCC_Email.TabIndex = 45;
@@ -1221,7 +1241,7 @@
             this.lab_NCC_Email.AutoSize = true;
             this.lab_NCC_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_NCC_Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_NCC_Email.Location = new System.Drawing.Point(466, 180);
+            this.lab_NCC_Email.Location = new System.Drawing.Point(525, 180);
             this.lab_NCC_Email.Name = "lab_NCC_Email";
             this.lab_NCC_Email.Size = new System.Drawing.Size(54, 19);
             this.lab_NCC_Email.TabIndex = 58;
@@ -1343,7 +1363,7 @@
             // txt_NCC_SDT
             // 
             this.txt_NCC_SDT.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NCC_SDT.Location = new System.Drawing.Point(532, 129);
+            this.txt_NCC_SDT.Location = new System.Drawing.Point(591, 129);
             this.txt_NCC_SDT.Name = "txt_NCC_SDT";
             this.txt_NCC_SDT.Size = new System.Drawing.Size(193, 27);
             this.txt_NCC_SDT.TabIndex = 44;
@@ -1361,7 +1381,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label22.Location = new System.Drawing.Point(472, 132);
+            this.label22.Location = new System.Drawing.Point(531, 132);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 19);
             this.label22.TabIndex = 45;
@@ -1400,8 +1420,7 @@
             // tab_QLSP
             // 
             this.tab_QLSP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tab_QLSP.Controls.Add(this.txt_SP_So_Luong);
-            this.tab_QLSP.Controls.Add(this.lab_SP_So_Luong);
+            this.tab_QLSP.Controls.Add(this.grb_Nhap_Hang);
             this.tab_QLSP.Controls.Add(this.cbo_SP_Nha_Cung_Cap);
             this.tab_QLSP.Controls.Add(this.data_SP);
             this.tab_QLSP.Controls.Add(this.chk_SP_Trang_Thai);
@@ -1431,32 +1450,35 @@
             this.tab_QLSP.TabIndex = 5;
             this.tab_QLSP.Text = "QL Sản Phẩm";
             // 
-            // txt_SP_So_Luong
+            // grb_Nhap_Hang
             // 
-            this.txt_SP_So_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_SP_So_Luong.Location = new System.Drawing.Point(842, 105);
-            this.txt_SP_So_Luong.Name = "txt_SP_So_Luong";
-            this.txt_SP_So_Luong.Size = new System.Drawing.Size(138, 27);
-            this.txt_SP_So_Luong.TabIndex = 60;
+            this.grb_Nhap_Hang.Controls.Add(this.btn_Nhap_Hang);
+            this.grb_Nhap_Hang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.grb_Nhap_Hang.Location = new System.Drawing.Point(809, 3);
+            this.grb_Nhap_Hang.Name = "grb_Nhap_Hang";
+            this.grb_Nhap_Hang.Size = new System.Drawing.Size(121, 96);
+            this.grb_Nhap_Hang.TabIndex = 91;
+            this.grb_Nhap_Hang.TabStop = false;
+            this.grb_Nhap_Hang.Text = "Nhập Hàng";
             // 
-            // lab_SP_So_Luong
+            // btn_Nhap_Hang
             // 
-            this.lab_SP_So_Luong.AutoSize = true;
-            this.lab_SP_So_Luong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_SP_So_Luong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_SP_So_Luong.Location = new System.Drawing.Point(744, 108);
-            this.lab_SP_So_Luong.Name = "lab_SP_So_Luong";
-            this.lab_SP_So_Luong.Size = new System.Drawing.Size(79, 19);
-            this.lab_SP_So_Luong.TabIndex = 92;
-            this.lab_SP_So_Luong.Text = "Số Lượng";
+            this.btn_Nhap_Hang.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Nhap_Hang.BackgroundImage")));
+            this.btn_Nhap_Hang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Nhap_Hang.Location = new System.Drawing.Point(29, 26);
+            this.btn_Nhap_Hang.Name = "btn_Nhap_Hang";
+            this.btn_Nhap_Hang.Size = new System.Drawing.Size(66, 54);
+            this.btn_Nhap_Hang.TabIndex = 92;
+            this.btn_Nhap_Hang.UseVisualStyleBackColor = true;
+            this.btn_Nhap_Hang.Click += new System.EventHandler(this.btn_Nhap_Hang_Click);
             // 
             // cbo_SP_Nha_Cung_Cap
             // 
             this.cbo_SP_Nha_Cung_Cap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_SP_Nha_Cung_Cap.FormattingEnabled = true;
-            this.cbo_SP_Nha_Cung_Cap.Location = new System.Drawing.Point(500, 192);
+            this.cbo_SP_Nha_Cung_Cap.Location = new System.Drawing.Point(838, 118);
             this.cbo_SP_Nha_Cung_Cap.Name = "cbo_SP_Nha_Cung_Cap";
-            this.cbo_SP_Nha_Cung_Cap.Size = new System.Drawing.Size(209, 27);
+            this.cbo_SP_Nha_Cung_Cap.Size = new System.Drawing.Size(159, 27);
             this.cbo_SP_Nha_Cung_Cap.TabIndex = 59;
             // 
             // data_SP
@@ -1480,7 +1502,7 @@
             this.chk_SP_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_SP_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_SP_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chk_SP_Trang_Thai.Location = new System.Drawing.Point(855, 153);
+            this.chk_SP_Trang_Thai.Location = new System.Drawing.Point(838, 172);
             this.chk_SP_Trang_Thai.Name = "chk_SP_Trang_Thai";
             this.chk_SP_Trang_Thai.Size = new System.Drawing.Size(111, 23);
             this.chk_SP_Trang_Thai.TabIndex = 61;
@@ -1502,7 +1524,7 @@
             this.lab_SP_Nha_Cung_Cap.AutoSize = true;
             this.lab_SP_Nha_Cung_Cap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_SP_Nha_Cung_Cap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_SP_Nha_Cung_Cap.Location = new System.Drawing.Point(359, 196);
+            this.lab_SP_Nha_Cung_Cap.Location = new System.Drawing.Point(699, 121);
             this.lab_SP_Nha_Cung_Cap.Name = "lab_SP_Nha_Cung_Cap";
             this.lab_SP_Nha_Cung_Cap.Size = new System.Drawing.Size(114, 19);
             this.lab_SP_Nha_Cung_Cap.TabIndex = 84;
@@ -1572,7 +1594,7 @@
             // txt_SP_Gia_Ban
             // 
             this.txt_SP_Gia_Ban.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_SP_Gia_Ban.Location = new System.Drawing.Point(500, 147);
+            this.txt_SP_Gia_Ban.Location = new System.Drawing.Point(462, 173);
             this.txt_SP_Gia_Ban.Name = "txt_SP_Gia_Ban";
             this.txt_SP_Gia_Ban.Size = new System.Drawing.Size(209, 27);
             this.txt_SP_Gia_Ban.TabIndex = 58;
@@ -1580,7 +1602,7 @@
             // txt_SP_Gia_Nhap
             // 
             this.txt_SP_Gia_Nhap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_SP_Gia_Nhap.Location = new System.Drawing.Point(500, 105);
+            this.txt_SP_Gia_Nhap.Location = new System.Drawing.Point(462, 118);
             this.txt_SP_Gia_Nhap.Name = "txt_SP_Gia_Nhap";
             this.txt_SP_Gia_Nhap.Size = new System.Drawing.Size(209, 27);
             this.txt_SP_Gia_Nhap.TabIndex = 57;
@@ -1590,7 +1612,7 @@
             this.lab_SP_Gia_Ban.AutoSize = true;
             this.lab_SP_Gia_Ban.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_SP_Gia_Ban.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_SP_Gia_Ban.Location = new System.Drawing.Point(409, 150);
+            this.lab_SP_Gia_Ban.Location = new System.Drawing.Point(371, 176);
             this.lab_SP_Gia_Ban.Name = "lab_SP_Gia_Ban";
             this.lab_SP_Gia_Ban.Size = new System.Drawing.Size(70, 19);
             this.lab_SP_Gia_Ban.TabIndex = 71;
@@ -1601,7 +1623,7 @@
             this.lab_SP_Gia_Nhap.AutoSize = true;
             this.lab_SP_Gia_Nhap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_SP_Gia_Nhap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lab_SP_Gia_Nhap.Location = new System.Drawing.Point(400, 108);
+            this.lab_SP_Gia_Nhap.Location = new System.Drawing.Point(362, 121);
             this.lab_SP_Gia_Nhap.Name = "lab_SP_Gia_Nhap";
             this.lab_SP_Gia_Nhap.Size = new System.Drawing.Size(79, 19);
             this.lab_SP_Gia_Nhap.TabIndex = 70;
@@ -1641,7 +1663,7 @@
             // 
             this.btn_SP_Lam_Moi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_SP_Lam_Moi.BackgroundImage")));
             this.btn_SP_Lam_Moi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_SP_Lam_Moi.Location = new System.Drawing.Point(703, 19);
+            this.btn_SP_Lam_Moi.Location = new System.Drawing.Point(703, 29);
             this.btn_SP_Lam_Moi.Name = "btn_SP_Lam_Moi";
             this.btn_SP_Lam_Moi.Size = new System.Drawing.Size(66, 54);
             this.btn_SP_Lam_Moi.TabIndex = 66;
@@ -1653,7 +1675,7 @@
             this.btn_SP_Xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_SP_Xoa.BackgroundImage")));
             this.btn_SP_Xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_SP_Xoa.Enabled = false;
-            this.btn_SP_Xoa.Location = new System.Drawing.Point(605, 19);
+            this.btn_SP_Xoa.Location = new System.Drawing.Point(605, 29);
             this.btn_SP_Xoa.Name = "btn_SP_Xoa";
             this.btn_SP_Xoa.Size = new System.Drawing.Size(66, 54);
             this.btn_SP_Xoa.TabIndex = 65;
@@ -1665,7 +1687,7 @@
             this.btn_SP_Sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_SP_Sua.BackgroundImage")));
             this.btn_SP_Sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_SP_Sua.Enabled = false;
-            this.btn_SP_Sua.Location = new System.Drawing.Point(507, 19);
+            this.btn_SP_Sua.Location = new System.Drawing.Point(507, 29);
             this.btn_SP_Sua.Name = "btn_SP_Sua";
             this.btn_SP_Sua.Size = new System.Drawing.Size(66, 54);
             this.btn_SP_Sua.TabIndex = 64;
@@ -1676,12 +1698,54 @@
             // 
             this.btn_SP_Them.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_SP_Them.BackgroundImage")));
             this.btn_SP_Them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_SP_Them.Location = new System.Drawing.Point(409, 19);
+            this.btn_SP_Them.Location = new System.Drawing.Point(409, 29);
             this.btn_SP_Them.Name = "btn_SP_Them";
             this.btn_SP_Them.Size = new System.Drawing.Size(66, 54);
             this.btn_SP_Them.TabIndex = 63;
             this.btn_SP_Them.UseVisualStyleBackColor = true;
             this.btn_SP_Them.Click += new System.EventHandler(this.btn_SP_Them_Click);
+            // 
+            // chk_NCC_Trang_Thai
+            // 
+            this.chk_NCC_Trang_Thai.AutoSize = true;
+            this.chk_NCC_Trang_Thai.Checked = true;
+            this.chk_NCC_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_NCC_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_NCC_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chk_NCC_Trang_Thai.Location = new System.Drawing.Point(857, 128);
+            this.chk_NCC_Trang_Thai.Name = "chk_NCC_Trang_Thai";
+            this.chk_NCC_Trang_Thai.Size = new System.Drawing.Size(111, 23);
+            this.chk_NCC_Trang_Thai.TabIndex = 62;
+            this.chk_NCC_Trang_Thai.Text = "Trạng Thái";
+            this.chk_NCC_Trang_Thai.UseVisualStyleBackColor = true;
+            // 
+            // chk_KH_Trang_Thai
+            // 
+            this.chk_KH_Trang_Thai.AutoSize = true;
+            this.chk_KH_Trang_Thai.Checked = true;
+            this.chk_KH_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_KH_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_KH_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chk_KH_Trang_Thai.Location = new System.Drawing.Point(769, 183);
+            this.chk_KH_Trang_Thai.Name = "chk_KH_Trang_Thai";
+            this.chk_KH_Trang_Thai.Size = new System.Drawing.Size(111, 23);
+            this.chk_KH_Trang_Thai.TabIndex = 62;
+            this.chk_KH_Trang_Thai.Text = "Trạng Thái";
+            this.chk_KH_Trang_Thai.UseVisualStyleBackColor = true;
+            // 
+            // chk_NV_Trang_Thai
+            // 
+            this.chk_NV_Trang_Thai.AutoSize = true;
+            this.chk_NV_Trang_Thai.Checked = true;
+            this.chk_NV_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_NV_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_NV_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chk_NV_Trang_Thai.Location = new System.Drawing.Point(812, 58);
+            this.chk_NV_Trang_Thai.Name = "chk_NV_Trang_Thai";
+            this.chk_NV_Trang_Thai.Size = new System.Drawing.Size(111, 23);
+            this.chk_NV_Trang_Thai.TabIndex = 62;
+            this.chk_NV_Trang_Thai.Text = "Trạng Thái";
+            this.chk_NV_Trang_Thai.UseVisualStyleBackColor = true;
             // 
             // frmQuanLy
             // 
@@ -1718,6 +1782,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tab_QLSP.ResumeLayout(false);
             this.tab_QLSP.PerformLayout();
+            this.grb_Nhap_Hang.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.data_SP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
@@ -1825,7 +1890,6 @@
         private System.Windows.Forms.ComboBox cbo_HD_San_Pham;
         private System.Windows.Forms.ComboBox cbo_HD_Khach_Hang;
         private System.Windows.Forms.Label lab_HD_Khach_Hang;
-        private System.Windows.Forms.ComboBox cbo_HD_Nhan_Vien;
         private System.Windows.Forms.Label lab_HD_Nhan_Vien;
         private System.Windows.Forms.DateTimePicker dt_HD_Ngay_Lap_HD;
         private System.Windows.Forms.Label lab_HD_Ngay_Lap_HD;
@@ -1855,7 +1919,12 @@
         private System.Windows.Forms.Button btn_HD_Xem_DS_Hoa_Don;
         private System.Windows.Forms.Button btn_HD_Ghi;
         private System.Windows.Forms.Label lab_HD_Phan_Tram;
-        private System.Windows.Forms.TextBox txt_SP_So_Luong;
-        private System.Windows.Forms.Label lab_SP_So_Luong;
+        private System.Windows.Forms.GroupBox grb_Nhap_Hang;
+        private System.Windows.Forms.Button btn_Nhap_Hang;
+        private System.Windows.Forms.TextBox txt_HD_Nhan_Vien;
+        private System.Windows.Forms.Button btn_HD_In_Hoa_Don;
+        private System.Windows.Forms.CheckBox chk_NV_Trang_Thai;
+        private System.Windows.Forms.CheckBox chk_KH_Trang_Thai;
+        private System.Windows.Forms.CheckBox chk_NCC_Trang_Thai;
     }
 }

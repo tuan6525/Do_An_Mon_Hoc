@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5F028AE1-68FF-4EDB-BA97-4403605C7BAB}|QL_ban_may_tinh.csproj|C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\frmquanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F028AE1-68FF-4EDB-BA97-4403605C7BAB}|QL_ban_may_tinh.csproj|solutionrelative:frmquanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F028AE1-68FF-4EDB-BA97-4403605C7BAB}|QL_ban_may_tinh.csproj|C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\frmquanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F028AE1-68FF-4EDB-BA97-4403605C7BAB}|QL_ban_may_tinh.csproj|solutionrelative:frmquanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F028AE1-68FF-4EDB-BA97-4403605C7BAB}|QL_ban_may_tinh.csproj|c:\\users\\tran tuan\\desktop\\\u0111\u1ED3 \u00E1n c#\\do_an_mon_hoc\\giaodien_dangnhap\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F028AE1-68FF-4EDB-BA97-4403605C7BAB}|QL_ban_may_tinh.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T02:17:24.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmQuanLy.cs",
+              "DocumentMoniker": "C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\frmQuanLy.cs",
+              "RelativeDocumentMoniker": "frmQuanLy.cs",
+              "ToolTip": "C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\frmQuanLy.cs",
+              "RelativeToolTip": "frmQuanLy.cs",
+              "ViewState": "AQIAAGwBAAAAAAAAAAAAAH4BAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T02:57:24.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmQuanLy.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\frmQuanLy.cs",
+              "RelativeDocumentMoniker": "frmQuanLy.cs",
+              "ToolTip": "C:\\Users\\TRAN TUAN\\Desktop\\\u0110\u1ED3 \u00E1n C#\\Do_An_Mon_Hoc\\GiaoDien_DangNhap\\frmQuanLy.cs [Design]",
+              "RelativeToolTip": "frmQuanLy.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T02:55:53.996Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

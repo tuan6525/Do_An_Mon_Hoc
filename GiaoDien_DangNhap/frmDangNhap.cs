@@ -18,7 +18,7 @@ namespace GiaoDien_DangNhap
             InitializeComponent();
             this.AcceptButton = btn_Dang_Nhap;
         }
-        private static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
+        private static string scon = "Data Source = THONGDZ; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
         public static string LoggedInUsername { get; private set; }
 
         private void frmDangNhap_Load(object sender, EventArgs e)
@@ -90,6 +90,7 @@ namespace GiaoDien_DangNhap
                 }
                 else if(Kiem_Tra(username, password, "NV"))
                 {
+                    LoggedInUsername = username;
                     MessageBox.Show("Đăng nhập Nhân Viên thành công!");
                     this.Hide();
                     frmNhanVien nhanVien = new frmNhanVien();

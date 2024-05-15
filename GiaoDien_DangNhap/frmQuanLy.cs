@@ -2061,5 +2061,7 @@ namespace GiaoDien_DangNhap
             frmInHoaDon frm = new frmInHoaDon();
             frm.ShowDialog();
         }
+
+    
     }
 }

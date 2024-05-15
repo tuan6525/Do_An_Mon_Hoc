@@ -61,7 +61,8 @@ namespace GiaoDien_DangNhap
             Lay_MAHD();
             Them_Ten_Cot_Vao_DataHD();
             Hien_Thi_Len_HD_CBO_San_Pham();
-            Hien_Thi_Len_HD_CBO_Nhan_Vien();
+            Hien_Thi_Len_HD_Nhan_Vien_Dang_Nhap();
+            //Hien_Thi_Len_HD_CBO_Nhan_Vien();
             Hien_Thi_Len_HD_CBO_Khach_Hang();
             Hien_Don_Gia();
             Tinh_Thanh_Tien();
@@ -203,27 +204,6 @@ namespace GiaoDien_DangNhap
             catch (Exception ex)
             {
                 MessageBox.Show("Loi: 2 " + ex.Message);
-            }
-        }
-        public void Hien_Thi_Len_HD_CBO_Nhan_Vien()
-        {
-            SqlConnection myConnection = Ket_Noi();
-            string sSql_Hien = "SELECT manv, Tennv FROM nhanvien";
-            try
-            {
-                myConnection.Open();
-                SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
-                System.Data.DataSet ds = new System.Data.DataSet();
-                dsHien.Fill(ds);
-                myConnection.Close();
-
-                cbo_BH_NV.DataSource = ds.Tables[0];
-                cbo_BH_NV.DisplayMember = "TenNV";
-                cbo_BH_NV.ValueMember = "MaNV";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Loi: 3 " + ex.Message);
             }
         }
         public void Hien_Don_Gia()
@@ -399,7 +379,7 @@ namespace GiaoDien_DangNhap
                     double donGia = double.Parse(txt_BH_donGia.Text);
                     double thanhTien = double.Parse(txt_BH_thanhTien.Text);
                     string maKH = cbo_BH_KH.SelectedValue.ToString();
-                    string maNV = cbo_BH_NV.SelectedValue.ToString();
+                    
                     string ngayLap = dt_BH_ngayLapHD.Value.ToString("yyyy-MM-dd HH:mm:ss");
                     double khuyenMai;
                     if (txt_BH_khuyenMai.Text == "")
@@ -414,7 +394,7 @@ namespace GiaoDien_DangNhap
                     data_ban_hang.Rows[rowIndex].Cells["DONGIA"].Value = donGia;
                     data_ban_hang.Rows[rowIndex].Cells["THANHTIEN"].Value = thanhTien;
                     data_ban_hang.Rows[rowIndex].Cells["MAKH"].Value = maKH;
-                    data_ban_hang.Rows[rowIndex].Cells["MANV"].Value = maNV;
+                   
                     data_ban_hang.Rows[rowIndex].Cells["NGAYLAPHD"].Value = ngayLap;
                     data_ban_hang.Rows[rowIndex].Cells["KHUYENMAI"].Value = khuyenMai;
 
@@ -427,7 +407,7 @@ namespace GiaoDien_DangNhap
                 }
           
         }
-        public bool Them_Khach_Hang(string tenKH, string diaChi, string SDT, string ngayTao, string email)
+        public bool Them_Khach_Hang(string tenKH, string diaChi, string SDT, string ngayTao, string email,bool trangThai)
         {
             bool kq;
             kq = true;
@@ -440,7 +420,8 @@ namespace GiaoDien_DangNhap
             sSql_KH += "N'" + diaChi + "',";
             sSql_KH += "'" + SDT + "',";
             sSql_KH += "'" + ngayTao + "',";
-            sSql_KH += "'" + email + "')";
+            sSql_KH += "'" + email + "',";
+            sSql_KH += "'" + trangThai + "')";
 
             try
             {
@@ -471,15 +452,29 @@ namespace GiaoDien_DangNhap
             }
             else
             {
+                if (txt_KH_sdt.Text.Length != 10)
+                {
+                    MessageBox.Show("Vui lòng nhập SĐT đủ 10 số.", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 string tenKH, diaChi, SDT, email, ngayTao;
+                bool trangThai;
 
                 tenKH = txt_KH_tenKH.Text;
                 diaChi = txt_KH_diaChi.Text;
                 SDT = txt_KH_sdt.Text;
                 email = txt_KH_email.Text;
                 ngayTao = dt_BH_ngayLapHD.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                if (ck_trang_thai.Checked)
+                {
+                    trangThai = true;
+                }
+                else
+                {
+                    trangThai = false;
+                }
 
-                bool kq = Them_Khach_Hang(tenKH, diaChi, SDT, ngayTao, email);
+                bool kq = Them_Khach_Hang(tenKH, diaChi, SDT, ngayTao, email, trangThai);
                 if (kq == false)
                 {
                     MessageBox.Show("Thêm Khách Hàng KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -668,7 +663,7 @@ namespace GiaoDien_DangNhap
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        if ( maSP == row["MASP"].ToString() && maKH == row["MAKH"].ToString() && maNV == row["MANV"].ToString())
+                        if ( maSP == row["MASP"].ToString())
                         {
                             row["SOLUONG"] = soLuong + (int)data_ban_hang.CurrentRow.Cells[2].Value;
                             row["THANHTIEN"] = thanhTien + (double)data_ban_hang.CurrentRow.Cells[4].Value;
@@ -690,7 +685,6 @@ namespace GiaoDien_DangNhap
             cbo_BH_sanPham.SelectedIndex = 0;
             nbr_BH_soLuong.Value = 1;
             cbo_BH_KH.SelectedIndex = 0;
-            cbo_BH_NV.SelectedIndex = 0;
             dt_BH_ngayLapHD.Value = DateTime.Now;
             txt_BH_khuyenMai.Text = "";
             txt_BH_thanhTien.Text = "";
@@ -709,7 +703,7 @@ namespace GiaoDien_DangNhap
                        string.IsNullOrEmpty(txt_BH_donGia.Text.Trim()) ||
                        string.IsNullOrEmpty(txt_BH_thanhTien.Text.Trim()) ||
                        string.IsNullOrEmpty(cbo_BH_KH.Text.Trim()) ||
-                       string.IsNullOrEmpty(cbo_BH_NV.Text.Trim()) ||
+                       string.IsNullOrEmpty(txt_BH_ma_NV.Text.Trim()) ||
                        string.IsNullOrEmpty(txt_BH_khuyenMai.Text.Trim()))
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -728,7 +722,7 @@ namespace GiaoDien_DangNhap
                         donGia = double.Parse(txt_BH_donGia.Text);
                         thanhTien = double.Parse(txt_BH_thanhTien.Text);
                         maKH = cbo_BH_KH.SelectedValue.ToString();
-                        maNV = cbo_BH_NV.SelectedValue.ToString();
+                        maNV = txt_BH_ma_NV.Text;
                         khuyenMai = double.Parse(txt_BH_khuyenMai.Text) / 100;
                         ngayLap = dt_BH_ngayLapHD.Value.ToString("yyyy-MM-dd HH:mm:ss");
                         Them_San_Pham_Vao_DataHD(maHD, maSP, soLuong, donGia, thanhTien, maKH, maNV, ngayLap, khuyenMai);
@@ -737,6 +731,7 @@ namespace GiaoDien_DangNhap
                     }
                     btn_BH_add.Enabled = true;
                     btn_BH_update.Enabled = true;
+                    btn_BH_xoa.Enabled = true;
                 }
                 else
                 {
@@ -813,11 +808,8 @@ namespace GiaoDien_DangNhap
                             result = cmd.ExecuteScalar();
                             cbo_BH_KH.Text = result.ToString();
 
-                            query = "SELECT manv FROM nhanvien WHERE manv = @Manv";
-                            cmd = new SqlCommand(query, myConnection);
-                            cmd.Parameters.AddWithValue("@manv", nhanVien);
-                            result = cmd.ExecuteScalar();
-                            cbo_BH_NV.Text = result.ToString();
+                           
+                            txt_BH_ma_NV.Text = nhanVien;
                             txt_BH_khuyenMai.Text = khuyenMai;
 
                             myConnection.Close();
@@ -834,8 +826,8 @@ namespace GiaoDien_DangNhap
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    //btn_HD_Sua.Enabled = true;
-                    //btn_HD_Xoa.Enabled = true;
+                    btn_BH_update.Enabled = true;
+                    btn_BH_xoa.Enabled = true;
                 }
                 else
                 {
@@ -860,13 +852,19 @@ namespace GiaoDien_DangNhap
                 lb_tk.Visible = true;
                 txt_BH_tim_kiem.Visible = true;
                 btn_DSHD_Click = false;
+                
+                btn_BH_add.Enabled = false;
+                btn_BH_update.Enabled = false;
+                btn_BH_xoa.Enabled = false;
             }
             else
             {
                 data_ban_hang.DataSource = table;
                 lb_tk.Visible = false;
                 txt_BH_tim_kiem.Visible = false;
+                btn_them_moi.Enabled = true;
                 btn_DSHD_Click = true;
+
             }
         }
 
@@ -923,7 +921,7 @@ namespace GiaoDien_DangNhap
             btn_KH_sua.Enabled= false;
         }
 
-        public bool Sua_Khach_Hang(string tenKH, string diaChi, string SDT, string ngayTao, string email)
+        public bool Sua_Khach_Hang(string tenKH, string diaChi, string SDT, string ngayTao, string email,bool trangthai)
         {
             bool kq;
             kq = true;
@@ -931,7 +929,7 @@ namespace GiaoDien_DangNhap
             string maKH = data_khachHang.CurrentRow.Cells[0].Value.ToString();
             //Câu truy vấn sửa bảng KHACHHANG
             string sSql_KH;
-            sSql_KH = "UPDATE KHACHHANG SET TENKH = N'" + tenKH + "', DIACHI = N'" + diaChi + "', SDT = '" + SDT + "', NGAYTAO = '" + ngayTao + "', EMAIL = '" + email + "' WHERE MAKH = @MAKH";
+            sSql_KH = "UPDATE KHACHHANG SET TENKH = N'" + tenKH + "', DIACHI = N'" + diaChi + "', SDT = '" + SDT + "', NGAYTAO = '" + ngayTao + "', EMAIL = '" + email + "' ,TRANGTHAI = '" + trangthai + "' WHERE MAKH = @MAKH";
 
             try
             {
@@ -968,14 +966,20 @@ namespace GiaoDien_DangNhap
                     return;
                 }
                 string tenKH, diaChi, SDT, email, ngayTao;
-
+                bool trangThai;
                 tenKH = txt_KH_tenKH.Text;
                 diaChi = txt_KH_diaChi.Text;
                 SDT = txt_KH_sdt.Text;
                 email = txt_KH_email.Text;
                 ngayTao = dt_ngayTao.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                if(ck_trang_thai.Checked)
+                {
+                    trangThai = true;
+                }
+                else
+                { trangThai = false; }
 
-                bool kq = Sua_Khach_Hang(tenKH, diaChi, SDT, ngayTao, email);
+                bool kq = Sua_Khach_Hang(tenKH, diaChi, SDT, ngayTao, email,trangThai);
                 if (kq == false)
                 {
                     MessageBox.Show("Sửa Khách Hàng KHÔNG thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -986,7 +990,7 @@ namespace GiaoDien_DangNhap
                     string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
                     System.Data.DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
                     data_khachHang.DataSource = ds_Khach_Hang.Tables[0];
-                    Hien_Thi_Len_HD_CBO_Khach_Hang();
+                    //Hien_Thi_Len_HD_CBO_Khach_Hang();
                
                 }
             }
@@ -995,26 +999,29 @@ namespace GiaoDien_DangNhap
         {
             try
             {
-                string makh,tenKH, diaChi, SDT, email;
+                string tenKH, diaChi, SDT, email;
                 DateTime ngayTao;
-                makh = data_khachHang.CurrentRow.Cells[0].Value.ToString();
+                bool trangThai;
                 tenKH = data_khachHang.CurrentRow.Cells[1].Value.ToString();
                 diaChi = data_khachHang.CurrentRow.Cells[2].Value.ToString();
                 SDT = data_khachHang.CurrentRow.Cells[3].Value.ToString();
                 ngayTao = (DateTime)data_khachHang.CurrentRow.Cells[4].Value;
                 email = data_khachHang.CurrentRow.Cells[5].Value.ToString();
-                txt_KH_maKH.Text= makh;
+                trangThai = (bool)data_khachHang.CurrentRow.Cells[6].Value;
+
                 txt_KH_tenKH.Text = tenKH;
                 txt_KH_diaChi.Text = diaChi;
                 txt_KH_sdt.Text = SDT;
                 dt_ngayTao.Value = ngayTao;
                 txt_KH_email.Text = email;
+                ck_trang_thai.Checked = trangThai;
+                btn_KH_sua.Enabled = true;
+
             }
             catch (Exception ex)
             {
 
             }
-            btn_KH_sua.Enabled = true;
         }
 
         private void txt_BH_khuyenMai_KeyPress(object sender, KeyPressEventArgs e)
@@ -1046,6 +1053,75 @@ namespace GiaoDien_DangNhap
         {
             frmInHoaDon inhd= new frmInHoaDon();
             inhd.ShowDialog();
+        }
+        public void Hien_Thi_Len_HD_Nhan_Vien_Dang_Nhap()
+        {
+            string username = frmDangNhap.LoggedInUsername;
+            SqlConnection myConnection = Ket_Noi();
+            string sSql_Hien = "SELECT MANV FROM NhanVien WHERE USERNAME = @username";
+            try
+            {
+                myConnection.Open();
+                SqlCommand cmd = new SqlCommand(sSql_Hien, myConnection);
+                cmd.Parameters.AddWithValue("@username", username);
+                txt_BH_ma_NV.Text = Convert.ToString(cmd.ExecuteScalar());
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+        }
+
+        private void btn_BH_xoa_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow hang = data_ban_hang.SelectedRows[0];
+            data_ban_hang.Rows.Remove(hang);
+            btn_BH_xoa.Enabled = false;
+            Lam_Moi_HD();
+        }
+        public System.Data.DataSet Tim_Kiem(string tenBang, string tenCot, string tenTK)
+        {
+            SqlConnection myConnection = Ket_Noi();
+            System.Data.DataSet ds = null;
+            string[] keywords = tenTK.Split(' ');
+
+            string sqlCondition = "";
+            foreach (string keyword in keywords)
+            {
+                sqlCondition += "AND "+tenCot+" LIKE N'%" + keyword + "%' ";
+            }
+
+            if (sqlCondition.Length > 0)
+            {
+                sqlCondition = sqlCondition.Substring(4);
+            }
+
+            string query = "SELECT * FROM "+tenBang+" WHERE " + sqlCondition;
+            try
+            {
+                myConnection.Open();
+
+                SqlDataAdapter sql_DS = new SqlDataAdapter(query, myConnection);
+                ds = new System.Data.DataSet();
+                sql_DS.Fill(ds);
+
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return ds;
+        }
+        private void txt_KH_Tiem_kiem_TextChanged(object sender, EventArgs e)
+        {
+            string tenBang, tenCot, tenTK;
+            tenBang = "NhanVien";
+            tenCot = "TenNV";
+            tenTK = txt_KH_Tiem_kiem.Text.Trim();
+            System.Data.DataSet ds = Tim_Kiem(tenBang, tenCot, tenTK);
+            data_khachHang.DataSource = ds.Tables[0];
         }
     }
 }

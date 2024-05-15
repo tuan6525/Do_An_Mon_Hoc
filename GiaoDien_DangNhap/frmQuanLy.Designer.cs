@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLy));
             this.tabC_GiaoDienQuanLy = new System.Windows.Forms.TabControl();
             this.tab_QLNV = new System.Windows.Forms.TabPage();
+            this.chk_NV_Trang_Thai = new System.Windows.Forms.CheckBox();
             this.txt_NV_Email = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dt_NV_Ngay_Sinh = new System.Windows.Forms.DateTimePicker();
@@ -59,6 +60,7 @@
             this.txt_NV_Ten_Nhan_Vien = new System.Windows.Forms.TextBox();
             this.lab_NV_Ten_Nhan_Vien = new System.Windows.Forms.Label();
             this.tab_QLKH = new System.Windows.Forms.TabPage();
+            this.chk_KH_Trang_Thai = new System.Windows.Forms.CheckBox();
             this.dt_KH_Ngay_Tao = new System.Windows.Forms.DateTimePicker();
             this.txt_KH_Email = new System.Windows.Forms.TextBox();
             this.lab_KH_Email = new System.Windows.Forms.Label();
@@ -119,6 +121,7 @@
             this.btn_HD_Thong_Ke = new System.Windows.Forms.Button();
             this.btn_HD_Xoa = new System.Windows.Forms.Button();
             this.tab_QLNCC = new System.Windows.Forms.TabPage();
+            this.chk_NCC_Trang_Thai = new System.Windows.Forms.CheckBox();
             this.txt_NCC_Email = new System.Windows.Forms.TextBox();
             this.lab_NCC_Email = new System.Windows.Forms.Label();
             this.btn_NCC_Thoat = new System.Windows.Forms.Button();
@@ -161,9 +164,6 @@
             this.btn_SP_Xoa = new System.Windows.Forms.Button();
             this.btn_SP_Sua = new System.Windows.Forms.Button();
             this.btn_SP_Them = new System.Windows.Forms.Button();
-            this.chk_NCC_Trang_Thai = new System.Windows.Forms.CheckBox();
-            this.chk_KH_Trang_Thai = new System.Windows.Forms.CheckBox();
-            this.chk_NV_Trang_Thai = new System.Windows.Forms.CheckBox();
             this.tabC_GiaoDienQuanLy.SuspendLayout();
             this.tab_QLNV.SuspendLayout();
             this.grb_NV_Gioi_Tinh.SuspendLayout();
@@ -236,6 +236,20 @@
             this.tab_QLNV.Size = new System.Drawing.Size(1056, 499);
             this.tab_QLNV.TabIndex = 0;
             this.tab_QLNV.Text = "QL Nhân Viên";
+            // 
+            // chk_NV_Trang_Thai
+            // 
+            this.chk_NV_Trang_Thai.AutoSize = true;
+            this.chk_NV_Trang_Thai.Checked = true;
+            this.chk_NV_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_NV_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_NV_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chk_NV_Trang_Thai.Location = new System.Drawing.Point(812, 58);
+            this.chk_NV_Trang_Thai.Name = "chk_NV_Trang_Thai";
+            this.chk_NV_Trang_Thai.Size = new System.Drawing.Size(111, 23);
+            this.chk_NV_Trang_Thai.TabIndex = 62;
+            this.chk_NV_Trang_Thai.Text = "Trạng Thái";
+            this.chk_NV_Trang_Thai.UseVisualStyleBackColor = true;
             // 
             // txt_NV_Email
             // 
@@ -553,6 +567,20 @@
             this.tab_QLKH.Size = new System.Drawing.Size(1056, 499);
             this.tab_QLKH.TabIndex = 1;
             this.tab_QLKH.Text = "QL Khách Hàng";
+            // 
+            // chk_KH_Trang_Thai
+            // 
+            this.chk_KH_Trang_Thai.AutoSize = true;
+            this.chk_KH_Trang_Thai.Checked = true;
+            this.chk_KH_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_KH_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_KH_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chk_KH_Trang_Thai.Location = new System.Drawing.Point(769, 183);
+            this.chk_KH_Trang_Thai.Name = "chk_KH_Trang_Thai";
+            this.chk_KH_Trang_Thai.Size = new System.Drawing.Size(111, 23);
+            this.chk_KH_Trang_Thai.TabIndex = 62;
+            this.chk_KH_Trang_Thai.Text = "Trạng Thái";
+            this.chk_KH_Trang_Thai.UseVisualStyleBackColor = true;
             // 
             // dt_KH_Ngay_Tao
             // 
@@ -1228,6 +1256,20 @@
             this.tab_QLNCC.TabIndex = 3;
             this.tab_QLNCC.Text = "QL Nhà Cung Cấp";
             // 
+            // chk_NCC_Trang_Thai
+            // 
+            this.chk_NCC_Trang_Thai.AutoSize = true;
+            this.chk_NCC_Trang_Thai.Checked = true;
+            this.chk_NCC_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_NCC_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_NCC_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chk_NCC_Trang_Thai.Location = new System.Drawing.Point(857, 128);
+            this.chk_NCC_Trang_Thai.Name = "chk_NCC_Trang_Thai";
+            this.chk_NCC_Trang_Thai.Size = new System.Drawing.Size(111, 23);
+            this.chk_NCC_Trang_Thai.TabIndex = 62;
+            this.chk_NCC_Trang_Thai.Text = "Trạng Thái";
+            this.chk_NCC_Trang_Thai.UseVisualStyleBackColor = true;
+            // 
             // txt_NCC_Email
             // 
             this.txt_NCC_Email.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1704,48 +1746,6 @@
             this.btn_SP_Them.TabIndex = 63;
             this.btn_SP_Them.UseVisualStyleBackColor = true;
             this.btn_SP_Them.Click += new System.EventHandler(this.btn_SP_Them_Click);
-            // 
-            // chk_NCC_Trang_Thai
-            // 
-            this.chk_NCC_Trang_Thai.AutoSize = true;
-            this.chk_NCC_Trang_Thai.Checked = true;
-            this.chk_NCC_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_NCC_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_NCC_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chk_NCC_Trang_Thai.Location = new System.Drawing.Point(857, 128);
-            this.chk_NCC_Trang_Thai.Name = "chk_NCC_Trang_Thai";
-            this.chk_NCC_Trang_Thai.Size = new System.Drawing.Size(111, 23);
-            this.chk_NCC_Trang_Thai.TabIndex = 62;
-            this.chk_NCC_Trang_Thai.Text = "Trạng Thái";
-            this.chk_NCC_Trang_Thai.UseVisualStyleBackColor = true;
-            // 
-            // chk_KH_Trang_Thai
-            // 
-            this.chk_KH_Trang_Thai.AutoSize = true;
-            this.chk_KH_Trang_Thai.Checked = true;
-            this.chk_KH_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_KH_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_KH_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chk_KH_Trang_Thai.Location = new System.Drawing.Point(769, 183);
-            this.chk_KH_Trang_Thai.Name = "chk_KH_Trang_Thai";
-            this.chk_KH_Trang_Thai.Size = new System.Drawing.Size(111, 23);
-            this.chk_KH_Trang_Thai.TabIndex = 62;
-            this.chk_KH_Trang_Thai.Text = "Trạng Thái";
-            this.chk_KH_Trang_Thai.UseVisualStyleBackColor = true;
-            // 
-            // chk_NV_Trang_Thai
-            // 
-            this.chk_NV_Trang_Thai.AutoSize = true;
-            this.chk_NV_Trang_Thai.Checked = true;
-            this.chk_NV_Trang_Thai.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_NV_Trang_Thai.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_NV_Trang_Thai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chk_NV_Trang_Thai.Location = new System.Drawing.Point(812, 58);
-            this.chk_NV_Trang_Thai.Name = "chk_NV_Trang_Thai";
-            this.chk_NV_Trang_Thai.Size = new System.Drawing.Size(111, 23);
-            this.chk_NV_Trang_Thai.TabIndex = 62;
-            this.chk_NV_Trang_Thai.Text = "Trạng Thái";
-            this.chk_NV_Trang_Thai.UseVisualStyleBackColor = true;
             // 
             // frmQuanLy
             // 

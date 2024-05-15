@@ -36,6 +36,10 @@
             this.btn_BH_dang_xuat = new System.Windows.Forms.Button();
             this.SAD = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lab_bh_xoa = new System.Windows.Forms.Label();
+            this.btn_BH_xoa = new System.Windows.Forms.Button();
+            this.lab_in_hoadon = new System.Windows.Forms.Label();
+            this.btn_in_hoadon = new System.Windows.Forms.Button();
             this.lb_tk = new System.Windows.Forms.Label();
             this.txt_BH_tim_kiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,11 +52,11 @@
             this.btn_them_moi = new System.Windows.Forms.Button();
             this.btn_BH_add = new System.Windows.Forms.Button();
             this.grbox = new System.Windows.Forms.GroupBox();
+            this.txt_BH_ma_NV = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_BH_donGia = new System.Windows.Forms.TextBox();
             this.txt_BH_khuyenMai = new System.Windows.Forms.TextBox();
             this.lab_BH_khuyenMai = new System.Windows.Forms.Label();
-            this.cbo_BH_NV = new System.Windows.Forms.ComboBox();
             this.lab_BH_NV = new System.Windows.Forms.Label();
             this.cbo_BH_KH = new System.Windows.Forms.ComboBox();
             this.lab_BH_KH = new System.Windows.Forms.Label();
@@ -77,10 +81,10 @@
             this.btn_KH_sua = new System.Windows.Forms.Button();
             this.btn_KH_lammoi = new System.Windows.Forms.Button();
             this.btn_KH_themKH = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txt_KH_Tiem_kiem = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ck_trang_thai = new System.Windows.Forms.CheckBox();
             this.dt_ngayTao = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_KH_diaChi = new System.Windows.Forms.TextBox();
@@ -93,8 +97,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btn_in_hoadon = new System.Windows.Forms.Button();
-            this.lab_in_hoadon = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grbox_BH_HD.SuspendLayout();
@@ -169,7 +171,7 @@
             this.btn_BH_dang_xuat.Location = new System.Drawing.Point(1093, 6);
             this.btn_BH_dang_xuat.Name = "btn_BH_dang_xuat";
             this.btn_BH_dang_xuat.Size = new System.Drawing.Size(52, 56);
-            this.btn_BH_dang_xuat.TabIndex = 50;
+            this.btn_BH_dang_xuat.TabIndex = 17;
             this.btn_BH_dang_xuat.UseVisualStyleBackColor = true;
             this.btn_BH_dang_xuat.Click += new System.EventHandler(this.btn_BH_dang_xuat_Click);
             // 
@@ -186,6 +188,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lab_bh_xoa);
+            this.groupBox3.Controls.Add(this.btn_BH_xoa);
             this.groupBox3.Controls.Add(this.lab_in_hoadon);
             this.groupBox3.Controls.Add(this.btn_in_hoadon);
             this.groupBox3.Controls.Add(this.lb_tk);
@@ -208,6 +212,49 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức năng";
             // 
+            // lab_bh_xoa
+            // 
+            this.lab_bh_xoa.AutoSize = true;
+            this.lab_bh_xoa.Location = new System.Drawing.Point(658, 88);
+            this.lab_bh_xoa.Name = "lab_bh_xoa";
+            this.lab_bh_xoa.Size = new System.Drawing.Size(43, 23);
+            this.lab_bh_xoa.TabIndex = 65;
+            this.lab_bh_xoa.Text = "Xóa";
+            // 
+            // btn_BH_xoa
+            // 
+            this.btn_BH_xoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BH_xoa.BackgroundImage")));
+            this.btn_BH_xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_BH_xoa.Enabled = false;
+            this.btn_BH_xoa.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_BH_xoa.Location = new System.Drawing.Point(649, 29);
+            this.btn_BH_xoa.Name = "btn_BH_xoa";
+            this.btn_BH_xoa.Size = new System.Drawing.Size(52, 56);
+            this.btn_BH_xoa.TabIndex = 15;
+            this.btn_BH_xoa.UseVisualStyleBackColor = true;
+            this.btn_BH_xoa.Click += new System.EventHandler(this.btn_BH_xoa_Click);
+            // 
+            // lab_in_hoadon
+            // 
+            this.lab_in_hoadon.AutoSize = true;
+            this.lab_in_hoadon.Location = new System.Drawing.Point(514, 88);
+            this.lab_in_hoadon.Name = "lab_in_hoadon";
+            this.lab_in_hoadon.Size = new System.Drawing.Size(98, 23);
+            this.lab_in_hoadon.TabIndex = 63;
+            this.lab_in_hoadon.Text = "In hóa đơn";
+            // 
+            // btn_in_hoadon
+            // 
+            this.btn_in_hoadon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_in_hoadon.BackgroundImage")));
+            this.btn_in_hoadon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_in_hoadon.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_in_hoadon.Location = new System.Drawing.Point(531, 29);
+            this.btn_in_hoadon.Name = "btn_in_hoadon";
+            this.btn_in_hoadon.Size = new System.Drawing.Size(52, 56);
+            this.btn_in_hoadon.TabIndex = 14;
+            this.btn_in_hoadon.UseVisualStyleBackColor = true;
+            this.btn_in_hoadon.Click += new System.EventHandler(this.btn_in_hoadon_Click);
+            // 
             // lb_tk
             // 
             this.lb_tk.AutoSize = true;
@@ -223,7 +270,7 @@
             this.txt_BH_tim_kiem.Location = new System.Drawing.Point(895, 104);
             this.txt_BH_tim_kiem.Name = "txt_BH_tim_kiem";
             this.txt_BH_tim_kiem.Size = new System.Drawing.Size(243, 30);
-            this.txt_BH_tim_kiem.TabIndex = 59;
+            this.txt_BH_tim_kiem.TabIndex = 16;
             this.txt_BH_tim_kiem.Visible = false;
             this.txt_BH_tim_kiem.TextChanged += new System.EventHandler(this.txt_BH_tim_kiem_TextChanged);
             // 
@@ -244,7 +291,7 @@
             this.btn_xem_ds_hoa_don.Location = new System.Drawing.Point(394, 29);
             this.btn_xem_ds_hoa_don.Name = "btn_xem_ds_hoa_don";
             this.btn_xem_ds_hoa_don.Size = new System.Drawing.Size(52, 56);
-            this.btn_xem_ds_hoa_don.TabIndex = 57;
+            this.btn_xem_ds_hoa_don.TabIndex = 13;
             this.btn_xem_ds_hoa_don.UseVisualStyleBackColor = true;
             this.btn_xem_ds_hoa_don.Click += new System.EventHandler(this.btn_xem_ds_hoa_don_Click);
             // 
@@ -279,7 +326,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 88);
+            this.label2.Location = new System.Drawing.Point(24, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 23);
             this.label2.TabIndex = 50;
@@ -294,7 +341,7 @@
             this.btn_BH_update.Location = new System.Drawing.Point(264, 29);
             this.btn_BH_update.Name = "btn_BH_update";
             this.btn_BH_update.Size = new System.Drawing.Size(52, 56);
-            this.btn_BH_update.TabIndex = 49;
+            this.btn_BH_update.TabIndex = 12;
             this.btn_BH_update.UseVisualStyleBackColor = true;
             this.btn_BH_update.Click += new System.EventHandler(this.btn_BH_update_Click_1);
             // 
@@ -306,7 +353,7 @@
             this.btn_them_moi.Location = new System.Drawing.Point(28, 29);
             this.btn_them_moi.Name = "btn_them_moi";
             this.btn_them_moi.Size = new System.Drawing.Size(52, 56);
-            this.btn_them_moi.TabIndex = 48;
+            this.btn_them_moi.TabIndex = 10;
             this.btn_them_moi.UseVisualStyleBackColor = true;
             this.btn_them_moi.Click += new System.EventHandler(this.btn_them_moi_Click_1);
             // 
@@ -319,18 +366,18 @@
             this.btn_BH_add.Location = new System.Drawing.Point(139, 29);
             this.btn_BH_add.Name = "btn_BH_add";
             this.btn_BH_add.Size = new System.Drawing.Size(52, 56);
-            this.btn_BH_add.TabIndex = 45;
+            this.btn_BH_add.TabIndex = 11;
             this.btn_BH_add.UseVisualStyleBackColor = true;
             this.btn_BH_add.Click += new System.EventHandler(this.btn_BH_add_Click);
             // 
             // grbox
             // 
             this.grbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.grbox.Controls.Add(this.txt_BH_ma_NV);
             this.grbox.Controls.Add(this.label5);
             this.grbox.Controls.Add(this.txt_BH_donGia);
             this.grbox.Controls.Add(this.txt_BH_khuyenMai);
             this.grbox.Controls.Add(this.lab_BH_khuyenMai);
-            this.grbox.Controls.Add(this.cbo_BH_NV);
             this.grbox.Controls.Add(this.lab_BH_NV);
             this.grbox.Controls.Add(this.cbo_BH_KH);
             this.grbox.Controls.Add(this.lab_BH_KH);
@@ -354,6 +401,14 @@
             this.grbox.TabStop = false;
             this.grbox.Text = "Thông tin sản phẩm";
             // 
+            // txt_BH_ma_NV
+            // 
+            this.txt_BH_ma_NV.Enabled = false;
+            this.txt_BH_ma_NV.Location = new System.Drawing.Point(671, 84);
+            this.txt_BH_ma_NV.Name = "txt_BH_ma_NV";
+            this.txt_BH_ma_NV.Size = new System.Drawing.Size(260, 30);
+            this.txt_BH_ma_NV.TabIndex = 7;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -370,7 +425,7 @@
             this.txt_BH_donGia.Location = new System.Drawing.Point(137, 172);
             this.txt_BH_donGia.Name = "txt_BH_donGia";
             this.txt_BH_donGia.Size = new System.Drawing.Size(261, 30);
-            this.txt_BH_donGia.TabIndex = 64;
+            this.txt_BH_donGia.TabIndex = 4;
             // 
             // txt_BH_khuyenMai
             // 
@@ -378,7 +433,7 @@
             this.txt_BH_khuyenMai.Location = new System.Drawing.Point(671, 168);
             this.txt_BH_khuyenMai.Name = "txt_BH_khuyenMai";
             this.txt_BH_khuyenMai.Size = new System.Drawing.Size(119, 30);
-            this.txt_BH_khuyenMai.TabIndex = 63;
+            this.txt_BH_khuyenMai.TabIndex = 9;
             this.txt_BH_khuyenMai.TextChanged += new System.EventHandler(this.txt_BH_khuyenMai_TextChanged);
             this.txt_BH_khuyenMai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_BH_khuyenMai_KeyPress);
             // 
@@ -390,14 +445,6 @@
             this.lab_BH_khuyenMai.Size = new System.Drawing.Size(119, 23);
             this.lab_BH_khuyenMai.TabIndex = 62;
             this.lab_BH_khuyenMai.Text = "Khuyến Mãi:";
-            // 
-            // cbo_BH_NV
-            // 
-            this.cbo_BH_NV.FormattingEnabled = true;
-            this.cbo_BH_NV.Location = new System.Drawing.Point(671, 77);
-            this.cbo_BH_NV.Name = "cbo_BH_NV";
-            this.cbo_BH_NV.Size = new System.Drawing.Size(261, 31);
-            this.cbo_BH_NV.TabIndex = 61;
             // 
             // lab_BH_NV
             // 
@@ -415,7 +462,7 @@
             this.cbo_BH_KH.Location = new System.Drawing.Point(671, 36);
             this.cbo_BH_KH.Name = "cbo_BH_KH";
             this.cbo_BH_KH.Size = new System.Drawing.Size(261, 31);
-            this.cbo_BH_KH.TabIndex = 59;
+            this.cbo_BH_KH.TabIndex = 6;
             // 
             // lab_BH_KH
             // 
@@ -434,7 +481,7 @@
             this.txt_BH_thanhTien.Location = new System.Drawing.Point(137, 223);
             this.txt_BH_thanhTien.Name = "txt_BH_thanhTien";
             this.txt_BH_thanhTien.Size = new System.Drawing.Size(261, 30);
-            this.txt_BH_thanhTien.TabIndex = 57;
+            this.txt_BH_thanhTien.TabIndex = 5;
             // 
             // lab_BH_thanhTien
             // 
@@ -455,7 +502,7 @@
             0});
             this.nbr_BH_soLuong.Name = "nbr_BH_soLuong";
             this.nbr_BH_soLuong.Size = new System.Drawing.Size(120, 30);
-            this.nbr_BH_soLuong.TabIndex = 54;
+            this.nbr_BH_soLuong.TabIndex = 3;
             this.nbr_BH_soLuong.Value = new decimal(new int[] {
             1,
             0,
@@ -487,7 +534,7 @@
             this.cbo_BH_sanPham.Location = new System.Drawing.Point(137, 77);
             this.cbo_BH_sanPham.Name = "cbo_BH_sanPham";
             this.cbo_BH_sanPham.Size = new System.Drawing.Size(261, 31);
-            this.cbo_BH_sanPham.TabIndex = 51;
+            this.cbo_BH_sanPham.TabIndex = 2;
             this.cbo_BH_sanPham.SelectedIndexChanged += new System.EventHandler(this.cbo_BH_sanPham_SelectedIndexChanged);
             // 
             // lab_BH_sanPham
@@ -507,7 +554,7 @@
             this.dt_BH_ngayLapHD.Location = new System.Drawing.Point(671, 125);
             this.dt_BH_ngayLapHD.Name = "dt_BH_ngayLapHD";
             this.dt_BH_ngayLapHD.Size = new System.Drawing.Size(260, 30);
-            this.dt_BH_ngayLapHD.TabIndex = 39;
+            this.dt_BH_ngayLapHD.TabIndex = 8;
             // 
             // lab_BH_maHD
             // 
@@ -526,7 +573,7 @@
             this.txt_BH_maHD.Location = new System.Drawing.Point(137, 36);
             this.txt_BH_maHD.Name = "txt_BH_maHD";
             this.txt_BH_maHD.Size = new System.Drawing.Size(261, 30);
-            this.txt_BH_maHD.TabIndex = 3;
+            this.txt_BH_maHD.TabIndex = 1;
             // 
             // lab_BH_ngayLapHD
             // 
@@ -564,6 +611,7 @@
             // 
             // data_khachHang
             // 
+            this.data_khachHang.AllowUserToAddRows = false;
             this.data_khachHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_khachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_khachHang.Location = new System.Drawing.Point(19, 26);
@@ -584,9 +632,8 @@
             this.groupBox4.Controls.Add(this.btn_KH_sua);
             this.groupBox4.Controls.Add(this.btn_KH_lammoi);
             this.groupBox4.Controls.Add(this.btn_KH_themKH);
-            this.groupBox4.Controls.Add(this.button8);
             this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.textBox12);
+            this.groupBox4.Controls.Add(this.txt_KH_Tiem_kiem);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox4.Location = new System.Drawing.Point(743, 15);
@@ -627,10 +674,11 @@
             // 
             this.btn_KH_sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_KH_sua.BackgroundImage")));
             this.btn_KH_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_KH_sua.Enabled = false;
             this.btn_KH_sua.Location = new System.Drawing.Point(293, 48);
             this.btn_KH_sua.Name = "btn_KH_sua";
             this.btn_KH_sua.Size = new System.Drawing.Size(62, 48);
-            this.btn_KH_sua.TabIndex = 21;
+            this.btn_KH_sua.TabIndex = 10;
             this.btn_KH_sua.UseVisualStyleBackColor = true;
             this.btn_KH_sua.Click += new System.EventHandler(this.btn_KH_sua_Click);
             // 
@@ -641,7 +689,7 @@
             this.btn_KH_lammoi.Location = new System.Drawing.Point(178, 48);
             this.btn_KH_lammoi.Name = "btn_KH_lammoi";
             this.btn_KH_lammoi.Size = new System.Drawing.Size(62, 48);
-            this.btn_KH_lammoi.TabIndex = 20;
+            this.btn_KH_lammoi.TabIndex = 9;
             this.btn_KH_lammoi.UseVisualStyleBackColor = true;
             this.btn_KH_lammoi.Click += new System.EventHandler(this.btn_KH_lammoi_Click);
             // 
@@ -652,19 +700,9 @@
             this.btn_KH_themKH.Location = new System.Drawing.Point(61, 48);
             this.btn_KH_themKH.Name = "btn_KH_themKH";
             this.btn_KH_themKH.Size = new System.Drawing.Size(64, 48);
-            this.btn_KH_themKH.TabIndex = 19;
+            this.btn_KH_themKH.TabIndex = 8;
             this.btn_KH_themKH.UseVisualStyleBackColor = true;
             this.btn_KH_themKH.Click += new System.EventHandler(this.btn_KH_themKH_Click);
-            // 
-            // button8
-            // 
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button8.Location = new System.Drawing.Point(366, 151);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(46, 41);
-            this.button8.TabIndex = 18;
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
@@ -675,16 +713,18 @@
             this.label18.TabIndex = 17;
             this.label18.Text = "Tìm kiếm:";
             // 
-            // textBox12
+            // txt_KH_Tiem_kiem
             // 
-            this.textBox12.Location = new System.Drawing.Point(112, 157);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(243, 30);
-            this.textBox12.TabIndex = 16;
+            this.txt_KH_Tiem_kiem.Location = new System.Drawing.Point(112, 157);
+            this.txt_KH_Tiem_kiem.Name = "txt_KH_Tiem_kiem";
+            this.txt_KH_Tiem_kiem.Size = new System.Drawing.Size(243, 30);
+            this.txt_KH_Tiem_kiem.TabIndex = 11;
+            this.txt_KH_Tiem_kiem.TextChanged += new System.EventHandler(this.txt_KH_Tiem_kiem_TextChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Gray;
+            this.groupBox2.Controls.Add(this.ck_trang_thai);
             this.groupBox2.Controls.Add(this.dt_ngayTao);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.txt_KH_diaChi);
@@ -706,13 +746,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin khách hàng";
             // 
+            // ck_trang_thai
+            // 
+            this.ck_trang_thai.AutoSize = true;
+            this.ck_trang_thai.Location = new System.Drawing.Point(517, 337);
+            this.ck_trang_thai.Name = "ck_trang_thai";
+            this.ck_trang_thai.Size = new System.Drawing.Size(125, 27);
+            this.ck_trang_thai.TabIndex = 7;
+            this.ck_trang_thai.Text = "Trạng Thái";
+            this.ck_trang_thai.UseVisualStyleBackColor = true;
+            // 
             // dt_ngayTao
             // 
             this.dt_ngayTao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dt_ngayTao.Location = new System.Drawing.Point(229, 232);
             this.dt_ngayTao.Name = "dt_ngayTao";
             this.dt_ngayTao.Size = new System.Drawing.Size(255, 30);
-            this.dt_ngayTao.TabIndex = 13;
+            this.dt_ngayTao.TabIndex = 5;
             // 
             // label17
             // 
@@ -731,7 +781,7 @@
             this.txt_KH_diaChi.Location = new System.Drawing.Point(229, 289);
             this.txt_KH_diaChi.Name = "txt_KH_diaChi";
             this.txt_KH_diaChi.Size = new System.Drawing.Size(255, 27);
-            this.txt_KH_diaChi.TabIndex = 11;
+            this.txt_KH_diaChi.TabIndex = 6;
             // 
             // txt_KH_email
             // 
@@ -739,7 +789,7 @@
             this.txt_KH_email.Location = new System.Drawing.Point(229, 185);
             this.txt_KH_email.Name = "txt_KH_email";
             this.txt_KH_email.Size = new System.Drawing.Size(255, 27);
-            this.txt_KH_email.TabIndex = 9;
+            this.txt_KH_email.TabIndex = 4;
             // 
             // txt_KH_sdt
             // 
@@ -747,7 +797,7 @@
             this.txt_KH_sdt.Location = new System.Drawing.Point(229, 133);
             this.txt_KH_sdt.Name = "txt_KH_sdt";
             this.txt_KH_sdt.Size = new System.Drawing.Size(255, 27);
-            this.txt_KH_sdt.TabIndex = 8;
+            this.txt_KH_sdt.TabIndex = 3;
             // 
             // txt_KH_tenKH
             // 
@@ -755,7 +805,7 @@
             this.txt_KH_tenKH.Location = new System.Drawing.Point(229, 81);
             this.txt_KH_tenKH.Name = "txt_KH_tenKH";
             this.txt_KH_tenKH.Size = new System.Drawing.Size(255, 27);
-            this.txt_KH_tenKH.TabIndex = 7;
+            this.txt_KH_tenKH.TabIndex = 2;
             // 
             // txt_KH_maKH
             // 
@@ -763,7 +813,7 @@
             this.txt_KH_maKH.Location = new System.Drawing.Point(229, 29);
             this.txt_KH_maKH.Name = "txt_KH_maKH";
             this.txt_KH_maKH.Size = new System.Drawing.Size(255, 27);
-            this.txt_KH_maKH.TabIndex = 6;
+            this.txt_KH_maKH.TabIndex = 1;
             // 
             // label16
             // 
@@ -820,27 +870,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Mã khách hàng:";
             // 
-            // btn_in_hoadon
-            // 
-            this.btn_in_hoadon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_in_hoadon.BackgroundImage")));
-            this.btn_in_hoadon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_in_hoadon.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_in_hoadon.Location = new System.Drawing.Point(547, 29);
-            this.btn_in_hoadon.Name = "btn_in_hoadon";
-            this.btn_in_hoadon.Size = new System.Drawing.Size(52, 56);
-            this.btn_in_hoadon.TabIndex = 62;
-            this.btn_in_hoadon.UseVisualStyleBackColor = true;
-            this.btn_in_hoadon.Click += new System.EventHandler(this.btn_in_hoadon_Click);
-            // 
-            // lab_in_hoadon
-            // 
-            this.lab_in_hoadon.AutoSize = true;
-            this.lab_in_hoadon.Location = new System.Drawing.Point(527, 88);
-            this.lab_in_hoadon.Name = "lab_in_hoadon";
-            this.lab_in_hoadon.Size = new System.Drawing.Size(98, 23);
-            this.lab_in_hoadon.TabIndex = 63;
-            this.lab_in_hoadon.Text = "In hóa đơn";
-            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -891,9 +920,8 @@
         private System.Windows.Forms.Button btn_KH_sua;
         private System.Windows.Forms.Button btn_KH_lammoi;
         private System.Windows.Forms.Button btn_KH_themKH;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txt_KH_Tiem_kiem;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker dt_ngayTao;
         private System.Windows.Forms.Label label17;
@@ -917,7 +945,6 @@
         private System.Windows.Forms.TextBox txt_BH_thanhTien;
         private System.Windows.Forms.Label lab_BH_thanhTien;
         private System.Windows.Forms.NumericUpDown nbr_BH_soLuong;
-        private System.Windows.Forms.ComboBox cbo_BH_NV;
         private System.Windows.Forms.Label lab_BH_NV;
         private System.Windows.Forms.ComboBox cbo_BH_KH;
         private System.Windows.Forms.Label lab_BH_KH;
@@ -941,5 +968,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lab_in_hoadon;
         private System.Windows.Forms.Button btn_in_hoadon;
+        private System.Windows.Forms.TextBox txt_BH_ma_NV;
+        private System.Windows.Forms.Label lab_bh_xoa;
+        private System.Windows.Forms.Button btn_BH_xoa;
+        private System.Windows.Forms.CheckBox ck_trang_thai;
     }
 }

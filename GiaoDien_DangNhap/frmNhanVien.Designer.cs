@@ -93,6 +93,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btn_in_hoadon = new System.Windows.Forms.Button();
+            this.lab_in_hoadon = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grbox_BH_HD.SuspendLayout();
@@ -178,12 +180,14 @@
             this.SAD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.SAD.Location = new System.Drawing.Point(417, 0);
             this.SAD.Name = "SAD";
-            this.SAD.Size = new System.Drawing.Size(369, 38);
+            this.SAD.Size = new System.Drawing.Size(355, 37);
             this.SAD.TabIndex = 42;
             this.SAD.Text = "HÓA ĐƠN BÁN HÀNG";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lab_in_hoadon);
+            this.groupBox3.Controls.Add(this.btn_in_hoadon);
             this.groupBox3.Controls.Add(this.lb_tk);
             this.groupBox3.Controls.Add(this.txt_BH_tim_kiem);
             this.groupBox3.Controls.Add(this.label1);
@@ -207,24 +211,26 @@
             // lb_tk
             // 
             this.lb_tk.AutoSize = true;
-            this.lb_tk.Location = new System.Drawing.Point(514, 111);
+            this.lb_tk.Location = new System.Drawing.Point(772, 111);
             this.lb_tk.Name = "lb_tk";
             this.lb_tk.Size = new System.Drawing.Size(105, 23);
             this.lb_tk.TabIndex = 61;
             this.lb_tk.Text = "Tìm  Kiếm:";
+            this.lb_tk.Visible = false;
             // 
             // txt_BH_tim_kiem
             // 
-            this.txt_BH_tim_kiem.Location = new System.Drawing.Point(626, 108);
+            this.txt_BH_tim_kiem.Location = new System.Drawing.Point(895, 104);
             this.txt_BH_tim_kiem.Name = "txt_BH_tim_kiem";
-            this.txt_BH_tim_kiem.Size = new System.Drawing.Size(165, 30);
+            this.txt_BH_tim_kiem.Size = new System.Drawing.Size(243, 30);
             this.txt_BH_tim_kiem.TabIndex = 59;
+            this.txt_BH_tim_kiem.Visible = false;
             this.txt_BH_tim_kiem.TextChanged += new System.EventHandler(this.txt_BH_tim_kiem_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(354, 88);
+            this.label1.Location = new System.Drawing.Point(337, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 23);
             this.label1.TabIndex = 58;
@@ -255,7 +261,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(244, 88);
+            this.label4.Location = new System.Drawing.Point(230, 88);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 23);
             this.label4.TabIndex = 52;
@@ -264,7 +270,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(146, 88);
+            this.label3.Location = new System.Drawing.Point(133, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 23);
             this.label3.TabIndex = 51;
@@ -273,7 +279,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 88);
+            this.label2.Location = new System.Drawing.Point(14, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 23);
             this.label2.TabIndex = 50;
@@ -283,6 +289,7 @@
             // 
             this.btn_BH_update.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BH_update.BackgroundImage")));
             this.btn_BH_update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_BH_update.Enabled = false;
             this.btn_BH_update.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_BH_update.Location = new System.Drawing.Point(264, 29);
             this.btn_BH_update.Name = "btn_BH_update";
@@ -307,6 +314,7 @@
             // 
             this.btn_BH_add.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BH_add.BackgroundImage")));
             this.btn_BH_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_BH_add.Enabled = false;
             this.btn_BH_add.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_BH_add.Location = new System.Drawing.Point(139, 29);
             this.btn_BH_add.Name = "btn_BH_add";
@@ -812,6 +820,27 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Mã khách hàng:";
             // 
+            // btn_in_hoadon
+            // 
+            this.btn_in_hoadon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_in_hoadon.BackgroundImage")));
+            this.btn_in_hoadon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_in_hoadon.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_in_hoadon.Location = new System.Drawing.Point(547, 29);
+            this.btn_in_hoadon.Name = "btn_in_hoadon";
+            this.btn_in_hoadon.Size = new System.Drawing.Size(52, 56);
+            this.btn_in_hoadon.TabIndex = 62;
+            this.btn_in_hoadon.UseVisualStyleBackColor = true;
+            this.btn_in_hoadon.Click += new System.EventHandler(this.btn_in_hoadon_Click);
+            // 
+            // lab_in_hoadon
+            // 
+            this.lab_in_hoadon.AutoSize = true;
+            this.lab_in_hoadon.Location = new System.Drawing.Point(527, 88);
+            this.lab_in_hoadon.Name = "lab_in_hoadon";
+            this.lab_in_hoadon.Size = new System.Drawing.Size(98, 23);
+            this.lab_in_hoadon.TabIndex = 63;
+            this.lab_in_hoadon.Text = "In hóa đơn";
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -910,5 +939,7 @@
         private System.Windows.Forms.TextBox txt_BH_donGia;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lab_in_hoadon;
+        private System.Windows.Forms.Button btn_in_hoadon;
     }
 }

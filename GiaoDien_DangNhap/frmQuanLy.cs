@@ -29,7 +29,7 @@ namespace GiaoDien_DangNhap
         private bool btn_DSHD_Click = true;
         private bool textChange_HD_Khuyen_Mai = false;
 
-        public static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
+        public static string scon = "Data Source = THONGDZ; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
 
         public void frmQuanLy_Load(object sender, EventArgs e)
         {

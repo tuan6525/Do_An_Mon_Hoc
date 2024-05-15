@@ -18,7 +18,7 @@ namespace GiaoDien_DangNhap
         {
             InitializeComponent();
         }
-        private static string scon = "Data Source = TranTuan\\MSSQL_SERVER; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
+        private static string scon = "Data Source = THONGDZ; Initial Catalog = qlbanmaytinh; Integrated Security = true;";
         SqlConnection con = null;
 
         private void frmInHoaDon_Load(object sender, EventArgs e)

@@ -40,7 +40,7 @@
             this.reportViewer1.Location = new System.Drawing.Point(1, 1);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(764, 639);
+            this.reportViewer1.Size = new System.Drawing.Size(854, 639);
             this.reportViewer1.TabIndex = 0;
             // 
             // txt_Ma_Hoa_Don
@@ -48,7 +48,7 @@
             this.txt_Ma_Hoa_Don.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Ma_Hoa_Don.Location = new System.Drawing.Point(6, 29);
             this.txt_Ma_Hoa_Don.Name = "txt_Ma_Hoa_Don";
-            this.txt_Ma_Hoa_Don.Size = new System.Drawing.Size(183, 30);
+            this.txt_Ma_Hoa_Don.Size = new System.Drawing.Size(271, 30);
             this.txt_Ma_Hoa_Don.TabIndex = 1;
             // 
             // grb_Ma_Hoa_Don
@@ -56,9 +56,9 @@
             this.grb_Ma_Hoa_Don.Controls.Add(this.txt_Ma_Hoa_Don);
             this.grb_Ma_Hoa_Don.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grb_Ma_Hoa_Don.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.grb_Ma_Hoa_Don.Location = new System.Drawing.Point(789, 177);
+            this.grb_Ma_Hoa_Don.Location = new System.Drawing.Point(861, 24);
             this.grb_Ma_Hoa_Don.Name = "grb_Ma_Hoa_Don";
-            this.grb_Ma_Hoa_Don.Size = new System.Drawing.Size(195, 69);
+            this.grb_Ma_Hoa_Don.Size = new System.Drawing.Size(283, 69);
             this.grb_Ma_Hoa_Don.TabIndex = 2;
             this.grb_Ma_Hoa_Don.TabStop = false;
             this.grb_Ma_Hoa_Don.Text = "Mã Hóa Đơn";
@@ -67,7 +67,7 @@
             // 
             this.btn_In_Hoa_Don.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_In_Hoa_Don.ForeColor = System.Drawing.Color.Blue;
-            this.btn_In_Hoa_Don.Location = new System.Drawing.Point(799, 290);
+            this.btn_In_Hoa_Don.Location = new System.Drawing.Point(961, 111);
             this.btn_In_Hoa_Don.MaximumSize = new System.Drawing.Size(177, 71);
             this.btn_In_Hoa_Don.MinimumSize = new System.Drawing.Size(177, 71);
             this.btn_In_Hoa_Don.Name = "btn_In_Hoa_Don";
@@ -82,7 +82,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1001, 641);
+            this.ClientSize = new System.Drawing.Size(1173, 641);
             this.Controls.Add(this.btn_In_Hoa_Don);
             this.Controls.Add(this.grb_Ma_Hoa_Don);
             this.Controls.Add(this.reportViewer1);

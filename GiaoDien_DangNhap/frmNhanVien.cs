@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Microsoft.ReportingServices.Diagnostics.Internal;
+using System;
 using System.Collections.Generic;   
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,16 +35,16 @@ namespace GiaoDien_DangNhap
             return myConnection;
         }
 
-        public static DataSet Xem_Thong_Tin(string sSql_Xem)
+        public static System.Data.DataSet Xem_Thong_Tin(string sSql_Xem)
         {
 
             SqlConnection myConnection = Ket_Noi();
-            DataSet ds = null;
+            System.Data.DataSet ds = null;
             try
             {
                 myConnection.Open();
                 SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Xem, myConnection);
-                ds = new DataSet();
+                ds = new System.Data.DataSet();
                 dsHien.Fill(ds);
                 myConnection.Close();
             }
@@ -54,7 +57,7 @@ namespace GiaoDien_DangNhap
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             //TAB Bán hàng
-
+            btn_KH_sua.Enabled = false;
             Lay_MAHD();
             Them_Ten_Cot_Vao_DataHD();
             Hien_Thi_Len_HD_CBO_San_Pham();
@@ -66,8 +69,9 @@ namespace GiaoDien_DangNhap
             txt_KH_maKH.Enabled = false;
             Lay_MAKH();
             string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
-            DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+            System.Data.DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
             data_khachHang.DataSource = ds_Khach_Hang.Tables[0];
+          
         }
         public void Lay_MAHD()
         {
@@ -166,7 +170,7 @@ namespace GiaoDien_DangNhap
             {
                 myConnection.Open();
                 SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
-                DataSet ds = new DataSet();
+                System.Data.DataSet ds = new System.Data.DataSet();
                 dsHien.Fill(ds);
                 myConnection.Close();
 
@@ -188,7 +192,7 @@ namespace GiaoDien_DangNhap
             {
                 myConnection.Open();
                 SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
-                DataSet ds = new DataSet();
+                System.Data.DataSet ds = new System.Data.DataSet();
                 dsHien.Fill(ds);
                 myConnection.Close();
 
@@ -209,7 +213,7 @@ namespace GiaoDien_DangNhap
             {
                 myConnection.Open();
                 SqlDataAdapter dsHien = new SqlDataAdapter(sSql_Hien, myConnection);
-                DataSet ds = new DataSet();
+                System.Data.DataSet ds = new System.Data.DataSet();
                 dsHien.Fill(ds);
                 myConnection.Close();
 
@@ -340,12 +344,14 @@ namespace GiaoDien_DangNhap
             Luu_Vao_Database();
             //Cập nhật lại ds hiển thị sản phẩm
             string sSql_Xem_San_Pham = "SELECT * FROM SanPham";
-            DataSet ds_San_Pham = Xem_Thong_Tin(sSql_Xem_San_Pham);
+            System.Data.DataSet ds_San_Pham = Xem_Thong_Tin(sSql_Xem_San_Pham);
             data_ban_hang.DataSource = ds_San_Pham.Tables[0];
             table = null;
             Them_Ten_Cot_Vao_DataHD();
             Lam_Moi_HD();
             textChange_HD_Khuyen_Mai = false;
+            btn_BH_add.Enabled = false;
+            btn_BH_update.Enabled = false;
 
         }
       
@@ -384,41 +390,42 @@ namespace GiaoDien_DangNhap
         private void btn_BH_update_Click_1(object sender, EventArgs e)
         {
             try
-            {
-                int rowIndex = data_ban_hang.CurrentRow.Index;
-
-                string maHD = txt_BH_maHD.Text;
-                string maSP = cbo_BH_sanPham.SelectedValue.ToString();
-                int soLuong = (int)nbr_BH_soLuong.Value;
-                double donGia = double.Parse(txt_BH_donGia.Text);
-                double thanhTien = double.Parse(txt_BH_thanhTien.Text);
-                string maKH = cbo_BH_KH.SelectedValue.ToString();
-                string maNV = cbo_BH_NV.SelectedValue.ToString();
-                string ngayLap = dt_BH_ngayLapHD.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                double khuyenMai;
-                if (txt_BH_khuyenMai.Text == "")
                 {
-                    khuyenMai = 0;
-                }
-                else { khuyenMai = (double.Parse(txt_BH_khuyenMai.Text)) / 100; }
+                    int rowIndex = data_ban_hang.CurrentRow.Index;
 
-                data_ban_hang.Rows[rowIndex].Cells["MAHD"].Value = maHD;
-                data_ban_hang.Rows[rowIndex].Cells["MASP"].Value = maSP;
-                data_ban_hang.Rows[rowIndex].Cells["SOLUONG"].Value = soLuong;
-                data_ban_hang.Rows[rowIndex].Cells["DONGIA"].Value = donGia;
-                data_ban_hang.Rows[rowIndex].Cells["THANHTIEN"].Value = thanhTien;
-                data_ban_hang.Rows[rowIndex].Cells["MAKH"].Value = maKH;
-                data_ban_hang.Rows[rowIndex].Cells["MANV"].Value = maNV;
-                data_ban_hang.Rows[rowIndex].Cells["NGAYLAPHD"].Value = ngayLap;
-                data_ban_hang.Rows[rowIndex].Cells["KHUYENMAI"].Value = khuyenMai;
- 
-                Lam_Moi_HD();
-                MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sửa không thành công: " + ex.Message);
-            }
+                    string maHD = txt_BH_maHD.Text;
+                    string maSP = cbo_BH_sanPham.SelectedValue.ToString();
+                    int soLuong = (int)nbr_BH_soLuong.Value;
+                    double donGia = double.Parse(txt_BH_donGia.Text);
+                    double thanhTien = double.Parse(txt_BH_thanhTien.Text);
+                    string maKH = cbo_BH_KH.SelectedValue.ToString();
+                    string maNV = cbo_BH_NV.SelectedValue.ToString();
+                    string ngayLap = dt_BH_ngayLapHD.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                    double khuyenMai;
+                    if (txt_BH_khuyenMai.Text == "")
+                    {
+                        khuyenMai = 0;
+                    }
+                    else { khuyenMai = (double.Parse(txt_BH_khuyenMai.Text)) / 100; }
+
+                    data_ban_hang.Rows[rowIndex].Cells["MAHD"].Value = maHD;
+                    data_ban_hang.Rows[rowIndex].Cells["MASP"].Value = maSP;
+                    data_ban_hang.Rows[rowIndex].Cells["SOLUONG"].Value = soLuong;
+                    data_ban_hang.Rows[rowIndex].Cells["DONGIA"].Value = donGia;
+                    data_ban_hang.Rows[rowIndex].Cells["THANHTIEN"].Value = thanhTien;
+                    data_ban_hang.Rows[rowIndex].Cells["MAKH"].Value = maKH;
+                    data_ban_hang.Rows[rowIndex].Cells["MANV"].Value = maNV;
+                    data_ban_hang.Rows[rowIndex].Cells["NGAYLAPHD"].Value = ngayLap;
+                    data_ban_hang.Rows[rowIndex].Cells["KHUYENMAI"].Value = khuyenMai;
+
+                    Lam_Moi_HD();
+                    MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Sửa không thành công: " + ex.Message);
+                }
+          
         }
         public bool Them_Khach_Hang(string tenKH, string diaChi, string SDT, string ngayTao, string email)
         {
@@ -481,24 +488,40 @@ namespace GiaoDien_DangNhap
                 {
                     MessageBox.Show("Đã thêm Khách Hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
-                    DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+                    System.Data.DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
                     data_khachHang.DataSource = ds_Khach_Hang.Tables[0];
                     Hien_Thi_Len_HD_CBO_Khach_Hang();
                 }
             }
         }
-        public void Tru_So_Luong()
+        public void Tru_So_Luong(SqlConnection connection, SqlTransaction transaction, string maSP, string maHD)
         {
-            string MaHD = txt_BH_maHD.Text;
-            SqlConnection myConnection = Ket_Noi();
-            string sSql_Tru = "UPDATE SANPHAM SET SANPHAM.SOLUONG = SANPHAM.SOLUONG - (SELECT CT_HOADON.SOLUONG FROM CT_HOADON JOIN SANPHAM ON CT_HOADON.MASP = SANPHAM.MASP WHERE  MAHD = '" + MaHD + "') WHERE SANPHAM.MASP = (SELECT MASP FROM CT_HOADON WHERE MAHD = '" + MaHD + "')";
+            string soLuong, maSP_Tam;
+            string sSql_Tru1 = "UPDATE SANPHAM SET SANPHAM.SOLUONG = SANPHAM.SOLUONG - @SoLuong WHERE SANPHAM.MASP = @MaSP";
+            string sSql_Tru2 = "SELECT SOLUONG FROM CT_HOADON WHERE MAHD = @MaHD AND MASP = @MaSP";
+            string sSql_Tru3 = "SELECT MASP FROM CT_HOADON WHERE MAHD = @MaHD AND MASP = @MaSP";
             try
             {
-                myConnection.Open();
-                SqlCommand cmd = new SqlCommand(sSql_Tru, myConnection);
-                cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand(sSql_Tru2, connection, transaction))
+                {
+                    cmd.Parameters.AddWithValue("@MaHD", maHD);
+                    cmd.Parameters.AddWithValue("@MaSP", maSP);
+                    soLuong = cmd.ExecuteScalar().ToString();
+                }
 
-                myConnection.Close();
+                using (SqlCommand cmd = new SqlCommand(sSql_Tru3, connection, transaction))
+                {
+                    cmd.Parameters.AddWithValue("@MaHD", maHD);
+                    cmd.Parameters.AddWithValue("@MaSP", maSP);
+                    maSP_Tam = cmd.ExecuteScalar().ToString();
+                }
+
+                using (SqlCommand cmd = new SqlCommand(sSql_Tru1, connection, transaction))
+                {
+                    cmd.Parameters.AddWithValue("@SoLuong", soLuong);
+                    cmd.Parameters.AddWithValue("@MaSP", maSP_Tam);
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -507,77 +530,77 @@ namespace GiaoDien_DangNhap
         }
         public void Luu_Vao_Database()
         {
-            // Kiểm tra xem DataTable có dữ liệu không
             if (table != null && table.Rows.Count > 0)
             {
-                // Tạo kết nối đến cơ sở dữ liệu
-                SqlConnection myConnection = Ket_Noi();
-                try
+                using (SqlConnection myConnection = Ket_Noi())
                 {
-                    // Mở kết nối
-                    myConnection.Open();
-
-                    // Tạo một đối tượng SqlCommand để thực hiện truy vấn
-                    SqlCommand cmd = new SqlCommand();
-                    // Thiết lập kết nối cho đối tượng SqlCommand
-                    cmd.Connection = myConnection;
-
-                    // Bắt đầu một giao dịch để thực hiện việc chèn dữ liệu vào cơ sở dữ liệu
-                    SqlTransaction transaction = myConnection.BeginTransaction();
-                    cmd.Transaction = transaction;
-
+                    string MaHD = txt_BH_maHD.Text;
                     try
                     {
-                        //Thêm vào bảng HOADON một lần
-                        cmd.CommandText = "INSERT INTO HOADON VALUES (@MAHD, @MANV, @MAKH, @NGAYLAPHD)";
+                        myConnection.Open();
+                        SqlTransaction transaction = myConnection.BeginTransaction();
 
-                        cmd.Parameters.AddWithValue("@MAHD", table.Rows[0]["MAHD"]);
-                        cmd.Parameters.AddWithValue("@MANV", table.Rows[0]["MANV"]);
-                        cmd.Parameters.AddWithValue("@MAKH", table.Rows[0]["MAKH"]);
-                        cmd.Parameters.AddWithValue("@NGAYLAPHD", table.Rows[0]["NGAYLAPHD"]);
-
-                        // Thực thi câu lệnh SQL
-                        cmd.ExecuteNonQuery();
-
-                        // Vòng lặp qua từng hàng trong DataTable và chèn dữ liệu vào cơ sở dữ liệu
-                        foreach (DataRow row in table.Rows)
+                        try
                         {
-                            cmd.CommandText = "INSERT INTO CT_HOADON VALUES (@MAHD, @MASP, @SOLUONG, @DONGIA, @KHUYENMAI, @THANHTIEN)";
+                            using (SqlCommand cmd = myConnection.CreateCommand())
+                            {
+                                cmd.Transaction = transaction;
 
-                            // Đặt các tham số cho câu lệnh SQL
-                            cmd.Parameters.Clear();
-                            cmd.Parameters.AddWithValue("@MAHD", row["MAHD"]);
-                            cmd.Parameters.AddWithValue("@MASP", row["MASP"]);
-                            cmd.Parameters.AddWithValue("@SOLUONG", row["SOLUONG"]);
-                            cmd.Parameters.AddWithValue("@DONGIA", row["DONGIA"]);
-                            cmd.Parameters.AddWithValue("@KHUYENMAI", row["KHUYENMAI"]);
-                            cmd.Parameters.AddWithValue("@THANHTIEN", row["THANHTIEN"]);
+                                // Thêm vào bảng HOADON một lần
+                                cmd.CommandText = "INSERT INTO HOADON VALUES (@MAHD, @MANV, @MAKH, @NGAYLAPHD)";
+                                cmd.Parameters.AddWithValue("@MAHD", table.Rows[0]["MAHD"]);
+                                cmd.Parameters.AddWithValue("@MANV", table.Rows[0]["MANV"]);
+                                cmd.Parameters.AddWithValue("@MAKH", table.Rows[0]["MAKH"]);
+                                cmd.Parameters.AddWithValue("@NGAYLAPHD", table.Rows[0]["NGAYLAPHD"]);
+                                cmd.ExecuteNonQuery();
 
-                            // Thực thi câu lệnh SQL
-                            cmd.ExecuteNonQuery();
+                                // Vòng lặp qua từng hàng trong DataTable và chèn dữ liệu vào cơ sở dữ liệu
+                                foreach (DataRow row in table.Rows)
+                                {
+                                    cmd.CommandText = "INSERT INTO CT_HOADON VALUES (@MAHD, @MASP, @SOLUONG, @DONGIA, @KHUYENMAI, @THANHTIEN)";
+                                    cmd.Parameters.Clear();
+                                    cmd.Parameters.AddWithValue("@MAHD", row["MAHD"]);
+                                    cmd.Parameters.AddWithValue("@MASP", row["MASP"]);
+                                    cmd.Parameters.AddWithValue("@SOLUONG", row["SOLUONG"]);
+                                    cmd.Parameters.AddWithValue("@DONGIA", row["DONGIA"]);
+                                    cmd.Parameters.AddWithValue("@KHUYENMAI", row["KHUYENMAI"]);
+                                    cmd.Parameters.AddWithValue("@THANHTIEN", row["THANHTIEN"]);
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            // Mảng lưu các mã sản phẩm
+                            string[] maspArray = new string[data_ban_hang.Rows.Count];
+                            for (int i = 0; i < data_ban_hang.Rows.Count; i++)
+                            {
+                                maspArray[i] = data_ban_hang.Rows[i].Cells["MASP"].Value.ToString();
+                            }
+
+                            // Trừ số lượng sản phẩm
+                            foreach (string maSP in maspArray)
+                            {
+                                Tru_So_Luong(myConnection, transaction, maSP, MaHD);
+                            }
+
+                            // Commit giao dịch nếu mọi thứ thành công
+                            transaction.Commit();
+
+                            // Hiển thị thông báo thành công
+                            MessageBox.Show("Hóa đơn đã được lưu vào cơ sở dữ liệu.");
+                            Lay_MAHD();
+                            table.Rows.Clear();
                         }
-
-                        // Commit giao dịch nếu mọi thứ thành công
-                        transaction.Commit();
-
-                        // Hiển thị thông báo thành công
-                        MessageBox.Show("Hóa đơn đã được lưu vào cơ sở dữ liệu.");
-                        //Trừ số lượng trong bảng sản phẩm
-                        Tru_So_Luong();
-                        Lay_MAHD();
-                        table.Rows.Clear();
+                        catch (Exception ex)
+                        {
+                            // Nếu có lỗi xảy ra, rollback giao dịch
+                            transaction.Rollback();
+                            MessageBox.Show("Lỗi khi lưu hóa đơn vào cơ sở dữ liệu: " + ex.Message);
+                        }
                     }
                     catch (Exception ex)
                     {
-                        // Nếu có lỗi xảy ra, rollback giao dịch
-                        transaction.Rollback();
-
-                        MessageBox.Show("Lỗi khi lưu hóa đơn vào cơ sở dữ liệu: " + ex.Message);
+                        MessageBox.Show("Lỗi khi kết nối đến cơ sở dữ liệu: " + ex.Message);
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi kết nối đến cơ sở dữ liệu: " + ex.Message);
                 }
             }
             else
@@ -585,7 +608,8 @@ namespace GiaoDien_DangNhap
                 // Hiển thị thông báo nếu DataTable không có dữ liệu
                 MessageBox.Show("Không có dữ liệu để lưu vào cơ sở dữ liệu.");
             }
-        }
+        
+    }
 
         public void Dang_Xuat()
         {
@@ -644,7 +668,7 @@ namespace GiaoDien_DangNhap
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        if (maSP == row["MASP"].ToString())
+                        if ( maSP == row["MASP"].ToString() && maKH == row["MAKH"].ToString() && maNV == row["MANV"].ToString())
                         {
                             row["SOLUONG"] = soLuong + (int)data_ban_hang.CurrentRow.Cells[2].Value;
                             row["THANHTIEN"] = thanhTien + (double)data_ban_hang.CurrentRow.Cells[4].Value;
@@ -674,11 +698,12 @@ namespace GiaoDien_DangNhap
         }
         private void btn_them_moi_Click_1(object sender, EventArgs e)
         {
-           
+            if (btn_DSHD_Click)
+            {
                 bool kq = KT_So_Luong();
                 if (kq)
                 {
-                   
+
                     if (string.IsNullOrEmpty(txt_BH_maHD.Text.Trim()) ||
                        string.IsNullOrEmpty(cbo_BH_sanPham.Text.Trim()) ||
                        string.IsNullOrEmpty(txt_BH_donGia.Text.Trim()) ||
@@ -707,96 +732,119 @@ namespace GiaoDien_DangNhap
                         khuyenMai = double.Parse(txt_BH_khuyenMai.Text) / 100;
                         ngayLap = dt_BH_ngayLapHD.Value.ToString("yyyy-MM-dd HH:mm:ss");
                         Them_San_Pham_Vao_DataHD(maHD, maSP, soLuong, donGia, thanhTien, maKH, maNV, ngayLap, khuyenMai);
-                   
+
                         Lam_Moi_HD();
                     }
-                   
+                    btn_BH_add.Enabled = true;
+                    btn_BH_update.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Số lượng sản phẩm không đủ để lập hóa đơn!", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+            }
 
             
         }
 
         private void txt_BH_khuyenMai_TextChanged(object sender, EventArgs e)
         {
+            
             Tinh_Thanh_Tien();
+
+            
 
         }
 
         private void data_ban_hang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-          try
+            if (data_ban_hang.DataSource != null)
             {
-                SqlConnection myConnection = Ket_Noi();
-                string maHD, sanPham, khachHang, nhanVien;
-                string donGia, thanhTien, khuyenMai;
-                int soLuong;
-                DateTime ngayLap;
-
-                maHD = data_ban_hang.CurrentRow.Cells[0].Value.ToString();
-                sanPham = data_ban_hang.CurrentRow.Cells[1].Value.ToString();
-                soLuong = int.Parse(data_ban_hang.CurrentRow.Cells[2].Value.ToString());
-                donGia = data_ban_hang.CurrentRow.Cells[3].Value.ToString();
-                thanhTien = data_ban_hang.CurrentRow.Cells[4].Value.ToString();
-                khachHang = data_ban_hang.CurrentRow.Cells[5].Value.ToString();
-                nhanVien = data_ban_hang.CurrentRow.Cells[6].Value.ToString();
-
-                string dateTimeString = data_ban_hang.CurrentRow.Cells[7].Value.ToString();
-                string format = "yyyy-MM-dd HH:mm:ss";
-                if (DateTime.TryParseExact(dateTimeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out ngayLap))
+                if (btn_DSHD_Click)
                 {
-                    dt_BH_ngayLapHD.Value = ngayLap;
+                    try
+                    {
+                        SqlConnection myConnection = Ket_Noi();
+                        string maHD, sanPham, khachHang, nhanVien;
+                        string donGia, thanhTien, khuyenMai;
+                        int soLuong;
+                        DateTime ngayLap;
+
+                        maHD = data_ban_hang.CurrentRow.Cells[0].Value.ToString();
+                        sanPham = data_ban_hang.CurrentRow.Cells[1].Value.ToString();
+                        soLuong = (int)data_ban_hang.CurrentRow.Cells[2].Value;
+                        donGia = data_ban_hang.CurrentRow.Cells[3].Value.ToString();
+                        thanhTien = data_ban_hang.CurrentRow.Cells[4].Value.ToString();
+                        khachHang = data_ban_hang.CurrentRow.Cells[5].Value.ToString();
+                        nhanVien = data_ban_hang.CurrentRow.Cells[6].Value.ToString();
+
+                        string dateTimeString = data_ban_hang.CurrentRow.Cells[7].Value.ToString();
+                        string format = "yyyy-MM-dd HH:mm:ss";
+                        if (DateTime.TryParseExact(dateTimeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out ngayLap))
+                        {
+                            dt_BH_ngayLapHD.Value = ngayLap;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không thể ép kiểu chuỗi thành DateTime.");
+                        }
+
+                        khuyenMai = ((double)data_ban_hang.CurrentRow.Cells[8].Value * 100).ToString();
+
+                        try
+                        {
+                            myConnection.Open();
+
+                            string query = "SELECT TenSP FROM SanPham WHERE MaSP = @MaSP";
+                            SqlCommand cmd = new SqlCommand(query, myConnection);
+                            cmd.Parameters.AddWithValue("@MaSP", sanPham);
+                            object result = cmd.ExecuteScalar();
+
+                            txt_BH_maHD.Text = maHD;
+                            cbo_BH_sanPham.Text = result.ToString();
+                            nbr_BH_soLuong.Value = soLuong;
+                            txt_BH_donGia.Text = donGia;
+                            txt_BH_thanhTien.Text = thanhTien;
+
+                            query = "SELECT TenKH FROM KhachHang WHERE MaKH = @MaKH";
+                            cmd = new SqlCommand(query, myConnection);
+                            cmd.Parameters.AddWithValue("@MaKH", khachHang);
+                            result = cmd.ExecuteScalar();
+                            cbo_BH_KH.Text = result.ToString();
+
+                            query = "SELECT manv FROM nhanvien WHERE manv = @Manv";
+                            cmd = new SqlCommand(query, myConnection);
+                            cmd.Parameters.AddWithValue("@manv", nhanVien);
+                            result = cmd.ExecuteScalar();
+                            cbo_BH_NV.Text = result.ToString();
+                            txt_BH_khuyenMai.Text = khuyenMai;
+
+                            myConnection.Close();
+
+                            //btn_HD_Ghi.Enabled = false;
+                            //btn_HD_Luu.Enabled = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    //btn_HD_Sua.Enabled = true;
+                    //btn_HD_Xoa.Enabled = true;
                 }
                 else
                 {
-                    MessageBox.Show("Không thể ép kiểu chuỗi thành DateTime.");
-                }
-
-                khuyenMai = ((double)data_ban_hang.CurrentRow.Cells[8].Value * 100).ToString();
-
-                try
-                {
-                    myConnection.Open();
-
-                    string query = "SELECT TenSP FROM SanPham WHERE MaSP = @MaSP";
-                    SqlCommand cmd = new SqlCommand(query, myConnection);
-                    cmd.Parameters.AddWithValue("@MaSP", sanPham);
-                    object result = cmd.ExecuteScalar();
-
-                    txt_BH_maHD.Text = maHD;
-                    cbo_BH_sanPham.Text = result.ToString();
-                    nbr_BH_soLuong.Value = soLuong;
-                    txt_BH_donGia.Text = donGia;
-                    txt_BH_thanhTien.Text = thanhTien;
-
-                    query = "SELECT TenKH FROM KhachHang WHERE MaKH = @MaKH";
-                    cmd = new SqlCommand(query, myConnection);
-                    cmd.Parameters.AddWithValue("@MaKH", khachHang);
-                    result = cmd.ExecuteScalar();
-                    cbo_BH_KH.Text = result.ToString();
-
-                    query = "SELECT TenNV FROM NhanVien WHERE MaNV = @MaNV";
-                    cmd = new SqlCommand(query, myConnection);
-                    cmd.Parameters.AddWithValue("@MaNV", nhanVien);
-                    result = cmd.ExecuteScalar();
-                    cbo_BH_NV.Text = result.ToString();
-                    txt_BH_khuyenMai.Text = khuyenMai;
-
-                    myConnection.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    return;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("hai"+ex.Message);
+                return;
             }
 
         }
@@ -807,7 +855,7 @@ namespace GiaoDien_DangNhap
             {
                 string sSql_Xem_Hoa_Don = "SELECT HOADON.MAHD, MANV, MAKH, MASP, SOLUONG, DONGIA, CT_HOADON.TONGTIEN,KHUYENMAI,NGAYLAPHD " +
                           "FROM HOADON JOIN CT_HOADON ON HOADON.MAHD = CT_HOADON.MAHD";
-                DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
+                System.Data.DataSet ds_Hoa_Don = Xem_Thong_Tin(sSql_Xem_Hoa_Don);
                 data_ban_hang.DataSource = ds_Hoa_Don.Tables[0];
                 lb_tk.Visible = true;
                 txt_BH_tim_kiem.Visible = true;
@@ -822,19 +870,19 @@ namespace GiaoDien_DangNhap
             }
         }
 
-        public DataSet Tim_Kiem_HD(string tenTK)
+        public System.Data.DataSet Tim_Kiem_HD(string tenTK)
         {
             SqlConnection myConnection = Ket_Noi();
             string sSql_Tim_Kiem = "SELECT HOADON.MAHD, MANV, MAKH, MASP, SOLUONG, DONGIA, KHUYENMAI,NGAYLAPHD " +
                                               "FROM HOADON JOIN CT_HOADON ON HOADON.MAHD = CT_HOADON.MAHD " +
                                               "WHERE HOADON.MAHD LIKE N'%" + tenTK + "%'";
-            DataSet ds = null;
+            System.Data.DataSet ds = null;
             try
             {
                 myConnection.Open();
 
                 SqlDataAdapter ds_Hien = new SqlDataAdapter(sSql_Tim_Kiem, myConnection);
-                ds = new DataSet();
+                ds = new System.Data.DataSet();
                 ds_Hien.Fill(ds);
 
                 myConnection.Close();
@@ -849,7 +897,7 @@ namespace GiaoDien_DangNhap
         {
             string tenTK;
             tenTK = txt_BH_tim_kiem.Text;
-            DataSet ds = Tim_Kiem_HD(tenTK);
+            System.Data.DataSet ds = Tim_Kiem_HD(tenTK);
             data_ban_hang.DataSource = ds.Tables[0];
         }
 
@@ -872,6 +920,7 @@ namespace GiaoDien_DangNhap
             txt_KH_diaChi.Text = "";
             txt_KH_tenKH.Select();
             dt_ngayTao.Value=DateTime.Now;
+            btn_KH_sua.Enabled= false;
         }
 
         public bool Sua_Khach_Hang(string tenKH, string diaChi, string SDT, string ngayTao, string email)
@@ -935,7 +984,7 @@ namespace GiaoDien_DangNhap
                 {
                     MessageBox.Show("Sửa Khách Hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     string sSql_Xem_Khach_Hang = "SELECT * FROM KhachHang";
-                    DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
+                    System.Data.DataSet ds_Khach_Hang = Xem_Thong_Tin(sSql_Xem_Khach_Hang);
                     data_khachHang.DataSource = ds_Khach_Hang.Tables[0];
                     Hien_Thi_Len_HD_CBO_Khach_Hang();
                
@@ -965,6 +1014,7 @@ namespace GiaoDien_DangNhap
             {
 
             }
+            btn_KH_sua.Enabled = true;
         }
 
         private void txt_BH_khuyenMai_KeyPress(object sender, KeyPressEventArgs e)
@@ -979,6 +1029,7 @@ namespace GiaoDien_DangNhap
                 e.Handled = true;
             }
 
+
         }
 
         private void frmNhanVien_FormClosing(object sender, FormClosingEventArgs e)
@@ -989,6 +1040,12 @@ namespace GiaoDien_DangNhap
             {
                 e.Cancel = true;
             }
+        }
+
+        private void btn_in_hoadon_Click(object sender, EventArgs e)
+        {
+            frmInHoaDon inhd= new frmInHoaDon();
+            inhd.ShowDialog();
         }
     }
 }
